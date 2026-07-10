@@ -32,7 +32,7 @@ child plans define implementation detail.
 | # | Plan | Status | Depends on |
 |---|------|--------|-----------|
 | 1 | [foundation](foundation/plan_1.md) | IN_PROGRESS (2–4 DONE, 5 BLOCKED on manual steps) | — |
-| 2 | [database-architecture](database-architecture/plan_1.md) | IN_PROGRESS (2 DONE, 3 ongoing, 4 BLOCKED) | foundation |
+| 2 | [database-architecture](database-architecture/plan_1.md) | IN_PROGRESS (2 DONE, 3 ongoing, 4 core landed / rest BLOCKED on manual steps) | foundation |
 
 **Phase 1 — Core platform**
 

@@ -82,7 +82,7 @@ better. NoSQL is rejected: the data is joins all the way down.
 - [x] Decision ratified (Postgres + single-db org-scoped tenancy, 2026-07-08)
 - [x] Child plans authored (2026-07-08)
 - [x] Tenancy guardrails merged (2026-07-10; D5 resolved as narrow encryption, ADR 0011)
-- [ ] Backup runbook exists
+- [x] Backup runbook exists + restore path CI-proven (2026-07-10; R2/cron half blocked on manual steps)
 
 ## Open questions
 

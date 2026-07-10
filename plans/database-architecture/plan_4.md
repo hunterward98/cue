@@ -1,6 +1,6 @@
 # database-architecture — Child Plan 4: Backups, Restore & Encryption Keys
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** BLOCKED (needs foundation plan_5 prod + R2 bucket manual steps). age ratified (D2); WAL-archiving-before-billing adopted per critique.
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** IN_PROGRESS — the testable core landed 2026-07-10 (bin/db-backup + CI-proven decrypt/pg_restore path + restore runbook); remaining half BLOCKED on manual steps (VPS + R2). age ratified (D2); WAL-archiving-before-billing adopted per critique.
 - **Depends on:** foundation plan_5 (prod exists), R2 bucket (cues plan_5
   shares it or a dedicated backups bucket)
 - **Last updated:** 2026-07-08
@@ -37,10 +37,10 @@ rotation story. Untested backups are decorative.
 
 - [ ] Backups bucket + scoped credentials (manual step rider: R2 account —
       shared with cues plan_5's upload bucket setup).
-- [ ] Backup script + host cron + encryption + lifecycle rules.
+- [x] Backup script + encryption (2026-07-10: bin/db-backup, ERR-trap against junk artifacts). Host cron + R2 lifecycle blocked on manual steps.
 - [ ] Weekly restore-verification job + alerting (uptime pinger webhook or
       error tracker).
-- [ ] Restore runbook + first full rehearsal before public signup opens.
+- [x] Restore runbook (docs/runbooks/restore.md); dump→restore path exercised on every CI run via spec/db/db_backup_spec.rb. Manual rehearsal on real prod artifact still due before public signup.
 - [ ] AR Encryption keys generated + registry section + rotation runbook.
 
 ## Tests
