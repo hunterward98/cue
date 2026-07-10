@@ -1,0 +1,8 @@
+# Advisory ignores require a justification and a revisit condition.
+ignore:
+  # webrick 1.9.2 trailer-reparse advisory. webrick is a test-only
+  # transitive dep (ferrum -> Cuprite); production serves via Puma and the
+  # deploy bundle excludes development/test groups entirely, so this code
+  # never runs in prod. Revisit: remove on the first webrick release > 1.9.2
+  # (bundle update webrick), or if ferrum drops the dependency.
+  - CVE-2026-38969
