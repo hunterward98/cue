@@ -65,9 +65,11 @@ cues cross the line — owner-only, own-board-only.
 1. **Archived board history** — (a) keep board + events forever for
    metrics **8/10**; (b) purge with membership **3/10**: destroys the
    insights the org paid for.
+   Answer: Keep
 2. **In-review returns** — (a) confirm-dialog + notify requester
    **8/10**; (b) forbid returning in_review cues entirely **5/10**:
    cleaner rule, but real life includes "requester went dark, park it".
+   Answer: Yes, review requires requester to be notified. This is not an optional email notification and can only be adjusted via organization admin.
 
 ## Critique
 
@@ -87,3 +89,6 @@ cues cross the line — owner-only, own-board-only.
 - Return-to-backlog of in_review cues with confirm + requester
   notification (W2a): stands. No further critique — the advisory-lock
   pull design and `resolved_from_board_id` residency handoff are right.
+  
+## Critique feedback:
+Good critiques, maybe we should improve then. Do what you feel is appropriate.

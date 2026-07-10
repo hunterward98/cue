@@ -1,8 +1,8 @@
 # foundation — Child Plan 2: Repo Scaffold
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-10)
 - **Depends on:** manual steps (GitHub repo exists)
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-10
 
 ## Goal
 
@@ -33,18 +33,18 @@ every later commit inherits.
 
 ## Implementation steps
 
-- [ ] Tool pinning (`.tool-versions` or `mise.toml`) — see Q1.
-- [ ] `rails new` with flags above; commit pristine generator output first,
+- [x] Tool pinning (`.tool-versions` or `mise.toml`) — see Q1.
+- [x] `rails new` with flags above; commit pristine generator output first,
       then customizations as separate commits (reviewable diff).
-- [ ] docker-compose Postgres + `config/database.yml` wiring.
-- [ ] vite_rails + inertia_rails + React 19 + TS strict + Tailwind v4.
-- [ ] Solid Queue + Solid Cache (database-backed, `bin/jobs` runner).
-- [ ] UUIDv7 pk convention + generator config + FactoryBot/RSpec generator
+- [x] docker-compose Postgres + `config/database.yml` wiring.
+- [x] vite_rails + inertia_rails + React 19 + TS strict + Tailwind v4.
+- [x] Solid Queue + Solid Cache (database-backed, `bin/jobs` runner).
+- [x] UUIDv7 pk convention + generator config + FactoryBot/RSpec generator
       defaults (RSpec install itself is plan_3).
-- [ ] `bin/setup` / `bin/dev`; README quickstart section.
-- [ ] Health page: an Inertia-rendered React page at `/up/full` proving
+- [x] `bin/setup` / `bin/dev`; README quickstart section.
+- [x] Health page: an Inertia-rendered React page at `/up/full` proving
       Rails → Inertia → React → Tailwind → DB round-trip.
-- [ ] `.env.example`, `.gitignore` audit, CLAUDE.md stub.
+- [x] `.env.example`, `.gitignore` audit, CLAUDE.md stub.
 
 ## Tests
 

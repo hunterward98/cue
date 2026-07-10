@@ -31,7 +31,7 @@ child plans define implementation detail.
 
 | # | Plan | Status | Depends on |
 |---|------|--------|-----------|
-| 1 | [foundation](foundation/plan_1.md) | NOT_STARTED | — |
+| 1 | [foundation](foundation/plan_1.md) | IN_PROGRESS (2–4 DONE, 5 BLOCKED on manual steps) | — |
 | 2 | [database-architecture](database-architecture/plan_1.md) | NOT_STARTED | foundation |
 
 **Phase 1 — Core platform**
@@ -69,7 +69,7 @@ child plans define implementation detail.
 
 | # | Plan | Status | Depends on |
 |---|------|--------|-----------|
-| 14 | [self-improvement](self-improvement/plan_1.md) | NOT_STARTED | — (starts with foundation) |
+| 14 | [self-improvement](self-improvement/plan_1.md) | IN_PROGRESS (plan_2 DONE) | — (starts with foundation) |
 | 15 | [support-admin](support-admin/plan_1.md) | NOT_STARTED | auth-security (console skeleton lands Phase 1–2) |
 
 ## MVP definition

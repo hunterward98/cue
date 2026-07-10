@@ -1,6 +1,6 @@
 # self-improvement — Child Plan 2: Install the Loop
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-10)
 - **Sequencing:** lands WITH foundation plan_2 — the loop exists before
   the code does.
 - **Last updated:** 2026-07-08
@@ -50,13 +50,13 @@ protocol, and the plan-hygiene ritual.
 
 ## Implementation steps
 
-- [ ] Skeleton + docs/README.md house rules.
-- [ ] ADR template + backfill 0001–0008.
-- [ ] CLAUDE.md v1 (replacing foundation plan_2's stub).
-- [ ] gotchas.md protocol header + first entry when it earns one.
-- [ ] PR template lines (with foundation plan_4): ADR? gotcha? legal?
+- [x] Skeleton + docs/README.md house rules.
+- [x] ADR template + backfill — 0001–0009, generated from the ratified log per critique.
+- [x] CLAUDE.md v1 (replacing foundation plan_2's stub).
+- [x] gotchas.md protocol header + first entry when it earns one.
+- [x] PR template lines (with foundation plan_4): ADR? gotcha? legal?
       matrix row?
-- [ ] Plan-hygiene ritual text in CLAUDE.md.
+- [x] Plan-hygiene ritual text in CLAUDE.md. Doc-lint (`bin/rails docs:lint`) wired into CI.
 
 ## Tests
 

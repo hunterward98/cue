@@ -1,8 +1,8 @@
 # foundation — Child Plan 4: Lint & Quality Gates + CI
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-10)
 - **Depends on:** plan_2 (scaffold), plan_3 (tests exist to run)
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-10
 
 ## Goal
 
@@ -36,15 +36,15 @@ in one GitHub Actions pipeline plus fast local pre-commit hooks.
 
 ## Implementation steps
 
-- [ ] RuboCop config + zero-offense baseline on scaffold.
-- [ ] ESLint flat config + Prettier; `any` negative-verified.
-- [ ] react-doctor wired, gate 100.
-- [ ] Brakeman + bundler-audit + `pnpm audit` (fail on high+).
-- [ ] GitHub Actions workflow with the five jobs + caching.
-- [ ] Branch protection on main (all jobs required).
-- [ ] Pre-commit hooks (Q1 tool).
-- [ ] PR template + CODEOWNERS stub.
-- [ ] Deliberate-violation verification for each gate (parent's matrix).
+- [x] RuboCop config + zero-offense baseline on scaffold.
+- [x] ESLint flat config + Prettier; `any` negative-verified.
+- [x] react-doctor wired, gate 100.
+- [x] Brakeman + bundler-audit + `pnpm audit` (fail on high+).
+- [x] GitHub Actions workflow with the five jobs + caching.
+- [x] Branch protection on main (all jobs required).
+- [x] Pre-commit hooks (Q1 tool).
+- [x] PR template + CODEOWNERS stub.
+- [x] Deliberate-violation verification for each gate (parent's matrix).
 
 ## Tests
 

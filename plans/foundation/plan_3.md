@@ -1,8 +1,8 @@
 # foundation — Child Plan 3: Test Infrastructure
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-10)
 - **Depends on:** plan_2 (scaffold)
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-10
 
 ## Goal
 
@@ -35,16 +35,16 @@ negative-test conventions the whole project will follow.
 
 ## Implementation steps
 
-- [ ] RSpec + FactoryBot + shoulda-matchers install and conventions doc
+- [x] RSpec + FactoryBot + shoulda-matchers install and conventions doc
       (`docs/testing.md` — who it's for: anyone writing a test here).
-- [ ] SimpleCov gates + multi-run merge.
-- [ ] Vitest + RTL + thresholds; example component spec.
-- [ ] Capybara + driver (Q1) + failure screenshots.
-- [ ] `with_viewports` shared context + cop enforcing it.
-- [ ] Negative-test tag + counting rake task.
-- [ ] Parallel test workers (built-in Rails parallelization for RSpec via
+- [x] SimpleCov gates + multi-run merge.
+- [x] Vitest + RTL + thresholds; example component spec.
+- [x] Capybara + driver (Q1) + failure screenshots.
+- [x] `with_viewports` shared context + cop enforcing it.
+- [x] Negative-test tag + counting rake task.
+- [x] Parallel test workers (built-in Rails parallelization for RSpec via
       parallel_tests — evaluate; skip if suite is fast enough yet).
-- [ ] Foundation's own negative tests: branch with a coverage drop, an
+- [x] Foundation's own negative tests: branch with a coverage drop, an
       untested line, a skipped viewport — each must fail CI (verify once,
       document in docs/testing.md).
 

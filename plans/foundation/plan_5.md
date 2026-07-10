@@ -1,6 +1,6 @@
 # foundation — Child Plan 5: Deployment Skeleton
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** BLOCKED (needs manual steps: VPS + domain + GitHub repo)
 - **Depends on:** plan_2–4; manual steps (VPS + domain purchased)
 - **Last updated:** 2026-07-08
 

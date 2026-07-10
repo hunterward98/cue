@@ -1,11 +1,11 @@
 # Parent Plan: Foundation
 
-- **Status:** NOT_STARTED
+- **Status:** IN_PROGRESS (plans 2–4 DONE; plan_5 BLOCKED on manual steps)
 - **Phase:** 0
 - **Depends on:** —
 - **Blocks:** everything
 - **Manual steps:** [manual_steps_plan_1.md](manual_steps_plan_1.md)
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-10
 
 ## Objective
 
@@ -67,11 +67,11 @@ app with database, tests, linting, and coverage enforcement.
 ## Implementation order
 
 1. [ ] Ratify stack decisions above (answer open questions).
-2. [ ] plan_2: scaffold repo — `bin/setup` works, page renders via Inertia.
-3. [ ] plan_3: test infra — a failing test fails CI; coverage gate live.
-4. [ ] plan_4: lint gates — react-doctor 100 enforced; `any` impossible.
+2. [x] plan_2: scaffold repo — `bin/setup` works, page renders via Inertia. (2026-07-09)
+3. [x] plan_3: test infra — a failing test fails CI; coverage gate live. (2026-07-09)
+4. [x] plan_4: lint gates — react-doctor 100 enforced; `any` impossible. (2026-07-10)
 5. [ ] plan_5: deploy skeleton — app boots on a VPS behind TLS.
-6. [ ] Write decision records for every choice above (self-improvement plan).
+6. [x] Write decision records for every choice above — ADRs 0001–0009 in docs/decisions/ (2026-07-10).
 
 ## Test strategy
 
@@ -85,8 +85,8 @@ branch and confirm CI rejects it — these are the foundation's negative tests.
 - [x] Decisions ratified (Inertia + Kamal/VPS approved 2026-07-08; remaining
       opens below are non-blocking taste calls)
 - [x] Child plans authored (2026-07-08)
-- [ ] Repo scaffolded
-- [ ] Quality gates verified failing/passing correctly
+- [x] Repo scaffolded (2026-07-09)
+- [x] Quality gates verified failing/passing correctly — matrix in docs/testing.md (2026-07-10)
 - [ ] Deploy skeleton live
 
 ## Open questions

@@ -1,10 +1,10 @@
 # Parent Plan: Self-Improvement & Documentation Loop
 
-- **Status:** NOT_STARTED
+- **Status:** IN_PROGRESS (plan_2 DONE; plan_3/4 gated on later phases)
 - **Phase:** cross-cutting — starts with foundation, never ends
 - **Depends on:** — (installs alongside foundation)
 - **Blocks:** — (but every plan feeds it)
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-10
 
 ## Objective
 
@@ -66,7 +66,7 @@ readable, and legitimately helpful.
 
 ## Implementation order
 
-1. [ ] plan_2 with foundation (the loop must exist before code does).
+1. [x] plan_2 with foundation (the loop must exist before code does). (2026-07-10)
 2. [ ] plan_3 once rituals repeat (Phase 2).
 3. [ ] plan_4 first retro at end of Phase 1, then every phase.
 
@@ -79,8 +79,8 @@ documentation-by-convention. The rest is checklist-enforced (PR template:
 ## Progress
 
 - [x] Child plans authored (2026-07-08)
-- [ ] Docs skeleton + CLAUDE.md live
-- [ ] ADRs exist for all ratified Phase-0 decisions
+- [x] Docs skeleton + CLAUDE.md live (2026-07-10)
+- [x] ADRs exist for all ratified Phase-0 decisions — 0001–0009 (2026-07-10)
 - [ ] First three skills authored and trigger-tested
 - [ ] Phase retro ritual running
 

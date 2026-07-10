@@ -11,3 +11,8 @@ Human actions required. Check off and note the date when done.
 - [ ] Provide container registry credentials if not using GHCR with the repo.
 - [x] Ratify the two BLOCKING open questions in plan_1.md (Inertia; Kamal/VPS)
       — done 2026-07-08.
+
+Status 2026-07-10: foundation plans 2–4 are DONE and verified locally; the
+three unchecked items above are now the only blockers for plan_5 (deploy)
+and for CI actually running (needs the GitHub repo). Everything is
+committed locally on `main`, ready to push the moment the repo exists.
