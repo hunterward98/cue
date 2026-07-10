@@ -60,9 +60,11 @@ the parent plan passing (i.e., CI correctly rejecting each violation).
    (b) Playwright (via playwright-ruby-client under Capybara) **6/10**:
    best-in-class debugging/traces but younger Ruby bindings, more moving
    parts; (c) Selenium **4/10**: slowest, no upside here.
+   Answer: a
 2. **parallel_tests from day one?** — (a) defer until suite > 2 min
    **8/10**: YAGNI, less CI config; (b) install now **5/10**: pays only
    later, costs setup friction now.
+   Answer: We are going to need it - we're moving fast.
 
 ## Critique
 
@@ -94,3 +96,6 @@ the parent plan passing (i.e., CI correctly rejecting each violation).
   any component ever fetches directly. Add a lint forbidding `fetch`/
   `axios` in `app/frontend` (Inertia props are the only data path) to
   keep the simplification true.
+
+## Critique feedback:
+I don't like :nocov:, although realistic, sounds like bad engineering to me. We need to be strict - our tests will define our app.

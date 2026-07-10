@@ -58,10 +58,12 @@ in `docs/testing.md` (date verified + what failed).
    but Node-centric for a Rails-first repo; (c) overcommit **5/10**: Ruby
    native but slower and less maintained; (d) none, CI only **4/10**:
    slower feedback loop for agents and humans alike.
+   Answer: a
 2. **Conventional commits + commitlint?** — (a) no, plain good messages
    **7/10**: ceremony without a changelog consumer yet; (b) yes **5/10**:
    pays off only if we later automate changelogs — revisit at the release
    ritual (self-improvement plan_3).
+   Answer: Yeah let's not get too fancy. You'll be writing commits anyways so you can summarize well.
 
 ## Critique
 

@@ -56,14 +56,17 @@ feature ships, so deployment never becomes a scramble.
    catches config drift, good enough pre-launch; (b) separate cheap VPS
    **6/10**: cleaner isolation, +$6/mo, more to maintain; (c) no staging,
    feature-flag on prod **4/10**: too spicy while the suite is young.
+   Answer: We won't need a staging environment yet. Prepare for one, but until every feature has been implemented, we will not need one. We have no QA team - we are QA.
 2. **Error tracking** — (a) Sentry SaaS free tier **8/10**: excellent
    Rails+React SDKs, free tier fits MVP volume; (b) self-hosted GlitchTip
    **6/10**: Sentry-compatible, cheap, but ops burden on our one VPS;
    (c) logs only **3/10**: silent client-side errors.
+   Answer: Great, but this is a "later" thing. We have no customers, this should be done after billing.
 3. **VPS provider** — (a) Hetzner **8/10**: best price/perf (~€5–9 CX/CPX),
    EU data residency; (b) DigitalOcean **7/10**: simpler ecosystem, US
    regions, slightly pricier; pick with the manual-steps answer on hosting
    account. US-audience latency argues for a US region either way.
+   Answer: I currently have AWS. Compare cost per month for each provider for 200 DAU.
 
 ## Critique
 
@@ -91,3 +94,6 @@ feature ships, so deployment never becomes a scramble.
   doesn't blind us mid-month.
 - F9 note: Hetzner's US regions (Ashburn, Hillsboro) satisfy the
   US-latency concern; ranking stands.
+
+## Critique feedback
+All fair. Let's do it.

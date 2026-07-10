@@ -57,9 +57,11 @@ every later commit inherits.
 1. **Version manager** — (a) mise **8/10**: fast, one tool for Ruby+Node,
    reads `.tool-versions`; (b) asdf **6/10**: ubiquitous but slower, plugin
    churn; (c) pin in README only **3/10**: drift guaranteed.
+   Answer: Mise sounds great.
 2. **Node package manager** — (a) pnpm **8/10**: fast, strict, disk-cheap;
    (b) npm **7/10**: zero extra install, boring is good; (c) yarn **4/10**:
    no advantage here. Low stakes; recommend pnpm.
+   Answer: pnpm is fine, may need installed on this machine - you have full permission to do so.
 
 ## Critique
 
@@ -79,3 +81,6 @@ every later commit inherits.
 - Committing pristine generator output before customizations: good
   practice, keep it.
 - Otherwise no critique.
+
+## Critique feedback
+These are all great. Go with your critique.

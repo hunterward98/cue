@@ -94,6 +94,7 @@ branch and confirm CI rejects it — these are the foundation's negative tests.
 1. ~~Approve Inertia.js?~~ **RATIFIED 2026-07-08** — Inertia.
 2. ~~Approve single-VPS + Kamal?~~ **RATIFIED 2026-07-08** — approved.
 3. GitHub org/repo name and whether to make it private initially.
+Done, this workspace is now a git repo.
 
 ## Critique
 
@@ -122,3 +123,8 @@ branch and confirm CI rejects it — these are the foundation's negative tests.
   (~250–500 DAU), every infra choice gets even more headroom. No design
   change either way — flagging the assumption.
 - Deployment SPOF critique lives in plan_5's critique.
+
+## Critique feedback
+Rails 8.1 is the right move.
+React-doctor from day 1 is a great idea, imo. Every single piece of frontend needs to adhere to it.
+Let's assume 200 DAU.
