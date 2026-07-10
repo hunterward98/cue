@@ -2,8 +2,13 @@
 
 Human actions required. Check off and note the date when done.
 
-- [ ] Create the GitHub repository (or grant the agent a repo to push to) and
-      confirm visibility (private recommended until launch).
+- [x] Create the GitHub repository (or grant the agent a repo to push to) and
+      confirm visibility (private recommended until launch). — done
+      2026-07-10, github.com/hunterward98/cue; main pushed, CI live.
+- [ ] Enable branch protection on `main` (Settings → Branches → require
+      status checks: lint, gitleaks, react-doctor, test-frontend,
+      test-backend, test-system, coverage, bin-setup) — needs the GitHub
+      UI or a token; the agent can't reach the API without `gh` auth.
 - [ ] Choose and provision the hosting VPS (Hetzner or DigitalOcean account,
       billing set up). ~$6–12/mo class machine is sufficient for MVP.
 - [ ] Purchase the production domain (also needed by marketing-site-seo and
