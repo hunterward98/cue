@@ -2,6 +2,26 @@
 
 require "rails_helper"
 
+# == Schema Information
+#
+# Table name: sessions
+#
+#  id             :uuid             not null, primary key
+#  ip_address     :string
+#  last_active_at :datetime         not null
+#  user_agent     :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  user_id        :uuid             not null
+#
+# Indexes
+#
+#  index_sessions_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 RSpec.describe Session, type: :model do
   it "expires 7 days after creation, absolutely" do
     session = create(:session)

@@ -27,6 +27,9 @@ Rails.application.routes.draw do
 
   resources :passwords, param: :token, only: %i[new create edit update]
 
+  # Lockout recovery (auth plan_3): the emailed unlock link.
+  get "unlock/:token" => "unlocks#show", as: :unlock
+
   # Temporary root until marketing-site-seo delivers a landing page.
   root "health#full"
 end

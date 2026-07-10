@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_10_152014) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_10_155453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_10_152014) do
     t.index ["token_digest"], name: "index_auth_tokens_on_token_digest", unique: true
     t.index ["user_id", "purpose"], name: "index_auth_tokens_on_user_id_and_purpose"
     t.index ["user_id"], name: "index_auth_tokens_on_user_id"
-    t.check_constraint "purpose::text = ANY (ARRAY['email_verification'::character varying, 'password_reset'::character varying, 'login_code'::character varying, 'second_factor'::character varying]::text[])", name: "auth_tokens_purpose_check"
+    t.check_constraint "purpose::text = ANY (ARRAY['email_verification'::character varying, 'password_reset'::character varying, 'login_code'::character varying, 'second_factor'::character varying, 'unlock'::character varying]::text[])", name: "auth_tokens_purpose_check"
   end
 
   create_table "sessions", id: :uuid, default: -> { "uuidv7()" }, force: :cascade do |t|
@@ -55,6 +55,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_10_152014) do
   create_table "users", id: :uuid, default: -> { "uuidv7()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.citext "email_address", null: false
+    t.integer "failed_login_attempts", default: 0, null: false
+    t.datetime "locked_at"
     t.string "login_mode", default: "password", null: false
     t.string "password_digest"
     t.boolean "staff", default: false, null: false

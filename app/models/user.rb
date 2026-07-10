@@ -2,14 +2,16 @@
 #
 # Table name: users
 #
-#  id              :uuid             not null, primary key
-#  email_address   :citext           not null
-#  login_mode      :string           default("password"), not null
-#  password_digest :string
-#  staff           :boolean          default(FALSE), not null
-#  verified_at     :datetime
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                    :uuid             not null, primary key
+#  email_address         :citext           not null
+#  failed_login_attempts :integer          default(0), not null
+#  locked_at             :datetime
+#  login_mode            :string           default("password"), not null
+#  password_digest       :string
+#  staff                 :boolean          default(FALSE), not null
+#  verified_at           :datetime
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
 #
 # Indexes
 #
@@ -38,12 +40,46 @@ class User < ApplicationRecord
   validates :password, presence: true, on: :create, if: :password_login?
   validates :password, length: { in: PASSWORD_LENGTH }, allow_nil: true
   validates :password_digest, absence: true, unless: :password_login?
+  validate :password_not_breached, if: -> { password.present? }
+
+  LOCKOUT_THRESHOLD = 10
 
   def verified? = verified_at.present?
+
+  def locked? = locked_at.present?
+
+  # Consecutive failures; the threshold locks the account until the
+  # emailed unlock link is used (auth plan_3). Callers handle the email.
+  def register_failed_login!
+    increment!(:failed_login_attempts)
+    return false if locked? || failed_login_attempts < LOCKOUT_THRESHOLD
+
+    update!(locked_at: Time.current)
+    true
+  end
+
+  def register_successful_login!
+    update!(failed_login_attempts: 0) if failed_login_attempts.positive?
+  end
+
+  def unlock!
+    update!(locked_at: nil, failed_login_attempts: 0)
+  end
 
   def password_login? = login_mode == "password"
 
   def verify!
     update!(verified_at: Time.current) unless verified?
+  end
+
+  private
+
+  # Gated by config so the suite runs offline; enabled in dev/prod
+  # (auth plan_3; the service itself fails open on API trouble).
+  def password_not_breached
+    return unless Rails.configuration.x.password_breach_check
+    return unless PasswordBreachCheck.breached?(password)
+
+    errors.add(:password, "has appeared in a public data breach — pick a different one")
   end
 end

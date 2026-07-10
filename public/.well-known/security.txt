@@ -1,0 +1,5 @@
+# Cue vulnerability disclosure. Real domain + contact land with the
+# production deploy (foundation manual steps).
+Contact: mailto:security@cue.example
+Expires: 2027-07-10T00:00:00.000Z
+Preferred-Languages: en

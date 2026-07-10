@@ -3,13 +3,39 @@
 # purpose-scoped, short-lived, invalidated by newer issuance. Every token
 # is minted as a 6-digit code plus a magic-link twin in the same email —
 # code for cross-device typing, link for one tap on the phone.
+# == Schema Information
+#
+# Table name: auth_tokens
+#
+#  id             :uuid             not null, primary key
+#  attempts_count :integer          default(0), not null
+#  code_digest    :string           not null
+#  consumed_at    :datetime
+#  expires_at     :datetime         not null
+#  purpose        :string           not null
+#  token_digest   :string           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  user_id        :uuid             not null
+#
+# Indexes
+#
+#  index_auth_tokens_on_token_digest         (token_digest) UNIQUE
+#  index_auth_tokens_on_user_id              (user_id)
+#  index_auth_tokens_on_user_id_and_purpose  (user_id,purpose)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 class AuthToken < ApplicationRecord
-  PURPOSES = %w[email_verification password_reset login_code second_factor].freeze
+  PURPOSES = %w[email_verification password_reset login_code second_factor unlock].freeze
   TTLS = {
     "email_verification" => 15.minutes,
     "password_reset" => 15.minutes,
     "login_code" => 15.minutes,
-    "second_factor" => 5.minutes
+    "second_factor" => 5.minutes,
+    "unlock" => 1.hour
   }.freeze
   MAX_ATTEMPTS = 3
 

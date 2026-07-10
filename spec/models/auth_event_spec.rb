@@ -2,6 +2,27 @@
 
 require "rails_helper"
 
+# == Schema Information
+#
+# Table name: auth_events
+#
+#  id         :uuid             not null, primary key
+#  action     :string           not null
+#  ip_address :string
+#  metadata   :jsonb            not null
+#  user_agent :string
+#  created_at :datetime         not null
+#  user_id    :uuid
+#
+# Indexes
+#
+#  index_auth_events_on_action   (action)
+#  index_auth_events_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 RSpec.describe AuthEvent, type: :model do
   it "records an event with request context" do
     request = instance_double(ActionDispatch::Request, remote_ip: "203.0.113.7", user_agent: "RSpec")

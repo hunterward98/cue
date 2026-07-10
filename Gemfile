@@ -72,3 +72,7 @@ gem "bullet", "~> 8.1", groups: [ :development, :test ]
 gem "annotaterb", "~> 4.23", groups: [ :development, :test ]
 
 gem "letter_opener", "~> 1.10", group: :development
+
+gem "rack-attack", "~> 6.8"
+
+gem "webmock", "~> 3.26", group: :test

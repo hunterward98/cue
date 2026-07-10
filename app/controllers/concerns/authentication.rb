@@ -69,6 +69,12 @@ module Authentication
   end
 
   def start_new_session_for(user)
+    # Rotate the Rails session on privilege change (fixation defense);
+    # keep only the post-login destination.
+    return_to = session[:return_to_after_authenticating]
+    reset_session
+    session[:return_to_after_authenticating] = return_to if return_to
+
     user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |user_session|
       Current.session = user_session
       # Deliberately no client-side expiry: the server's absolute 7-day

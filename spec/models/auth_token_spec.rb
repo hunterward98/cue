@@ -2,6 +2,31 @@
 
 require "rails_helper"
 
+# == Schema Information
+#
+# Table name: auth_tokens
+#
+#  id             :uuid             not null, primary key
+#  attempts_count :integer          default(0), not null
+#  code_digest    :string           not null
+#  consumed_at    :datetime
+#  expires_at     :datetime         not null
+#  purpose        :string           not null
+#  token_digest   :string           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  user_id        :uuid             not null
+#
+# Indexes
+#
+#  index_auth_tokens_on_token_digest         (token_digest) UNIQUE
+#  index_auth_tokens_on_user_id              (user_id)
+#  index_auth_tokens_on_user_id_and_purpose  (user_id,purpose)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 RSpec.describe AuthToken, type: :model do
   let(:user) { create(:user) }
 

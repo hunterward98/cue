@@ -19,17 +19,15 @@ class SessionsController < InertiaController
   def create
     user = params[:code].present? ? authenticate_with_code : authenticate_with_password
 
-    if user
+    if user && !user.locked?
+      user.register_successful_login!
       AuthEvent.record!("login_succeeded", user:, request:,
                         metadata: { mode: params[:code].present? ? "code" : "password" })
       session.delete(:pending_login_email)
       start_new_session_for(user)
       redirect_to after_login_url(user)
     else
-      attempted_email = params[:email_address].presence || session[:pending_login_email]
-      AuthEvent.record!("login_failed", request:,
-                        user: User.find_by(email_address: attempted_email.to_s.strip.downcase))
-      redirect_to new_session_path, alert: INVALID_LOGIN
+      handle_failed_login
     end
   end
 
@@ -67,5 +65,22 @@ class SessionsController < InertiaController
     return email_verification_path unless user.verified?
 
     after_authentication_url
+  end
+
+  # One failure path for every cause — wrong password, unknown email,
+  # wrong code, locked account — so responses can't become an oracle.
+  # Crossing the threshold locks the account and emails the unlock link.
+  def handle_failed_login
+    attempted_email = (params[:email_address].presence || session[:pending_login_email]).to_s.strip.downcase
+    user = User.find_by(email_address: attempted_email)
+
+    if user&.register_failed_login!
+      issued = AuthToken.issue!(user:, purpose: "unlock")
+      AuthMailer.account_locked(user, link_token: issued.link_token).deliver_later
+      AuthEvent.record!("account_locked", user:, request:)
+    end
+
+    AuthEvent.record!("login_failed", user:, request:)
+    redirect_to new_session_path, alert: INVALID_LOGIN
   end
 end

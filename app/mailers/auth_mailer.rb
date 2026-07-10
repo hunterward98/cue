@@ -34,6 +34,11 @@ class AuthMailer < ApplicationMailer
     mail to: user.email_address, subject: "Reset your Cue password"
   end
 
+  def account_locked(user, link_token:)
+    @link = unlock_url(token: link_token)
+    mail to: user.email_address, subject: "Your Cue account is locked"
+  end
+
   def password_changed(user)
     mail to: user.email_address, subject: "Your Cue password was changed"
   end
