@@ -1,8 +1,35 @@
-# Omakase Ruby styling for Rails
+# Omakase Ruby styling for Rails, plus spec linting and house cops.
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+plugins:
+  - rubocop-rspec
+  - rubocop-factory_bot
+  - rubocop-capybara
+
+require:
+  - ./lib/rubocop/cop/cue/system_spec_viewport_matrix
+
+AllCops:
+  TargetRubyVersion: 3.4
+  NewCops: enable
+  Exclude:
+    - "bin/**/*"
+    - "db/*schema.rb"
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - "tmp/**/*"
+
+# Mobile-first enforcement (foundation plan_3): system flows run at both
+# viewports. Exceptions require an inline disable with a justification.
+Cue/SystemSpecViewportMatrix:
+  Include:
+    - "spec/system/**/*_spec.rb"
+
+# Integration-style specs (request/system) assert one behavior through
+# several observable effects; a hard 1-expectation rule would just breed
+# copy-pasted setup. Keep the cops on with honest ceilings.
+RSpec/MultipleExpectations:
+  Max: 8
+
+RSpec/ExampleLength:
+  Max: 25

@@ -2,8 +2,8 @@
 # viewports via with_each_viewport; the Cue/SystemSpecViewportMatrix cop
 # fails any system spec that skips it.
 VIEWPORTS = {
-  mobile: [375, 812],
-  desktop: [1280, 800]
+  mobile: [ 375, 812 ],
+  desktop: [ 1280, 800 ]
 }.freeze
 
 module ViewportHelpers

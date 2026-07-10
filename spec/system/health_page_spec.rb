@@ -9,10 +9,10 @@ RSpec.describe "Health page", type: :system do
 
       # React mounted and rendered the Inertia props.
       expect(page).to have_css("h1", text: "Cue system health")
-      expect(page).to have_content("Every layer is answering.")
+      expect(page).to have_text("Every layer is answering.")
 
       # The DB answered: the page shows a UUID minted by Postgres uuidv7().
-      expect(page).to have_content(/uuidv7\(\) → \h{8}-\h{4}-7\h{3}/)
+      expect(page).to have_text(/uuidv7\(\) → \h{8}-\h{4}-7\h{3}/)
 
       # Tailwind actually applied — computed style, not just class names.
       font_weight = page.evaluate_script(
