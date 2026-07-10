@@ -5,7 +5,9 @@ namespace :coverage do
   task :check do
     require "simplecov"
 
-    resultsets = Dir["coverage/.resultset.json"]
+    # CI downloads each job's resultset into coverage/resultsets/<suite>/;
+    # locally a single full run writes coverage/.resultset.json.
+    resultsets = Dir[ENV.fetch("COVERAGE_GLOB", "coverage/.resultset.json")]
     abort("coverage:check: no coverage/.resultset.json found — run the specs first") if resultsets.empty?
 
     # The suite records coverage without a per-process minimum (see

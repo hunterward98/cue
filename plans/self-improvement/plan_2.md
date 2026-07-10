@@ -69,6 +69,7 @@ cheap honesty checks, not prose police).
 1. **ADR numbering discipline** — (a) monotonic global counter **8/10**:
    simple, greppable, merge conflicts on numbers are rare and trivial;
    (b) date-prefixed slugs **5/10**: no conflicts, worse to cite.
+   Answer: A
 
 ## Critique
 
@@ -86,3 +87,6 @@ cheap honesty checks, not prose police).
   lint IS the rule; CLAUDE.md points at it).
 - Doc-lints as structural greps, not prose police: correct restraint.
   No further critique.
+
+## Critique feedback:
+Great callouts.

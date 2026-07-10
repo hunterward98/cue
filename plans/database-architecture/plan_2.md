@@ -61,6 +61,7 @@ migrations are rejected. Downstream plans inherit all of it silently.
    (c) Postgres RLS (row-level security) **5/10**: strongest guarantee but
    real operational complexity with pooled connections — documented as the
    "tomorrow" upgrade if we ever multi-tenant harder.
+   Answer: I kinda like the gem. Re-evaluate A and B when you reach this plan and tell me what you think.
 
 ## Critique
 
@@ -80,3 +81,6 @@ migrations are rejected. Downstream plans inherit all of it silently.
   `includes`; that pain is the feature.
 - No critique on no-default_scope (right call — default scopes leak into
   callbacks and joins unpredictably) or on strong_migrations.
+
+## Critique feedback:
+Good critiques, maybe we should improve then. Do what you feel is appropriate.

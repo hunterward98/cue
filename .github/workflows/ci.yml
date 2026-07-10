@@ -5,47 +5,263 @@ on:
   push:
     branches: [main]
 
+env:
+  DB_HOST: localhost
+  DB_USERNAME: cue
+  DB_PASSWORD: cue
+
 jobs:
-  scan_ruby:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-
-      - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
-
-      - name: Scan for known security vulnerabilities in gems used
-        run: bin/bundler-audit
-
   lint:
     runs-on: ubuntu-latest
     env:
       RUBOCOP_CACHE_ROOT: tmp/rubocop
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
 
-      - name: Prepare RuboCop cache
-        uses: actions/cache@v4
-        env:
-          DEPENDENCIES_HASH: ${{ hashFiles('.ruby-version', '**/.rubocop.yml', '**/.rubocop_todo.yml', 'Gemfile.lock') }}
-        with:
-          path: ${{ env.RUBOCOP_CACHE_ROOT }}
-          key: rubocop-${{ runner.os }}-${{ env.DEPENDENCIES_HASH }}-${{ github.ref_name == github.event.repository.default_branch && github.run_id || 'default' }}
-          restore-keys: |
-            rubocop-${{ runner.os }}-${{ env.DEPENDENCIES_HASH }}-
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
 
-      - name: Lint code for consistent style
-        run: bin/rubocop -f github
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install JS dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: RuboCop
+        run: bin/rubocop --no-color
+
+      - name: Brakeman (static security analysis)
+        run: bin/brakeman --no-pager
+
+      - name: bundler-audit (gem CVEs)
+        run: bin/bundler-audit check --update
+
+      - name: pnpm audit (npm CVEs, high+)
+        run: pnpm audit --audit-level high
+
+      - name: Prettier
+        run: pnpm exec prettier --check .
+
+      - name: ESLint
+        run: pnpm lint
+
+      - name: TypeScript
+        run: pnpm check
+
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Scan for committed secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  react-doctor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install JS dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: react-doctor (gate = zero findings, i.e. score 100)
+        run: pnpm doctor
+
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install JS dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Vitest (100% coverage thresholds)
+        run: pnpm test
+
+  test-backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: cue
+          POSTGRES_PASSWORD: cue
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U cue"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      COVERAGE_SUITE: backend
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install JS dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare database
+        run: bin/rails db:test:prepare
+
+      - name: RSpec (unit + request)
+        run: bundle exec rspec --exclude-pattern "spec/system/**/*"
+
+      - name: FactoryBot lint
+        run: RAILS_ENV=test bin/rails factory_bot:lint
+
+      - name: Negative-test tally
+        run: bin/rails spec:negative_count
+
+      - name: Upload coverage resultset
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-backend
+          path: coverage/.resultset.json
+          include-hidden-files: true
+
+  test-system:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: cue
+          POSTGRES_PASSWORD: cue
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U cue"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      COVERAGE_SUITE: system
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install JS dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare database
+        run: bin/rails db:test:prepare
+
+      - name: RSpec (system, Cuprite viewport matrix)
+        run: bundle exec rspec spec/system
+
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: system-failure-screenshots
+          path: |
+            tmp/capybara
+            tmp/screenshots
+          if-no-files-found: ignore
+
+      - name: Upload coverage resultset
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-system
+          path: coverage/.resultset.json
+          include-hidden-files: true
+
+  coverage:
+    needs: [test-backend, test-system]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Download coverage resultsets
+        uses: actions/download-artifact@v4
+        with:
+          pattern: coverage-*
+          path: coverage/resultsets
+
+      - name: Enforce 100% line + branch coverage (merged)
+        run: COVERAGE_GLOB="coverage/resultsets/**/.resultset.json" bin/rails coverage:check
+
+  bin-setup:
+    # A fresh clone must always come up with one command (foundation plan_2);
+    # this catches setup rot forever.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: false
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: bin/setup from clean checkout
+        run: bin/setup --skip-server

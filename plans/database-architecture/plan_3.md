@@ -85,3 +85,6 @@ resolve in the owning feature plans.
   assert the composite-FK rule on the spine tables above.
 - No other critique; append-only shared examples and the org_id
   denormalization ADR are sound.
+
+## Critique feedback:
+Good critiques, maybe we should improve then. Do what you feel is appropriate.

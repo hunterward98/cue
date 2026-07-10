@@ -72,9 +72,11 @@ accounts can do nothing but re-request verification.
    manage for an audience that forgets passwords; (c) passwordless only
    **5/10**: simplest surface but hostile when email is slow; (d) password
    only **3/10**: contradicts the security posture.
+   Answer: Make A and B a setting. Users will be asked while they create their account.
 2. **Post-signup landing** — (a) create-or-join organization chooser
    **8/10**; (b) straight to org creation **5/10**: wrong for invited
    users. (Invitation links skip the chooser either way.)
+   Answer: Users MUST be invited via email. Board owners will need a tool to do this in bulk with mailing lists.
 
 ## Critique
 
@@ -94,3 +96,6 @@ accounts can do nothing but re-request verification.
   throttles carry more real weight than the KDF choice at this scale.
 - Otherwise no critique — token discipline (hashed, single-use, purpose-
   scoped, 15-min) is exactly right.
+
+## Critique feedback:
+Good critiques, maybe we should improve then. Do what you feel is appropriate.

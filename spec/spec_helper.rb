@@ -6,7 +6,7 @@ SimpleCov.start "rails" do
   enable_coverage :branch
   # Distinct command names let SimpleCov merge parallel workers and separate
   # unit/system runs into one resultset.
-  command_name "rspec#{ENV.fetch('TEST_ENV_NUMBER', '')}"
+  command_name "rspec#{ENV.fetch("COVERAGE_SUITE", "")}#{ENV.fetch("TEST_ENV_NUMBER", "")}"
 
   # Deliberately no minimum_coverage here: a single process only sees its
   # slice of the suite (parallel workers, partial local runs), so an

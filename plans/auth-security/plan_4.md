@@ -60,6 +60,7 @@ enterprise appeal. Built once, enforced in layers.
    **8/10**; (b) immediate hard wall **5/10**: punishes members for an
    owner's toggle mid-workday; (c) 30 days **4/10**: too leisurely for a
    security control.
+   Answer: Just send reminder emails until they do it; so I guess kinda like A.
 
 ## Critique
 
@@ -78,3 +79,6 @@ enterprise appeal. Built once, enforced in layers.
   entirely — it would otherwise be code + code, security theater.
   (Staff keep password + email code either way.)
 - Trusted-device 30d cookie, never for staff: right call, no critique.
+
+## Critique feedback:
+Good critiques, maybe we should improve then. Do what you feel is appropriate.

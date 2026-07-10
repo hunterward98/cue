@@ -90,6 +90,7 @@ documentation-by-convention. The rest is checklist-enforced (PR template:
    sufficient, or do you want an email/other ping when a
    `manual_steps_*.md` changes? (Recommendation: session-end summary; add
    automation only if steps start getting missed.)
+   Answer: Session end summary is fine.
 
 ## Critique
 
@@ -109,3 +110,6 @@ documentation-by-convention. The rest is checklist-enforced (PR template:
   cross-plan conflict (D5, encryption vs search) that no single plan
   could see. Budget a critique pass like this at each phase boundary —
   add it to plan_4's retro template as a standing section.
+
+## Critique feedback:
+Good callouts.

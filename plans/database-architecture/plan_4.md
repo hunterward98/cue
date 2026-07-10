@@ -57,6 +57,7 @@ rotation story. Untested backups are decorative.
    keyfiles; (b) gpg symmetric **6/10**: everywhere but clunky;
    (c) rely on R2 bucket privacy only **3/10**: one leaked credential from
    plaintext dumps.
+   Answer: A
 
 ## Critique
 
@@ -78,3 +79,6 @@ rotation story. Untested backups are decorative.
 - age over gpg stands (D2). If WAL archiving is adopted, pgBackRest's
   own AES-256 encryption covers the archive stream — one less moving
   part; note it in the D2 decision.
+
+## Critique feedback:
+Good critiques, maybe we should improve then. Do what you feel is appropriate.

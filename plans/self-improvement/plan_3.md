@@ -80,3 +80,6 @@ watchlist tracks the queue.
   which may arrive before the other two skills' candidacy bars are
   met. The candidacy rule should have a stated exception: compliance-
   guarding skills ship on need, not on repetition count.
+
+## Critique feedback:
+I think we may also need a skill that helps improve ourselves - are we solving a problem that has been solved via gem or pnpm package? May we should just install it!

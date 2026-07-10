@@ -104,3 +104,7 @@ happy path on mobile viewport.
   Google Workspace first (real-estate offices) — nothing in the session
   design blocks it.
 - Otherwise no critique.
+
+## Critique feedback:
+Yes, passwords should honestly be at the forefront.
+Valid critiques. Rails is the way. We should plan for Google OAuth but that will be quick; might need Microsoft though.

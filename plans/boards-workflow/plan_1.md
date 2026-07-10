@@ -83,12 +83,16 @@ prioritization. No sprints, no agile ceremony.
 
 1. When a board owner is deactivated/removed, what happens to their board's
    cues? (Recommendation: bulk-return to backlog with an audit event.)
+   Answer: Bulk return, board progress saved and can be undone.
 2. Can an org admin see all boards in one overview? (Recommendation: yes,
    read-only "all boards" view — likely a popular Jira feature worth keeping;
    flag as a feature suggestion.)
+   Answer: Yes, board owners can also see other boards, but is a setting that they set (board owner determines privacy among other board owners). Requesters can only see "counts" of items on boards to gauge how busy someone is.
 3. Is `max_items` also org-configurable as a policy ceiling for all boards,
    or purely per-owner? Master plan says "maximum configurable amount he can
    have" — recommendation: per-owner setting, org admin can set a default.
+   Answer: owner.
+
 
 ## Critique
 
@@ -109,3 +113,6 @@ prioritization. No sprints, no agile ceremony.
   that risks Jira-creep — it's justified as *visibility*, but hold the
   line: read-only, no cross-board dragging, or the per-owner focus
   model erodes.
+
+## Critique feedback:
+Good critiques, maybe we should improve then. Do what you feel is appropriate.

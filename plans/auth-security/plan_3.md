@@ -59,6 +59,7 @@ strict headers, and TLS everywhere.
    step already gates bots; (b) hCaptcha/Turnstile behind an abuse
    threshold feature flag **7/10**: pre-wire, enable if abuse appears;
    (c) always-on **4/10**: friction without evidence.
+   Answer: No captcha. Our users will be too stupid.
 
 ## Critique
 
@@ -81,3 +82,6 @@ strict headers, and TLS everywhere.
   policy).
 - Lockout responses identical to bad-password: right, and rare — keep.
 - Otherwise no critique.
+
+## Critique feedback:
+Good critiques, maybe we should improve then. Do what you feel is appropriate.

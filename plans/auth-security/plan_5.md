@@ -52,9 +52,11 @@ foundation).
 1. **Dependency update bot** — (a) Renovate **8/10**: monorepo-aware,
    grouping rules, less noisy; (b) Dependabot **7/10**: zero setup,
    GitHub-native, noisier; (c) manual monthly **4/10**: will slip.
+   Answer: Dependabot.
 2. **Public bug bounty at launch?** — (a) no; disclosure policy +
    security.txt only **8/10**: bounties need triage capacity we don't
    have; (b) small bounty program **3/10** for now.
+   Answer: Never bug bounty.
 
 ## Critique
 

@@ -65,6 +65,7 @@ dropped).
    formative; (b) lightweight 3-section (actions/gotchas/drift) **6/10**:
    sustainable floor — fall back to this if retros start slipping, and
    note the fallback as itself a retro finding.
+   Answer: Retro should be lightweight, honestly.
 
 ## Critique
 
@@ -79,3 +80,6 @@ dropped).
   proof such collisions survive per-plan review). Cheap to run once
   the plans are mostly built; highest-leverage early, when they're
   still paper.
+
+## Critique feedback:
+Great input.

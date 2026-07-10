@@ -91,6 +91,7 @@ better. NoSQL is rejected: the data is joins all the way down.
 2. Retention policy for audit logs and completed cues (forever? configurable?)
    — affects table partitioning choices, though partitioning itself is
    deferred as a "tomorrow" problem.
+   Answer: Forever seems reasonable, but expensive.
 
 ## Critique
 
@@ -123,3 +124,6 @@ better. NoSQL is rejected: the data is joins all the way down.
      compliance demands it.
 - Retention (parent Q, now D3): keep-forever v1 stands; revisit at first
   enterprise data-policy ask.
+
+## Critique feedback:
+Good critiques, maybe we should improve then. Do what you feel is appropriate.
