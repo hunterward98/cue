@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Cue" %></title>
+    <title data-inertia><%= content_for(:title) || "Cue" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Cue">
@@ -20,6 +20,11 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app %>
+    <%= vite_stylesheet_tag "application" %>
+    <%= vite_react_refresh_tag %>
+    <%= vite_client_tag %>
+    <%= vite_typescript_tag "inertia.tsx" %>
+    <%= inertia_ssr_head %>
   </head>
 
   <body>
