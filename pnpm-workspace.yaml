@@ -1,0 +1,17 @@
+minimumReleaseAgeExclude:
+  - deslop-js@0.7.3
+  - oxlint-plugin-react-doctor@0.7.3
+  - react-doctor@0.7.3
+
+# Supply-chain hardening (react-doctor require-pnpm-hardening):
+# refuse versions published less than 24h ago (the window in which
+# malicious releases usually get caught and unpublished), and refuse
+# packages whose provenance/signature trust weakens between updates.
+# Raise toward 7 days once our install cadence slows post-foundation.
+minimumReleaseAge: 1440
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  # Babel's frozen transitive pin (via eslint-plugin-react-hooks /
+  # react-doctor). Predates npm provenance, so the no-downgrade heuristic
+  # misfires. Remove when Babel bumps to semver >= 7.
+  - semver@6.3.1

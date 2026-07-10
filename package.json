@@ -15,6 +15,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "jsdom": "^29.1.1",
     "prettier": "^3.9.4",
+    "react-doctor": "0.7.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.63.0",
     "vite": "^8.1.3",
@@ -28,7 +29,8 @@
     "test:watch": "vitest",
     "lint": "eslint app/frontend *.ts",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "doctor": "rm -rf public/vite-dev public/vite-test && react-doctor . --yes --no-telemetry --blocking warning"
   },
   "dependencies": {
     "@inertiajs/react": "^3.6.1",
