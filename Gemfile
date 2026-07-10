@@ -51,3 +51,12 @@ gem "vite_rails", "~> 3.11"
 gem "inertia_rails", "~> 3.21"
 
 gem "dotenv-rails", "~> 3.2", groups: [:development, :test]
+
+gem "rspec-rails", "~> 8.0", groups: [:development, :test]
+gem "factory_bot_rails", "~> 6.5", groups: [:development, :test]
+gem "shoulda-matchers", "~> 8.0", groups: [:development, :test]
+gem "capybara", "~> 3.40", groups: [:development, :test]
+gem "cuprite", "~> 0.17", groups: [:development, :test]
+gem "parallel_tests", "~> 5.7", groups: [:development, :test]
+
+gem "simplecov", "~> 0.22.0", group: :test, require: false
