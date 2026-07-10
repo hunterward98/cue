@@ -10,3 +10,14 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    ignore:
+      # Pinned deliberately: gate upgrades are reviewed PRs (ADR 0009) and
+      # typescript-eslint needs the 5.x JS API (ADR 0006).
+      - dependency-name: react-doctor
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
