@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Encrypted Postgres backup (database-architecture plan_4).
+#
+#   AGE_RECIPIENT=age1... bin/db-backup <database> [output_dir]
+#
+# Writes <output_dir>/<database>-<utc-stamp>.dump.age (pg_dump custom
+# format, age-encrypted; never plaintext on disk). pg_dump runs inside
+# the $BACKUP_PG_CONTAINER container by default — that matches both dev
+# (docker compose) and production (Kamal accessory), and guarantees a
+# version-matched client. Set BACKUP_PG_CONTAINER="" to use host pg_dump.
+# Restore procedure: docs/runbooks/restore.md
+
+DATABASE="${1:?usage: bin/db-backup <database> [output_dir]}"
+OUTPUT_DIR="${2:-tmp/backups}"
+RECIPIENT="${AGE_RECIPIENT:?set AGE_RECIPIENT to the age public key}"
+CONTAINER="${BACKUP_PG_CONTAINER-cue-postgres}"
+DB_USER="${DB_USERNAME:-cue}"
+
+mkdir -p "$OUTPUT_DIR"
+STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
+TARGET="$OUTPUT_DIR/$DATABASE-$STAMP.dump.age"
+
+# A failed dump must not leave a plausible-looking artifact behind —
+# age happily encrypts an empty stream into non-empty ciphertext.
+trap 'rm -f "$TARGET"' ERR
+
+if [ -n "$CONTAINER" ]; then
+  docker exec -i "$CONTAINER" pg_dump -U "$DB_USER" -Fc "$DATABASE" \
+    | age -r "$RECIPIENT" -o "$TARGET"
+else
+  PGPASSWORD="${DB_PASSWORD:-cue}" pg_dump -h "${DB_HOST:-localhost}" -U "$DB_USER" -Fc "$DATABASE" \
+    | age -r "$RECIPIENT" -o "$TARGET"
+fi
+
+# An empty artifact is a failed backup, whatever the pipeline said.
+[ -s "$TARGET" ] || { echo "backup produced an empty file" >&2; exit 1; }
+echo "$TARGET"

@@ -127,8 +127,19 @@ jobs:
           --health-retries 10
     env:
       COVERAGE_SUITE: backend
+      BACKUP_PG_CONTAINER: '' # spec uses host pg_dump against the service DB
     steps:
       - uses: actions/checkout@v6
+
+      - name: Install age + Postgres 18 client (backup spec)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq curl ca-certificates age
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl -sSf -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-client-18
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
