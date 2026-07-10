@@ -1,62 +1,6 @@
 {
   "rspec": {
     "coverage": {
-      "/home/hunter/cue/lib/rubocop/cop/cue/system_spec_viewport_matrix.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          3,
-          3,
-          7,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "branches": {
-          "[:unless, 0, 34, 10, 34, 29]": {
-            "[:else, 1, 34, 10, 34, 29]": 2,
-            "[:then, 2, 34, 10, 34, 16]": 1
-          },
-          "[:if, 3, 35, 10, 35, 98]": {
-            "[:then, 4, 35, 10, 35, 16]": 1,
-            "[:else, 5, 35, 10, 35, 98]": 1
-          }
-        }
-      },
       "/home/hunter/cue/app/controllers/application_controller.rb": {
         "lines": [
           1,
@@ -147,8 +91,64 @@
           null
         ],
         "branches": {}
+      },
+      "/home/hunter/cue/lib/rubocop/cop/cue/system_spec_viewport_matrix.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          3,
+          3,
+          7,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "branches": {
+          "[:unless, 0, 34, 10, 34, 29]": {
+            "[:else, 1, 34, 10, 34, 29]": 2,
+            "[:then, 2, 34, 10, 34, 16]": 1
+          },
+          "[:if, 3, 35, 10, 35, 98]": {
+            "[:then, 4, 35, 10, 35, 16]": 1,
+            "[:else, 5, 35, 10, 35, 98]": 1
+          }
+        }
       }
     },
-    "timestamp": 1783696093
+    "timestamp": 1783696552
   }
 }

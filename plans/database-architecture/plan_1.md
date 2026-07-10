@@ -1,10 +1,10 @@
 # Parent Plan: Database Architecture
 
-- **Status:** NOT_STARTED
+- **Status:** IN_PROGRESS (plan_2 guardrails merged; plan_3 doc live; plan_4 BLOCKED on prod/R2)
 - **Phase:** 0
 - **Depends on:** foundation
 - **Blocks:** auth-security, organizations-users, cues, billing
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-10
 
 ## Objective
 
@@ -66,8 +66,8 @@ better. NoSQL is rejected: the data is joins all the way down.
 ## Implementation order
 
 1. [ ] Ratify Postgres decision + UUIDv7 keys + single-db tenancy.
-2. [ ] plan_2: conventions and tenancy guardrails in place with tests.
-3. [ ] plan_3: schema conventions doc published for downstream plans.
+2. [x] plan_2: conventions and tenancy guardrails in place with tests. (2026-07-10)
+3. [x] plan_3: schema conventions doc published for downstream plans — docs/database.md. (2026-07-10)
 4. [ ] plan_4: backup strategy live before real user data exists.
 
 ## Test strategy
@@ -81,7 +81,7 @@ better. NoSQL is rejected: the data is joins all the way down.
 
 - [x] Decision ratified (Postgres + single-db org-scoped tenancy, 2026-07-08)
 - [x] Child plans authored (2026-07-08)
-- [ ] Tenancy guardrails merged
+- [x] Tenancy guardrails merged (2026-07-10; D5 resolved as narrow encryption, ADR 0011)
 - [ ] Backup runbook exists
 
 ## Open questions

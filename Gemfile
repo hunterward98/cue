@@ -64,3 +64,9 @@ gem "simplecov", "~> 0.22.0", group: :test, require: false
 gem "rubocop-rspec", "~> 3.10", groups: [ :development, :test ]
 gem "rubocop-factory_bot", "~> 2.28", groups: [ :development, :test ]
 gem "rubocop-capybara", "~> 3.0", groups: [ :development, :test ]
+
+gem "acts_as_tenant", "~> 1.0"
+gem "strong_migrations", "~> 2.8"
+
+gem "bullet", "~> 8.1", groups: [ :development, :test ]
+gem "annotaterb", "~> 4.23", groups: [ :development, :test ]

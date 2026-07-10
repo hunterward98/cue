@@ -34,6 +34,17 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
+  # N+1s and lazy association walks fail loudly here, not in production
+  # (database-architecture plan_2). Escape hatch: .strict_loading!(false)
+  # with a justification comment.
+  config.active_record.strict_loading_by_default = true
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.rails_logger = true
+    Bullet.add_footer = true
+  end
+
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 

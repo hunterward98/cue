@@ -1,6 +1,6 @@
 # database-architecture — Child Plan 2: Conventions & Tenancy Guardrails
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-10) — controller tenant-wiring + acts_as_tenant exercise land with organizations-users (first tenant model)
 - **Depends on:** foundation plan_2
 - **Last updated:** 2026-07-08
 
@@ -35,12 +35,12 @@ migrations are rejected. Downstream plans inherit all of it silently.
 
 ## Implementation steps
 
-- [ ] `Current` + `OrganizationScoped` concern + controller wiring.
-- [ ] Tenancy RuboCop cop + justification-comment cop.
-- [ ] strict_loading + Bullet config.
-- [ ] strong_migrations + FK/index lint rake task in CI.
-- [ ] annotaterb; `docs/database.md` conventions doc (audience line first).
-- [ ] Demo tenant model (can be a throwaway `Widget` deleted when real
+- [x] Tenancy mechanism chosen per re-evaluation: **acts_as_tenant** (gem installed; ADR 0010 records why the idiom+cop lost). Controller wiring lands with auth/orgs.
+- [x] Per critique, cop demoted; load-bearing guards instead: schema-conformance spec (live) + cross-org 404 sweep (lands with routes).
+- [x] strict_loading + Bullet config.
+- [x] strong_migrations + db:schema_lint rake task (FK + index on every _id).
+- [x] annotaterb; docs/database.md conventions doc (audience line first).
+- [x] Waited for real models per preference; UUIDv7 convention exercised via temp-table spec instead. (Demo tenant model (can be a throwaway `Widget` deleted when real
       models land, or wait for organizations-users plan_2 — prefer waiting
       if sequencing allows) to exercise every guardrail.
 

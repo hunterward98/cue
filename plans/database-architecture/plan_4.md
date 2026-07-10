@@ -1,6 +1,6 @@
 # database-architecture — Child Plan 4: Backups, Restore & Encryption Keys
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** BLOCKED (needs foundation plan_5 prod + R2 bucket manual steps). age ratified (D2); WAL-archiving-before-billing adopted per critique.
 - **Depends on:** foundation plan_5 (prod exists), R2 bucket (cues plan_5
   shares it or a dedicated backups bucket)
 - **Last updated:** 2026-07-08

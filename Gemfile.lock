@@ -75,8 +75,13 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
+    acts_as_tenant (1.0.1)
+      rails (>= 6.0)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
+    annotaterb (4.23.0)
+      activerecord (>= 6.0.0)
+      activesupport (>= 6.0.0)
     ast (2.4.3)
     base64 (0.3.0)
     bcrypt_pbkdf (1.1.2)
@@ -87,6 +92,9 @@ GEM
     brakeman (8.0.5)
       racc
     builder (3.3.0)
+    bullet (8.1.3)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     bundler-audit (0.9.3)
       bundler (>= 1.2.0)
       thor (~> 1.0)
@@ -369,6 +377,8 @@ GEM
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
       ostruct
+    strong_migrations (2.8.0)
+      activerecord (>= 7.2)
     thor (1.5.0)
     thruster (0.1.22)
     thruster (0.1.22-aarch64-linux)
@@ -380,6 +390,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
+    uniform_notifier (1.18.0)
     uri (1.1.1)
     useragent (0.16.11)
     vite_rails (3.11.1)
@@ -415,8 +426,11 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  acts_as_tenant (~> 1.0)
+  annotaterb (~> 4.23)
   bootsnap
   brakeman
+  bullet (~> 8.1)
   bundler-audit
   capybara (~> 3.40)
   cuprite (~> 0.17)
@@ -439,6 +453,7 @@ DEPENDENCIES
   simplecov (~> 0.22.0)
   solid_cache
   solid_queue
+  strong_migrations (~> 2.8)
   thruster
   tzinfo-data
   vite_rails (~> 3.11)

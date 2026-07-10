@@ -33,3 +33,8 @@ RSpec/MultipleExpectations:
 
 RSpec/ExampleLength:
   Max: 25
+
+# spec/db holds schema-convention specs — there is no class to describe.
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/db/**/*'

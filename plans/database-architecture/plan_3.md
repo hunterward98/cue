@@ -1,6 +1,6 @@
 # database-architecture — Child Plan 3: Core Schema Coordination
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** IN_PROGRESS (docs + guards live 2026-07-10; schema-PR reviews ongoing through Phases 1–2)
 - **Depends on:** plan_2; coordinates with organizations-users, cues,
   boards, billing plans (they own their tables; this plan owns coherence)
 - **Last updated:** 2026-07-08
@@ -46,9 +46,9 @@ every migration PR in Phases 1–2 against the conventions checklist.
 
 ## Implementation steps
 
-- [ ] Publish entity section + rules in `docs/database.md`.
-- [ ] ADR: org_id denormalization on all tenant tables.
-- [ ] Migration review checklist added to PR template (foundation plan_4).
+- [x] Publish entity section + rules in `docs/database.md`.
+- [x] ADR: org_id denormalization + composite tenant FKs (ADR 0010, per critique).
+- [x] Migration review checklist folded into PR template + db:schema_lint + conformance spec.
 - [ ] Review each Phase 1–2 schema PR against it (ongoing checklist below).
   - [ ] organizations-users tables reviewed
   - [ ] auth tables reviewed
