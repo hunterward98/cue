@@ -1,8 +1,735 @@
 {
   "rspec": {
     "coverage": {
+      "/home/hunter/cue/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null
+        ],
+        "branches": {}
+      },
       "/home/hunter/cue/app/helpers/application_helper.rb": {
         "lines": [
+          1,
+          null
+        ],
+        "branches": {}
+      },
+      "/home/hunter/cue/app/controllers/concerns/authentication.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          6,
+          6,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          22,
+          null,
+          null,
+          1,
+          13,
+          null,
+          1,
+          null,
+          null,
+          1,
+          151,
+          null,
+          null,
+          1,
+          150,
+          150,
+          null,
+          30,
+          1,
+          1,
+          1,
+          null,
+          null,
+          29,
+          29,
+          null,
+          null,
+          1,
+          6,
+          6,
+          null,
+          null,
+          1,
+          15,
+          null,
+          null,
+          1,
+          28,
+          28,
+          null,
+          null,
+          null,
+          28,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          3,
+          3,
+          null,
+          null
+        ],
+        "branches": {
+          "[:if, 0, 39, 4, 39, 57]": {
+            "[:then, 1, 39, 4, 39, 10]": 12,
+            "[:else, 2, 39, 4, 39, 57]": 1
+          },
+          "[:if, 3, 49, 4, 49, 100]": {
+            "[:then, 4, 49, 4, 49, 69]": 30,
+            "[:else, 5, 49, 4, 49, 100]": 120
+          },
+          "[:unless, 6, 50, 4, 50, 36]": {
+            "[:else, 7, 50, 4, 50, 36]": 30,
+            "[:then, 8, 50, 4, 50, 14]": 120
+          },
+          "[:if, 9, 52, 4, 56, 7]": {
+            "[:then, 10, 53, 6, 55, 16]": 1,
+            "[:else, 11, 52, 4, 56, 7]": 29
+          }
+        }
+      },
+      "/home/hunter/cue/app/controllers/email_verifications_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          10,
+          9,
+          null,
+          8,
+          null,
+          null,
+          1,
+          8,
+          null,
+          8,
+          4,
+          null,
+          4,
+          null,
+          null,
+          null,
+          1,
+          2,
+          1,
+          1,
+          1,
+          null,
+          null,
+          2,
+          null,
+          null,
+          1,
+          4,
+          null,
+          4,
+          2,
+          null,
+          2,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          28,
+          null,
+          null,
+          1,
+          10,
+          10,
+          null,
+          null,
+          1,
+          6,
+          6,
+          6,
+          6,
+          6,
+          null,
+          null
+        ],
+        "branches": {
+          "[:if, 0, 12, 4, 12, 63]": {
+            "[:then, 1, 12, 4, 12, 39]": 1,
+            "[:else, 2, 12, 4, 12, 63]": 9
+          },
+          "[:\"&.\", 3, 13, 36, 13, 59]": {
+            "[:then, 4, 13, 36, 13, 59]": 4,
+            "[:else, 5, 13, 36, 13, 59]": 5
+          },
+          "[:if, 6, 13, 4, 13, 59]": {
+            "[:then, 7, 13, 4, 13, 32]": 1,
+            "[:else, 8, 13, 4, 13, 59]": 8
+          },
+          "[:if, 9, 21, 4, 25, 7]": {
+            "[:then, 10, 22, 6, 22, 33]": 4,
+            "[:else, 11, 24, 6, 24, 126]": 4
+          },
+          "[:if, 12, 29, 4, 33, 7]": {
+            "[:then, 13, 30, 6, 32, 63]": 1,
+            "[:else, 14, 29, 4, 33, 7]": 1
+          },
+          "[:if, 15, 41, 4, 45, 7]": {
+            "[:then, 16, 42, 6, 42, 39]": 2,
+            "[:else, 17, 44, 6, 44, 111]": 2
+          },
+          "[:\"&.\", 18, 51, 53, 51, 80]": {
+            "[:then, 19, 51, 53, 51, 80]": 4,
+            "[:else, 20, 51, 53, 51, 80]": 3
+          },
+          "[:unless, 21, 63, 4, 63, 59]": {
+            "[:else, 22, 63, 4, 63, 59]": 1,
+            "[:then, 23, 63, 4, 63, 31]": 5
+          }
+        }
+      },
+      "/home/hunter/cue/app/controllers/inertia_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ],
+        "branches": {}
+      },
+      "/home/hunter/cue/app/controllers/health_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          11,
+          null,
+          null,
+          null,
+          null,
+          null,
+          11,
+          null,
+          55,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          11,
+          11,
+          10,
+          10,
+          null,
+          1,
+          null,
+          null
+        ],
+        "branches": {
+          "[:if, 0, 20, 19, 20, 82]": {
+            "[:then, 1, 20, 56, 20, 59]": 10,
+            "[:else, 2, 20, 62, 20, 82]": 1
+          }
+        }
+      },
+      "/home/hunter/cue/app/controllers/login_codes_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          9,
+          9,
+          null,
+          9,
+          1,
+          8,
+          7,
+          7,
+          7,
+          null,
+          null,
+          9,
+          9,
+          null,
+          null,
+          null,
+          1,
+          4,
+          null,
+          4,
+          2,
+          2,
+          2,
+          2,
+          null,
+          2,
+          null,
+          null,
+          null
+        ],
+        "branches": {
+          "[:\"&.\", 0, 14, 7, 14, 28]": {
+            "[:then, 1, 14, 7, 14, 28]": 8,
+            "[:else, 2, 14, 7, 14, 28]": 1
+          },
+          "[:if, 3, 14, 4, 20, 7]": {
+            "[:then, 4, 15, 6, 15, 60]": 1,
+            "[:else, 5, 16, 4, 20, 7]": 8
+          },
+          "[:if, 6, 16, 4, 20, 7]": {
+            "[:then, 7, 17, 6, 19, 64]": 7,
+            "[:else, 8, 16, 4, 20, 7]": 1
+          },
+          "[:if, 9, 30, 4, 37, 7]": {
+            "[:then, 10, 31, 6, 34, 71]": 2,
+            "[:else, 11, 36, 6, 36, 110]": 2
+          }
+        }
+      },
+      "/home/hunter/cue/app/controllers/passwords_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          3,
+          3,
+          null,
+          3,
+          1,
+          1,
+          1,
+          null,
+          null,
+          3,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          1,
+          null,
+          null,
+          1,
+          6,
+          6,
+          null,
+          4,
+          4,
+          null,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          8,
+          null,
+          null,
+          1,
+          3,
+          null,
+          null
+        ],
+        "branches": {
+          "[:\"&.\", 0, 18, 7, 18, 28]": {
+            "[:then, 1, 18, 7, 18, 28]": 2,
+            "[:else, 2, 18, 7, 18, 28]": 1
+          },
+          "[:if, 3, 18, 4, 22, 7]": {
+            "[:then, 4, 19, 6, 21, 68]": 1,
+            "[:else, 5, 18, 4, 22, 7]": 2
+          },
+          "[:unless, 6, 29, 4, 29, 43]": {
+            "[:else, 7, 29, 4, 29, 43]": 1,
+            "[:then, 8, 29, 4, 29, 23]": 1
+          },
+          "[:unless, 9, 36, 4, 36, 36]": {
+            "[:else, 10, 36, 4, 36, 36]": 4,
+            "[:then, 11, 36, 4, 36, 23]": 2
+          },
+          "[:if, 12, 41, 4, 50, 7]": {
+            "[:then, 13, 42, 6, 47, 87]": 3,
+            "[:else, 14, 49, 6, 49, 86]": 1
+          }
+        }
+      },
+      "/home/hunter/cue/app/controllers/registrations_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          5,
+          null,
+          null,
+          1,
+          15,
+          null,
+          15,
+          1,
+          null,
+          14,
+          14,
+          1,
+          null,
+          null,
+          13,
+          13,
+          null,
+          null,
+          14,
+          14,
+          null,
+          null,
+          1,
+          null,
+          1,
+          29,
+          null,
+          null,
+          1,
+          13,
+          13,
+          null,
+          null
+        ],
+        "branches": {
+          "[:if, 0, 17, 4, 27, 7]": {
+            "[:then, 1, 18, 6, 18, 57]": 1,
+            "[:else, 2, 20, 6, 26, 29]": 14
+          },
+          "[:unless, 3, 21, 6, 23, 9]": {
+            "[:else, 4, 21, 6, 23, 9]": 13,
+            "[:then, 5, 22, 8, 22, 82]": 1
+          }
+        }
+      },
+      "/home/hunter/cue/app/controllers/sessions_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          11,
+          null,
+          10,
+          null,
+          null,
+          1,
+          27,
+          null,
+          27,
+          21,
+          21,
+          21,
+          21,
+          21,
+          null,
+          6,
+          6,
+          null,
+          6,
+          null,
+          null,
+          null,
+          1,
+          3,
+          3,
+          3,
+          null,
+          null,
+          1,
+          null,
+          1,
+          21,
+          21,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          6,
+          6,
+          6,
+          null,
+          5,
+          5,
+          null,
+          null,
+          null,
+          3,
+          3,
+          null,
+          null,
+          1,
+          21,
+          null,
+          15,
+          null,
+          null
+        ],
+        "branches": {
+          "[:if, 0, 14, 4, 14, 50]": {
+            "[:then, 1, 14, 4, 14, 32]": 1,
+            "[:else, 2, 14, 4, 14, 50]": 10
+          },
+          "[:if, 3, 20, 11, 20, 87]": {
+            "[:then, 4, 20, 36, 20, 58]": 6,
+            "[:else, 5, 20, 61, 20, 87]": 21
+          },
+          "[:if, 6, 22, 4, 33, 7]": {
+            "[:then, 7, 23, 6, 27, 39]": 21,
+            "[:else, 8, 29, 6, 32, 56]": 6
+          },
+          "[:if, 9, 24, 42, 24, 86]": {
+            "[:then, 10, 24, 67, 24, 73]": 3,
+            "[:else, 11, 24, 76, 24, 86]": 18
+          },
+          "[:\"&.\", 12, 46, 12, 46, 33]": {
+            "[:then, 13, 46, 12, 46, 33]": 18,
+            "[:else, 14, 46, 12, 46, 33]": 3
+          },
+          "[:if, 15, 46, 4, 46, 33]": {
+            "[:then, 16, 46, 4, 46, 8]": 18,
+            "[:else, 17, 46, 4, 46, 33]": 3
+          },
+          "[:unless, 18, 55, 4, 55, 26]": {
+            "[:else, 19, 55, 4, 55, 26]": 5,
+            "[:then, 20, 55, 4, 55, 14]": 1
+          },
+          "[:unless, 21, 58, 4, 58, 27]": {
+            "[:else, 22, 58, 4, 58, 27]": 3,
+            "[:then, 23, 58, 4, 58, 14]": 2
+          },
+          "[:unless, 24, 67, 4, 67, 56]": {
+            "[:else, 25, 67, 4, 67, 56]": 15,
+            "[:then, 26, 67, 4, 67, 34]": 6
+          }
+        }
+      },
+      "/home/hunter/cue/app/controllers/user_sessions_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          7,
+          null,
+          7,
+          8,
+          null,
+          null,
+          null,
+          1,
+          5,
+          4,
+          null,
+          4,
+          4,
+          null,
+          4,
+          3,
+          3,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          8,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "branches": {
+          "[:if, 0, 21, 4, 26, 7]": {
+            "[:then, 1, 22, 6, 23, 77]": 3,
+            "[:else, 2, 25, 6, 25, 69]": 1
+          }
+        }
+      },
+      "/home/hunter/cue/app/jobs/application_job.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "branches": {}
+      },
+      "/home/hunter/cue/app/mailers/application_mailer.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null
+        ],
+        "branches": {}
+      },
+      "/home/hunter/cue/app/mailers/auth_mailer.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          6,
+          6,
+          6,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          7,
+          7,
+          7,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ],
+        "branches": {}
+      },
+      "/home/hunter/cue/app/models/application_record.rb": {
+        "lines": [
+          1,
           1,
           null
         ],
@@ -28,7 +755,7 @@
           1,
           null,
           1,
-          3,
+          70,
           null,
           null,
           null,
@@ -38,22 +765,14 @@
         ],
         "branches": {
           "[:\"&.\", 0, 21, 18, 21, 36]": {
-            "[:then, 1, 21, 18, 21, 36]": 1,
+            "[:then, 1, 21, 18, 21, 36]": 68,
             "[:else, 2, 21, 18, 21, 36]": 2
           },
           "[:\"&.\", 3, 22, 18, 22, 37]": {
-            "[:then, 4, 22, 18, 22, 37]": 1,
+            "[:then, 4, 22, 18, 22, 37]": 68,
             "[:else, 5, 22, 18, 22, 37]": 2
           }
         }
-      },
-      "/home/hunter/cue/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ],
-        "branches": {}
       },
       "/home/hunter/cue/app/models/auth_token.rb": {
         "lines": [
@@ -78,81 +797,96 @@
           null,
           1,
           null,
-          32,
+          97,
           null,
           1,
           1,
-          15,
+          52,
           null,
-          15,
+          52,
           null,
-          15,
-          15,
-          15,
-          null,
-          null,
-          null,
-          null,
-          null,
-          14,
+          52,
+          52,
+          52,
           null,
           null,
           null,
           null,
           null,
+          51,
           null,
-          1,
-          11,
-          11,
           null,
-          7,
-          7,
-          6,
           null,
-          1,
           null,
           null,
           null,
           1,
-          5,
-          5,
+          23,
+          23,
           null,
+          18,
+          18,
+          17,
           null,
-          1,
-          41,
-          null,
-          null,
-          1,
-          null,
-          1,
-          6,
+          8,
           null,
           null,
           null,
           1,
-          3,
-          3,
+          13,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          21,
+          null,
+          null,
+          1,
+          142,
+          null,
+          null,
+          1,
+          null,
+          1,
+          17,
+          null,
+          null,
+          null,
+          1,
+          17,
+          17,
           null,
           null
         ],
         "branches": {
           "[:unless, 0, 47, 6, 47, 29]": {
-            "[:else, 1, 47, 6, 47, 29]": 7,
-            "[:then, 2, 47, 6, 47, 16]": 4
+            "[:else, 1, 47, 6, 47, 29]": 18,
+            "[:then, 2, 47, 6, 47, 16]": 5
           },
           "[:if, 3, 50, 6, 50, 55]": {
             "[:then, 4, 50, 6, 50, 16]": 1,
-            "[:else, 5, 50, 6, 50, 55]": 6
+            "[:else, 5, 50, 6, 50, 55]": 17
           },
           "[:unless, 6, 51, 6, 51, 67]": {
-            "[:else, 7, 51, 6, 51, 67]": 1,
-            "[:then, 8, 51, 6, 51, 16]": 5
+            "[:else, 7, 51, 6, 51, 67]": 8,
+            "[:then, 8, 51, 6, 51, 16]": 9
           },
-          "[:\"&.\", 9, 59, 6, 59, 21]": {
-            "[:then, 10, 59, 6, 59, 21]": 2,
-            "[:else, 11, 59, 6, 59, 21]": 3
+          "[:\"&.\", 9, 58, 6, 58, 48]": {
+            "[:then, 10, 58, 6, 58, 48]": 6,
+            "[:else, 11, 58, 6, 58, 48]": 7
           }
         }
+      },
+      "/home/hunter/cue/app/models/current.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ],
+        "branches": {}
       },
       "/home/hunter/cue/app/models/session.rb": {
         "lines": [
@@ -186,14 +920,14 @@
           null,
           1,
           null,
-          4,
+          36,
           null,
-          2,
-          null,
-          1,
+          9,
           null,
           1,
-          3,
+          null,
+          1,
+          32,
           null,
           2,
           null,
@@ -201,7 +935,7 @@
         ],
         "branches": {
           "[:if, 0, 38, 4, 38, 54]": {
-            "[:then, 1, 38, 4, 38, 10]": 1,
+            "[:then, 1, 38, 4, 38, 10]": 30,
             "[:else, 2, 38, 4, 38, 54]": 2
           }
         }
@@ -240,7 +974,7 @@
           null,
           1,
           null,
-          65,
+          253,
           null,
           1,
           null,
@@ -254,239 +988,24 @@
           1,
           null,
           1,
-          2,
+          13,
           null,
           null
         ],
         "branches": {
           "[:unless, 0, 47, 4, 47, 55]": {
-            "[:else, 1, 47, 4, 47, 55]": 1,
-            "[:then, 2, 47, 4, 47, 38]": 1
+            "[:else, 1, 47, 4, 47, 55]": 5,
+            "[:then, 2, 47, 4, 47, 38]": 8
           }
         }
-      },
-      "/home/hunter/cue/app/controllers/application_controller.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/hunter/cue/app/controllers/concerns/authentication.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/hunter/cue/app/controllers/health_controller.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/hunter/cue/app/controllers/inertia_controller.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/hunter/cue/app/controllers/passwords_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/hunter/cue/app/controllers/sessions_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/hunter/cue/app/jobs/application_job.rb": {
-        "lines": [
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/hunter/cue/app/mailers/passwords_mailer.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/home/hunter/cue/app/models/current.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
       },
       "/home/hunter/cue/lib/rubocop/cop/cue/system_spec_viewport_matrix.rb": {
         "lines": [
           null,
           null,
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
           null,
           null,
           null,
@@ -507,27 +1026,36 @@
           null,
           null,
           null,
-          0,
-          0,
-          0,
+          1,
+          1,
           null,
-          0,
           null,
-          0,
-          0,
-          0,
-          0,
+          1,
           null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
+          1,
+          3,
+          3,
+          7,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
         ],
-        "branches": {}
+        "branches": {
+          "[:unless, 0, 34, 10, 34, 29]": {
+            "[:else, 1, 34, 10, 34, 29]": 2,
+            "[:then, 2, 34, 10, 34, 16]": 1
+          },
+          "[:if, 3, 35, 10, 35, 98]": {
+            "[:then, 4, 35, 10, 35, 16]": 1,
+            "[:else, 5, 35, 10, 35, 98]": 1
+          }
+        }
       }
     },
-    "timestamp": 1783696991
+    "timestamp": 1783698798
   }
 }

@@ -27,4 +27,7 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include ActiveSupport::Testing::TimeHelpers
+  config.include ActiveJob::TestHelper
+
+  config.before { ActionMailer::Base.deliveries.clear }
 end

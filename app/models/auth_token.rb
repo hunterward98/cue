@@ -55,8 +55,14 @@ class AuthToken < ApplicationRecord
 
     # Link redemption arrives with no user context (a tap from an email).
     def redeem_link(purpose:, link_token:)
-      token = consumable.find_by(token_digest: digest(link_token.to_s), purpose:)
-      token&.consume!
+      peek_link(purpose:, link_token:)&.consume!
+    end
+
+    # Looks a link token up without consuming it — for flows that must
+    # only burn the token when their side effect succeeds (password reset
+    # saves the new password first).
+    def peek_link(purpose:, link_token:)
+      consumable.find_by(token_digest: digest(link_token.to_s), purpose:)
     end
 
     def digest(value)

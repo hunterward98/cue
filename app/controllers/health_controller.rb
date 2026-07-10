@@ -5,6 +5,8 @@
 # liveness probe for load balancers; this page is for humans and deploy smoke
 # tests, and returns 503 when any layer is unhappy.
 class HealthController < InertiaController
+  allow_unauthenticated_access
+
   def full
     checks = [
       { label: "Rails", value: Rails.version, ok: true },

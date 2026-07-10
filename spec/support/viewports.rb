@@ -11,6 +11,9 @@ module ViewportHelpers
   # name so expectations can differ (mobile nav vs desktop nav).
   def with_each_viewport
     VIEWPORTS.each do |name, (width, height)|
+      # Each viewport pass is a fresh browser: cookies and session state
+      # from the previous pass would otherwise leak into this one.
+      Capybara.reset_session!
       page.driver.resize(width, height)
       yield name
     end

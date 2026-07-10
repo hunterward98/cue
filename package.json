@@ -31,9 +31,10 @@
     "lint": "eslint app/frontend *.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "doctor": "rm -rf public/vite-dev public/vite-test && react-doctor . --yes --no-telemetry --blocking warning"
+    "doctor": "rm -rf public/vite-dev public/vite-test tmp/cache/vite && react-doctor . --yes --no-telemetry --blocking warning"
   },
   "dependencies": {
+    "@inertiajs/core": "3.6.1",
     "@inertiajs/react": "^3.6.1",
     "@inertiajs/vite": "^3.6.1",
     "@tailwindcss/forms": "^0.5.11",

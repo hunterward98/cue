@@ -29,3 +29,15 @@ RSpec.configure do |config|
     driven_by :cue_cuprite
   end
 end
+
+RSpec.configure do |config|
+  # System flows exercise real emails (verification codes); run jobs
+  # inline so deliveries land synchronously in ActionMailer deliveries.
+  config.around(:each, type: :system) do |example|
+    previous = ActiveJob::Base.queue_adapter
+    ActiveJob::Base.queue_adapter = :inline
+    example.run
+  ensure
+    ActiveJob::Base.queue_adapter = previous
+  end
+end
