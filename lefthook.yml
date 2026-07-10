@@ -1,0 +1,16 @@
+# Pre-commit runs a fast subset on staged files only (~seconds). CI is the
+# wall; hooks are the courtesy (foundation plan_4).
+pre-commit:
+  parallel: true
+  jobs:
+    - name: rubocop
+      glob: '*.rb'
+      run: bundle exec rubocop --force-exclusion --no-color {staged_files}
+
+    - name: eslint
+      glob: '*.{ts,tsx}'
+      run: pnpm exec eslint --no-warn-ignored {staged_files}
+
+    - name: prettier
+      glob: '*.{ts,tsx,css,json,yml,yaml,md}'
+      run: pnpm exec prettier --check --ignore-unknown {staged_files}

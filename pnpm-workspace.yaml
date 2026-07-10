@@ -15,3 +15,7 @@ trustPolicyExclude:
   # react-doctor). Predates npm provenance, so the no-downgrade heuristic
   # misfires. Remove when Babel bumps to semver >= 7.
   - semver@6.3.1
+# Postinstall scripts are opt-in (pnpm default-deny). lefthook's postinstall
+# installs the git hooks.
+allowBuilds:
+  lefthook: true
