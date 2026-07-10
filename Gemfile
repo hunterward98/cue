@@ -49,3 +49,5 @@ end
 
 gem "vite_rails", "~> 3.11"
 gem "inertia_rails", "~> 3.21"
+
+gem "dotenv-rails", "~> 3.2", groups: [:development, :test]
