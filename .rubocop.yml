@@ -13,17 +13,17 @@ AllCops:
   TargetRubyVersion: 3.4
   NewCops: enable
   Exclude:
-    - "bin/**/*"
-    - "db/*schema.rb"
-    - "node_modules/**/*"
-    - "vendor/**/*"
-    - "tmp/**/*"
+    - 'bin/**/*'
+    - 'db/*schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
 
 # Mobile-first enforcement (foundation plan_3): system flows run at both
 # viewports. Exceptions require an inline disable with a justification.
 Cue/SystemSpecViewportMatrix:
   Include:
-    - "spec/system/**/*_spec.rb"
+    - 'spec/system/**/*_spec.rb'
 
 # Integration-style specs (request/system) assert one behavior through
 # several observable effects; a hard 1-expectation rule would just breed

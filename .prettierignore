@@ -1,0 +1,11 @@
+node_modules/
+public/
+coverage/
+tmp/
+log/
+vendor/
+db/*schema.rb
+Gemfile.lock
+pnpm-lock.yaml
+plans/
+master_plan.md
