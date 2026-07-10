@@ -1,10 +1,10 @@
 # Parent Plan: Auth & Security
 
-- **Status:** NOT_STARTED
+- **Status:** IN_PROGRESS (plans 2–3 DONE; plan_4 mechanism partial, gated on support-admin/notifications; plan_5 installed, recurring)
 - **Phase:** 1
 - **Depends on:** foundation, database-architecture
 - **Blocks:** organizations-users, everything user-facing
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-10
 
 ## Objective
 
@@ -58,10 +58,10 @@ users may store extremely sensitive information; security is the one area we
 
 ## Implementation order
 
-1. [ ] plan_2 accounts + verification (MVP-blocking).
-2. [ ] plan_3 hardening (MVP-blocking).
+1. [x] plan_2 accounts + verification (MVP-blocking). (2026-07-10)
+2. [x] plan_3 hardening (MVP-blocking). (2026-07-10)
 3. [ ] plan_4 2FA (first post-MVP security improvement).
-4. [ ] plan_5 recurring review process established.
+4. [x] plan_5 recurring review process established (weekly scan CI, threat model v1, phase checklist). (2026-07-10)
 
 ## Test strategy
 
@@ -73,8 +73,8 @@ happy path on mobile viewport.
 ## Progress
 
 - [x] Child plans authored (2026-07-08)
-- [ ] Accounts + verification shipped
-- [ ] Hardening shipped
+- [x] Accounts + verification shipped (2026-07-10)
+- [x] Hardening shipped (2026-07-10)
 - [ ] 2FA shipped
 - [ ] Privacy policy sections updated (coordination with marketing-site-seo)
 

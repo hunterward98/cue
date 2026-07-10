@@ -13,4 +13,6 @@ pre-commit:
 
     - name: prettier
       glob: '*.{ts,tsx,css,json,yml,yaml,md}'
-      run: pnpm exec prettier --check --ignore-unknown {staged_files}
+      # --no-error-on-unmatched-pattern: a commit of only
+      # prettier-ignored files (e.g. plans/) is not a formatting failure
+      run: pnpm exec prettier --check --ignore-unknown --no-error-on-unmatched-pattern {staged_files}

@@ -1,6 +1,6 @@
 # auth-security — Child Plan 2: Accounts & Email Verification
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-10) — letter_opener for delivery until notifications plan_2; invitation landing owned by organizations-users
 - **Depends on:** foundation, database-architecture plan_2;
   notifications plan_2 for real sending (letter_opener until then)
 - **Last updated:** 2026-07-08
@@ -44,13 +44,13 @@ accounts can do nothing but re-request verification.
 
 ## Implementation steps
 
-- [ ] Resolve parent Q1 (login method) — flows finalize then.
-- [ ] User/Session/AuthEvent models + token machinery (invariant core).
-- [ ] Signup + verification flow (gating: unverified → verification screen
+- [x] Q1 resolved: per-user login-mode choice at signup; passwords at the forefront.
+- [x] User/Session/AuthEvent models + AuthToken machinery (invariant core).
+- [x] Signup + verification flow (gating: unverified → verification screen
       only, enforced in ApplicationController, negative-tested).
-- [ ] Login/logout + session management UI (list/revoke).
-- [ ] Password reset flow.
-- [ ] Mobile-viewport system tests for every flow (the requester's very
+- [x] Login/logout + session management UI (list/revoke). Code login pairs the code with the server-session pending email.
+- [x] Password reset flow (token consumed only when the new password saves).
+- [x] Mobile-viewport system tests for every flow (the requester's very
       first impression is this flow on a phone).
 
 ## Tests

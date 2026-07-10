@@ -12,6 +12,10 @@ Human actions required. Check off and note the date when done.
 - [x] Ratify the two BLOCKING open questions in plan_1.md (Inertia; Kamal/VPS)
       — done 2026-07-08.
 
+- [ ] (new, rides the domain purchase) Real contact address for
+      public/.well-known/security.txt + ApplicationMailer from-address —
+      both carry placeholders today.
+
 Status 2026-07-10: foundation plans 2–4 are DONE and verified locally; the
 three unchecked items above are now the only blockers for plan_5 (deploy)
 and for CI actually running (needs the GitHub repo). Everything is

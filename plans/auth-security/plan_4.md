@@ -1,6 +1,6 @@
 # auth-security — Child Plan 4: 2FA (Email Codes)
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** IN_PROGRESS (2026-07-10: token machinery supports second_factor codes at 5-min TTL; A1 answer sets password+code for owners with 14-day device trust — enforcement lands with roles/support console)
 - **Depends on:** plan_2 (token machinery), notifications plan_2 (sending)
 - **Sequencing:** mechanism + staff enforcement land with the support
   console (Phase 1–2); general user rollout is post-MVP.

@@ -1,6 +1,6 @@
 # auth-security — Child Plan 3: Hardening
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-10) — Rack::Attack store decision: explicit MemoryStore per process, limits ÷ workers (critique); CAPTCHA: none (A4)
 - **Depends on:** plan_2
 - **Last updated:** 2026-07-08
 
@@ -35,14 +35,12 @@ strict headers, and TLS everywhere.
 
 ## Implementation steps
 
-- [ ] Rack::Attack rules + specs (request specs driving real throttle
-      windows with time travel).
-- [ ] Lockout + unlock flow + AuthEvent wiring.
-- [ ] Breach check service object (stubbed HTTP in tests, fail-open spec).
-- [ ] CSP + headers; system tests must pass under the real CSP (catches
-      inline-script regressions forever).
-- [ ] Session rotation; cookie flag assertions.
-- [ ] security.txt + disclosure page.
+- [x] Rack::Attack rules + specs (throttles proven to trip; store explicit).
+- [x] Lockout + unlock flow + AuthEvent wiring.
+- [x] Breach check service object (stubbed HTTP in tests, fail-open spec).
+- [x] CSP + headers; system suite runs under the production-strength CSP.
+- [x] Session rotation; cookie flag assertions.
+- [x] security.txt (contact pending domain purchase — manual step); disclosure page rides with the marketing site.
 
 ## Tests
 

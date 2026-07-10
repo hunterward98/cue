@@ -1,7 +1,6 @@
 # auth-security — Child Plan 5: Recurring Security Review Process
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED (never DONE
-  once started — recurring by design)
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** IN_PROGRESS since 2026-07-10 (never DONE — recurring by design). Weekly scan CI + threat model v1 + checklist live; label-check + first phase review pending GitHub repo.
 - **Depends on:** foundation plan_4 (CI), self-improvement plan_4 (retros)
 - **Last updated:** 2026-07-08
 
@@ -33,11 +32,11 @@ so security work happens on cadence, not after incidents.
 
 ## Implementation steps
 
-- [ ] Weekly scheduled security CI workflow + auto-issue on failure.
+- [x] Weekly scheduled security CI workflow + auto-issue on failure.
 - [ ] Path-triggered security-review label check.
-- [ ] Threat model v1 (written when auth plan_2 ships, updated per phase).
-- [ ] Checklist doc + retro integration.
-- [ ] Dependency update automation (Q1).
+- [x] Threat model v1 (docs/security/threat-model.md).
+- [x] Checklist doc + retro integration (docs/security/checklist.md).
+- [x] Dependency update automation: Dependabot (bundler + actions + npm, pinned gates ignored).
 - [ ] First phase-review executed at end of Phase 1.
 
 ## Tests
