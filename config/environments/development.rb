@@ -39,6 +39,12 @@ Rails.application.configure do
   # with a justification comment.
   config.active_record.strict_loading_by_default = true
 
+  # Auth emails open in the browser until real sending lands
+  # (notifications plan_2).
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+
   config.after_initialize do
     Bullet.enable = true
     Bullet.rails_logger = true

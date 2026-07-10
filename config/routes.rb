@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   # Cheap liveness probe (200 if the app boots) for load balancers.
   get "up" => "rails/health#show", as: :rails_health_check
 
