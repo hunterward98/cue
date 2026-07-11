@@ -1,0 +1,90 @@
+/*
+ * Cue's runtime theme tokens (theming plan_2). This file and the @theme
+ * mapping in application.css are the ONLY places raw color values may
+ * exist in the frontend — components consume semantic utilities
+ * (bg-surface, text-ink, …) and nothing else. Every pair listed in
+ * spec/design/theme_contrast_spec.rb is machine-checked for WCAG AA in
+ * both themes; edit values here and the spec keeps you honest.
+ *
+ * Light — "papyrus": warm cream surfaces, charcoal ink, dark scarlet.
+ * Dark — "charcoal": charcoal surfaces, warm off-white ink, the same
+ * accent family lifted for contrast.
+ */
+
+:root,
+html[data-theme='light'] {
+  --surface: #f6f1e5;
+  --surface-raised: #fcf9f0;
+  --ink: #292521;
+  --ink-muted: #5c554a;
+  --border: #ddd3c1;
+  --border-strong: #837a6a;
+  --focus: #2f5e9e;
+
+  --accent: #8c1f24;
+  --accent-hover: #731a1e;
+  --accent-ink: #fbf5ea;
+
+  --destructive: #b3271e;
+  --destructive-hover: #8f1f18;
+  --destructive-ink: #fff7f2;
+
+  --success-surface: #e4eeda;
+  --success-ink: #2f4a20;
+  --danger-surface: #f6e0d8;
+  --danger-ink: #7a2314;
+
+  /* Color-coding set: muted deep-vibrant pairs for badges/priorities.
+   * ink doubles as colored text directly on the page surface. */
+  --coding-scarlet-surface: #f1d7d2;
+  --coding-scarlet-ink: #7c231b;
+  --coding-ochre-surface: #eee0c3;
+  --coding-ochre-ink: #6a4a10;
+  --coding-moss-surface: #dfe6cc;
+  --coding-moss-ink: #40511d;
+  --coding-teal-surface: #d4e4df;
+  --coding-teal-ink: #1e4f46;
+  --coding-indigo-surface: #dadfee;
+  --coding-indigo-ink: #333d72;
+  --coding-plum-surface: #ebd8e5;
+  --coding-plum-ink: #6b2a58;
+
+  --font-stack-display: 'EB Garamond Variable', Georgia, serif;
+  --font-stack-body: 'Inter Variable', system-ui, sans-serif;
+}
+
+html[data-theme='dark'] {
+  --surface: #201d19;
+  --surface-raised: #2b2721;
+  --ink: #ebe3d3;
+  --ink-muted: #b1a894;
+  --border: #453f35;
+  --border-strong: #7d745f;
+  --focus: #8fb4ea;
+
+  --accent: #e08076;
+  --accent-hover: #ea9a91;
+  --accent-ink: #33100c;
+
+  --destructive: #e57562;
+  --destructive-hover: #ee9484;
+  --destructive-ink: #360d05;
+
+  --success-surface: #2b3a23;
+  --success-ink: #cbe0b8;
+  --danger-surface: #44201a;
+  --danger-ink: #f1c4b6;
+
+  --coding-scarlet-surface: #46211c;
+  --coding-scarlet-ink: #f0c0b8;
+  --coding-ochre-surface: #3e3211;
+  --coding-ochre-ink: #e7c98d;
+  --coding-moss-surface: #2e3a1d;
+  --coding-moss-ink: #c9dba4;
+  --coding-teal-surface: #1e352f;
+  --coding-teal-ink: #a8d5c9;
+  --coding-indigo-surface: #272e4d;
+  --coding-indigo-ink: #b9c3ee;
+  --coding-plum-surface: #3c2434;
+  --coding-plum-ink: #e3bcd8;
+}

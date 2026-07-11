@@ -4,6 +4,8 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import { defineConfig } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 
+import noStyleLiterals from './eslint-rules/no-style-literals'
+
 export default defineConfig(
   { ignores: ['**/*.d.ts'] },
   js.configs.recommended,
@@ -59,6 +61,19 @@ export default defineConfig(
           ],
         },
       ],
+    },
+  },
+  // The token law's last mile (theming plan_2, ADR 0013): the raw palette
+  // doesn't compile, so what's left to catch is inline styles and
+  // color-shaped arbitrary values. Scoped to app code — the theme files
+  // themselves live in entrypoints/*.css, outside ESLint's reach.
+  {
+    files: ['app/frontend/**/*.{ts,tsx}'],
+    plugins: {
+      cue: { rules: { 'no-style-literals': noStyleLiterals } },
+    },
+    rules: {
+      'cue/no-style-literals': 'error',
     },
   },
 )

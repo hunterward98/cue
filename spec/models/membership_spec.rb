@@ -2,6 +2,30 @@
 
 require "rails_helper"
 
+# == Schema Information
+#
+# Table name: memberships
+#
+#  id              :uuid             not null, primary key
+#  board_owner     :boolean          default(FALSE), not null
+#  owner           :boolean          default(FALSE), not null
+#  state           :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  organization_id :uuid             not null
+#  user_id         :uuid             not null
+#
+# Indexes
+#
+#  index_memberships_on_organization_id              (organization_id)
+#  index_memberships_on_organization_id_and_user_id  (organization_id,user_id) UNIQUE
+#  index_memberships_on_user_id                      (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (organization_id => organizations.id)
+#  fk_rails_...  (user_id => users.id)
+#
 RSpec.describe Membership, type: :model do
   let(:organization) { create(:organization) }
 

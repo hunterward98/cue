@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_11_160002) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_11_180001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -85,10 +85,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_11_160002) do
     t.string "login_mode", default: "password", null: false
     t.string "password_digest"
     t.boolean "staff", default: false, null: false
+    t.string "theme_preference", default: "system", null: false
     t.datetime "updated_at", null: false
     t.datetime "verified_at"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.check_constraint "login_mode::text = ANY (ARRAY['password'::character varying, 'passwordless'::character varying]::text[])", name: "users_login_mode_check"
+    t.check_constraint "theme_preference::text = ANY (ARRAY['system'::character varying, 'light'::character varying, 'dark'::character varying]::text[])", name: "users_theme_preference_check"
   end
 
   add_foreign_key "auth_events", "users"

@@ -34,10 +34,12 @@ RSpec/MultipleExpectations:
 RSpec/ExampleLength:
   Max: 25
 
-# spec/db holds schema-convention specs — there is no class to describe.
+# spec/db and spec/design hold schema/design-convention specs — there is
+# no class to describe.
 RSpec/DescribeClass:
   Exclude:
     - 'spec/db/**/*'
+    - 'spec/design/**/*'
 
 # Seat-limit specs must fill a basic-tier org, and basic seats 15 — the
 # tier definition, not test extravagance.

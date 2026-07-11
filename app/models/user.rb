@@ -9,6 +9,7 @@
 #  login_mode            :string           default("password"), not null
 #  password_digest       :string
 #  staff                 :boolean          default(FALSE), not null
+#  theme_preference      :string           default("system"), not null
 #  verified_at           :datetime
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
@@ -19,6 +20,7 @@
 #
 class User < ApplicationRecord
   LOGIN_MODES = %w[password passwordless].freeze
+  THEME_PREFERENCES = %w[system light dark].freeze
   PASSWORD_LENGTH = 12..72 # bcrypt truncates past 72 bytes
 
   # validations: false — passwordless-mode users have no digest at all;
@@ -41,6 +43,7 @@ class User < ApplicationRecord
   validates :email_address, presence: true, uniqueness: true,
                             format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :login_mode, inclusion: { in: LOGIN_MODES }
+  validates :theme_preference, inclusion: { in: THEME_PREFERENCES }
   validates :password, presence: true, on: :create, if: :password_login?
   validates :password, length: { in: PASSWORD_LENGTH }, allow_nil: true
   validates :password_digest, absence: true, unless: :password_login?

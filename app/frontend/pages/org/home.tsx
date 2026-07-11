@@ -23,7 +23,7 @@ function roleLine({ owner, board_owner }: Props['membership']): string {
 export default function OrgHome({ organization, membership }: Props) {
   return (
     <AppShell title={organization.name} subtitle={roleLine(membership)}>
-      <div className="rounded-lg border border-dashed border-stone-300 bg-white p-6 text-sm text-stone-600">
+      <div className="rounded-lg border border-dashed border-border bg-surface-raised p-6 text-sm text-ink-muted">
         <p>
           Nothing to see yet. When cues land, this is where they&apos;ll queue
           up — patiently.

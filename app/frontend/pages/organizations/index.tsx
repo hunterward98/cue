@@ -27,7 +27,7 @@ export default function OrganizationsIndex({ organizations }: Props) {
       subtitle="Pick a workspace. Most people only need the one."
     >
       {organizations.length === 0 ? (
-        <div className="rounded-lg border border-stone-200 bg-white p-6 text-sm text-stone-600">
+        <div className="rounded-lg border border-border bg-surface-raised p-6 text-sm text-ink-muted">
           <p>
             You don&apos;t belong to any organization yet. Create one, or ask
             whoever runs yours for an invitation.
@@ -39,12 +39,12 @@ export default function OrganizationsIndex({ organizations }: Props) {
             <li key={organization.slug}>
               <Link
                 href={`/o/${organization.slug}`}
-                className="flex items-baseline justify-between rounded-lg border border-stone-200 bg-white p-4 hover:border-stone-400"
+                className="flex items-baseline justify-between rounded-lg border border-border bg-surface-raised p-4 hover:border-border-strong"
               >
-                <span className="font-medium text-stone-900">
+                <span className="font-medium text-ink">
                   {organization.name}
                 </span>
-                <span className="text-xs text-stone-500">
+                <span className="text-xs text-ink-muted">
                   {roleLabel(organization)}
                 </span>
               </Link>
@@ -55,7 +55,7 @@ export default function OrganizationsIndex({ organizations }: Props) {
       <p>
         <Link
           href="/organizations/new"
-          className="text-sm text-stone-700 underline underline-offset-2"
+          className="text-sm text-ink-muted underline underline-offset-2"
         >
           New organization
         </Link>

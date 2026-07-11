@@ -34,6 +34,8 @@
     "doctor": "rm -rf public/vite-dev public/vite-test tmp/cache/vite && react-doctor . --yes --no-telemetry --blocking warning"
   },
   "dependencies": {
+    "@fontsource-variable/eb-garamond": "^5.2.7",
+    "@fontsource-variable/inter": "^5.2.8",
     "@inertiajs/core": "3.6.1",
     "@inertiajs/react": "^3.6.1",
     "@inertiajs/vite": "^3.6.1",

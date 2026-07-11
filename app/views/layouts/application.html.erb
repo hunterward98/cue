@@ -9,6 +9,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# No-flash theme resolution (theming plan_2): must run before first
+        paint, under the nonce CSP. Account preference wins; localStorage
+        covers pre-login devices; "system" resolves via the OS. The logic
+        mirrors applyTheme in app/frontend/lib/theme.ts — keep in sync. %>
+    <%= javascript_tag nonce: true do %>
+      (function () {
+        var pref = <%= Current.user&.theme_preference.to_json.html_safe %> ||
+          localStorage.getItem('cue-theme') || 'system';
+        var dark = pref === 'dark' || (pref === 'system' &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      })();
+    <% end %>
+
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>

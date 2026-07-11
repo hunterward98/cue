@@ -1,6 +1,6 @@
 # theming-design-system — Child Plan 2: Tokens, Themes & Enforcement
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-11)
 - **Depends on:** foundation plan_2
 - **Note:** the font pairing (parent Q1) is a taste call pending your
   answer — the token architecture ships with font *slots* and a placeholder
@@ -44,15 +44,29 @@ all of it.
 
 ## Implementation steps
 
-- [ ] Token architecture + theme files + Tailwind mapping.
-- [ ] Theme switching (attr, persistence, no-flash inline script — CSP
-      nonce-compatible).
-- [ ] Contrast-check spec harness (parses theme files, computes ratios).
-- [ ] Lint rules + fixture tests (a hex in a component fixture must fail).
-- [ ] Font slots + self-hosting pipeline + sample page for Q1 decision.
-- [ ] `docs/design/standards.md` v1: token API, spacing/type scales,
-      color usage rules (stark = color-coding + important buttons only;
-      destructive = red; no accented side borders).
+- [x] Token architecture + theme files + Tailwind mapping — critique
+      adopted: NO raw palette (`--color-*: initial`), semantic tokens
+      only; palette classes don't compile (ADR 0013). Existing auth/org
+      screens retrofitted in the same pass.
+- [x] Theme switching (attr, persistence, no-flash inline script — CSP
+      nonce-compatible; `javascript_tag nonce: true`, verified under the
+      real CSP by the system suite). Account column
+      `users.theme_preference` + PATCH /theme_preference + ThemeToggle;
+      localStorage covers pre-login devices.
+- [x] Contrast-check spec harness (parses tokens.css, computes WCAG
+      ratios — text pairs 4.5:1, focus/borders 3:1, color-coding set
+      against both surfaces per critique).
+- [x] Lint rules + fixture tests — custom ESLint rule
+      `cue/no-style-literals` (user ask, ratified): inline styles +
+      color-shaped arbitrary values; RuleTester-covered; verified-fail
+      2026-07-11. ERB equivalent is a spec guard (mailer views exempt —
+      email clients need inline styles).
+- [x] Font slots + self-hosting pipeline — EB Garamond Variable
+      (display) + Inter Variable (body) via @fontsource (Q1 answered:
+      "EB Garamond and humanist sans"); no sample page needed.
+- [x] `docs/design/standards.md` v1: token API, scales, color usage
+      rules incl. the ratified charcoal-texturing rule (small
+      content-free elements only).
 
 ## Tests
 

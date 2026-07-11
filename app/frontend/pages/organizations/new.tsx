@@ -30,7 +30,7 @@ export default function OrganizationsNew() {
     >
       <form
         onSubmit={submit}
-        className="flex flex-col gap-4 rounded-lg border border-stone-200 bg-white p-6"
+        className="flex flex-col gap-4 rounded-lg border border-border bg-surface-raised p-6"
       >
         <TextField
           label="Organization name"

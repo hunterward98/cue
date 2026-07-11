@@ -2,3 +2,67 @@
 
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
+
+/* Self-hosted variable fonts (CSP: no external hosts). */
+@import '@fontsource-variable/eb-garamond';
+@import '@fontsource-variable/inter';
+
+@import './tokens.css';
+
+/*
+ * No raw palette (ADR 0013): clearing --color-* deletes Tailwind's
+ * default colors, so `text-red-500` simply does not compile. The only
+ * color utilities that exist are the semantic ones mapped below from
+ * tokens.css. Hardcoded colors aren't linted away — they're
+ * unrepresentable. (The ESLint rule that remains covers arbitrary
+ * values and inline styles; see eslint-rules/.)
+ */
+@theme {
+  --color-*: initial;
+  --font-*: initial;
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-focus: var(--focus);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-hover: var(--destructive-hover);
+  --color-destructive-ink: var(--destructive-ink);
+
+  --color-success-surface: var(--success-surface);
+  --color-success-ink: var(--success-ink);
+  --color-danger-surface: var(--danger-surface);
+  --color-danger-ink: var(--danger-ink);
+
+  --color-coding-scarlet-surface: var(--coding-scarlet-surface);
+  --color-coding-scarlet-ink: var(--coding-scarlet-ink);
+  --color-coding-ochre-surface: var(--coding-ochre-surface);
+  --color-coding-ochre-ink: var(--coding-ochre-ink);
+  --color-coding-moss-surface: var(--coding-moss-surface);
+  --color-coding-moss-ink: var(--coding-moss-ink);
+  --color-coding-teal-surface: var(--coding-teal-surface);
+  --color-coding-teal-ink: var(--coding-teal-ink);
+  --color-coding-indigo-surface: var(--coding-indigo-surface);
+  --color-coding-indigo-ink: var(--coding-indigo-ink);
+  --color-coding-plum-surface: var(--coding-plum-surface);
+  --color-coding-plum-ink: var(--coding-plum-ink);
+
+  --font-display: var(--font-stack-display);
+  --font-body: var(--font-stack-body);
+}
+
+@layer base {
+  body {
+    @apply bg-surface font-body text-ink;
+  }
+}

@@ -42,7 +42,7 @@ export default function Register() {
           errors={form.errors.email_address}
         />
 
-        <fieldset className="flex flex-col gap-2 text-sm text-stone-800">
+        <fieldset className="flex flex-col gap-2 text-sm text-ink">
           <legend className="font-medium">How do you want to sign in?</legend>
           <label className="flex items-start gap-2">
             <input
@@ -95,7 +95,7 @@ export default function Register() {
         <Button type="submit" disabled={form.processing}>
           Create account
         </Button>
-        <p className="text-sm text-stone-600">
+        <p className="text-sm text-ink-muted">
           Already have one?{' '}
           <Link href="/session/new" className="underline underline-offset-2">
             Sign in

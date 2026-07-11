@@ -12,16 +12,16 @@ export default function TextField({ label, name, errors, ...input }: Props) {
   const messages = errors == null ? [] : [errors].flat()
 
   return (
-    <label className="flex flex-col gap-1 text-sm font-medium text-stone-800">
+    <label className="flex flex-col gap-1 text-sm font-medium text-ink">
       {label}
       <input
         name={name}
         aria-invalid={messages.length > 0 ? true : undefined}
-        className="rounded-md border border-stone-300 px-3 py-2 text-base text-stone-900 focus:border-stone-500 focus:outline-none"
+        className="rounded-md border border-border-strong bg-surface-raised px-3 py-2 text-base text-ink focus:border-focus focus:outline-none"
         {...input}
       />
       {messages.length > 0 ? (
-        <span role="alert" className="font-normal text-red-700">
+        <span role="alert" className="font-normal text-destructive">
           {messages.join(', ')}
         </span>
       ) : null}

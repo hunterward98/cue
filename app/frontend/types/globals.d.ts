@@ -10,8 +10,10 @@ interface CueFlashData {
   alert?: string
 }
 
-// "Nothing is shared yet", not "anything goes".
-type CueSharedProps = Record<string, never>
+interface CueSharedProps {
+  // Account theme preference; null pre-login (theming plan_2).
+  theme: 'system' | 'light' | 'dark' | null
+}
 
 declare module '@inertiajs/core' {
   export interface InertiaConfig {

@@ -13,6 +13,7 @@ require "rails_helper"
 #  login_mode            :string           default("password"), not null
 #  password_digest       :string
 #  staff                 :boolean          default(FALSE), not null
+#  theme_preference      :string           default("system"), not null
 #  verified_at           :datetime
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
@@ -33,6 +34,12 @@ RSpec.describe User, type: :model do
   end
 
   it { is_expected.to validate_inclusion_of(:login_mode).in_array(User::LOGIN_MODES) }
+  it { is_expected.to validate_inclusion_of(:theme_preference).in_array(User::THEME_PREFERENCES) }
+
+  it "rejects theme preferences outside the three choices at the DB layer", :negative do
+    expect { create(:user).update_column(:theme_preference, "mauve") }
+      .to raise_error(ActiveRecord::StatementInvalid, /theme_preference_check/)
+  end
 
   it "rejects duplicate emails differing only by case", :negative do
     create(:user, email_address: "same@example.com")

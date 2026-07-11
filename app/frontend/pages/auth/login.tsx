@@ -88,10 +88,7 @@ export default function Login({ code_sent }: Props) {
           Sign in
         </Button>
       </form>
-      <form
-        onSubmit={requestCode}
-        className="mt-4 border-t border-stone-200 pt-4"
-      >
+      <form onSubmit={requestCode} className="mt-4 border-t border-border pt-4">
         <Button
           variant="quiet"
           type="submit"
@@ -100,7 +97,7 @@ export default function Login({ code_sent }: Props) {
           Email me a sign-in code instead
         </Button>
       </form>
-      <p className="mt-4 text-sm text-stone-600">
+      <p className="mt-4 text-sm text-ink-muted">
         <Link href="/passwords/new" className="underline underline-offset-2">
           Forgot your password?
         </Link>{' '}

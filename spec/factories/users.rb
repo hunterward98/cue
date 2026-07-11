@@ -9,6 +9,7 @@
 #  login_mode            :string           default("password"), not null
 #  password_digest       :string
 #  staff                 :boolean          default(FALSE), not null
+#  theme_preference      :string           default("system"), not null
 #  verified_at           :datetime
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null

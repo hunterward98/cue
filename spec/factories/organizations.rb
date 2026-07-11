@@ -1,5 +1,21 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: organizations
+#
+#  id           :uuid             not null, primary key
+#  discarded_at :datetime
+#  name         :string           not null
+#  settings     :jsonb            not null
+#  slug         :citext           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+# Indexes
+#
+#  index_organizations_on_slug  (slug) UNIQUE
+#
 FactoryBot.define do
   factory :organization do
     sequence(:name) { |n| "Org #{n}" }

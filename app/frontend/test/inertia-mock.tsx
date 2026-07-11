@@ -44,6 +44,9 @@ export function mockInertia() {
       delete: (url: string) => {
         submitSpy('delete', url)
       },
+      patch: (url: string, data?: unknown, options?: unknown) => {
+        submitSpy('patch', url, data ?? options)
+      },
     },
     Link: ({
       href,

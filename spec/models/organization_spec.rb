@@ -2,6 +2,22 @@
 
 require "rails_helper"
 
+# == Schema Information
+#
+# Table name: organizations
+#
+#  id           :uuid             not null, primary key
+#  discarded_at :datetime
+#  name         :string           not null
+#  settings     :jsonb            not null
+#  slug         :citext           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+# Indexes
+#
+#  index_organizations_on_slug  (slug) UNIQUE
+#
 RSpec.describe Organization, type: :model do
   it "has a valid factory" do
     expect(build(:organization)).to be_valid

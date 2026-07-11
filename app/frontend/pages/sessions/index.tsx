@@ -21,18 +21,18 @@ export default function SessionsIndex({ sessions }: Props) {
       title="Your sessions"
       subtitle="Every device signed in as you. Evict anything you don't recognize."
     >
-      <ul className="divide-y divide-stone-200">
+      <ul className="divide-y divide-border">
         {sessions.map((session) => (
           <li
             key={session.id}
             className="flex items-center justify-between gap-4 py-3"
           >
             <div className="min-w-0 text-sm">
-              <p className="font-medium text-stone-900">
+              <p className="font-medium text-ink">
                 {session.user_agent ?? 'Unknown device'}
                 {session.current ? ' — this device' : ''}
               </p>
-              <p className="text-stone-600">
+              <p className="text-ink-muted">
                 {session.ip_address ?? 'unknown address'} · active{' '}
                 {session.last_active_at}
               </p>

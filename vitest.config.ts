@@ -13,7 +13,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     setupFiles: ['./app/frontend/test/setup.ts'],
-    include: ['app/frontend/**/*.test.{ts,tsx}'],
+    include: ['app/frontend/**/*.test.{ts,tsx}', 'eslint-rules/**/*.test.ts'],
     coverage: {
       provider: 'v8',
       // Everything testable is in scope, tested or not. Entrypoints and
@@ -24,6 +24,7 @@ export default defineConfig({
         'app/frontend/pages/**',
         'app/frontend/components/**',
         'app/frontend/lib/**',
+        'eslint-rules/**',
       ],
       exclude: ['**/*.test.{ts,tsx}'],
       thresholds: {
