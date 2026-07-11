@@ -71,6 +71,7 @@ all of it.
    overused in "classy" templates; (d) commission/custom **3/10** now:
    cost before product-market fit. Samples on the gallery page will make
    this a 10-minute decision.
+   Answer: EB Garamond and humanist sans.
 
 ## Critique
 
@@ -95,3 +96,7 @@ all of it.
 - Fonts: prefer variable fonts (single file per family) for the two
   slots — weight range without four font files; helps the Lighthouse
   budgets marketing plan_2 gates on.
+
+## Critique feedback
+Can we make custom es-lint rules for our styles then?
+Great insight and we should do those things.

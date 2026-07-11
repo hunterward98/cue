@@ -43,7 +43,7 @@ RSpec.describe "Login codes", type: :request do
 
       post session_path, params: { code: }
 
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(organizations_url)
       expect(unverified.reload).to be_verified
       expect(unverified.sessions.count).to eq(1)
     end
@@ -84,7 +84,7 @@ RSpec.describe "Login codes", type: :request do
 
       get confirm_login_code_path(token: issued.link_token)
 
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(organizations_path)
       expect(codes_user.sessions.count).to eq(1)
     end
 

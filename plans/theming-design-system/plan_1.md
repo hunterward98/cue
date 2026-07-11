@@ -93,10 +93,13 @@ built, or cohesion is lost forever.
 1. Font selection: "older style font" — serif like Cormorant/EB Garamond for
    headings with a humanist sans for body? Needs a taste decision from you;
    I'll present 2–3 candidate pairings as rendered samples during plan_2.
+   Answer: these are perfect.
 2. Cursive logo: generate placeholder wordmark now and commission/design a
    real one later? (Recommendation: placeholder now, noted in manual steps
    when a decision is due.)
+   Answer: Go the extra mile for a placeholder, we might not need to commission one if it's good enough.
 3. How many org color presets at launch? (Recommendation: 6.)
+Answer: Make it 8.
 
 ## Critique
 
@@ -120,3 +123,6 @@ built, or cohesion is lost forever.
 - Enforcement stack (tokens + lint + gallery + goldens): no critique;
   see plan_2 critique for a structural simplification that makes the
   lint mostly redundant.
+
+## Critique feedback
+Let's do this with charcoal texturing then: keep it to small things with no content within them. For example, for priorities, on a cue card, we could color code them and have arrows - the arrows could be textured. Or perhaps a small background contrast in some small components.

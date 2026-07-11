@@ -59,10 +59,12 @@ the frame).
    it day one; (b) MVP CSV-of-cues export **6/10**: cheap and
    trust-building, but scope creep; (c) never **1/10**: lock-in smell,
    contradicts the trust posture.
+   Answer: We should have a data export and metrics page as part of our MVP.
 2. **Slug immutability** — (a) immutable v1 **8/10**: join links and
    bookmarks never break, rename = support ticket (support console can do
    it with an audit trail later); (b) mutable with redirects **5/10**:
    redirect bookkeeping now for a rare want.
+   Answer: love immutability.
 
 ## Critique
 
@@ -80,3 +82,6 @@ the frame).
   redirects or invalidates join links explicitly when it eventually
   exists; note it in the support tooling matrix row rather than leaving
   it implied.
+
+  ## Critique feedback
+Great insights - these are features we need.

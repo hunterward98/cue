@@ -9,7 +9,7 @@ RSpec.describe "Sessions", type: :request do
     it "signs in and records the event" do
       post session_path, params: { email_address: user.email_address, password: "a-long-enough-password" }
 
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(organizations_url)
       expect(user.sessions.count).to eq(1)
       expect(AuthEvent.where(action: "login_succeeded", user:)).to exist
     end
@@ -74,7 +74,7 @@ RSpec.describe "Sessions", type: :request do
 
       sign_in user
       get new_session_path
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(organizations_path)
     end
   end
 end

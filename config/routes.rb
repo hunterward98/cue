@@ -30,6 +30,14 @@ Rails.application.routes.draw do
   # Lockout recovery (auth plan_3): the emailed unlock link.
   get "unlock/:token" => "unlocks#show", as: :unlock
 
+  # The org switcher/front door, and everything org-scoped under
+  # /o/:org_slug (organizations-users plan_2). The slug constraint 404s
+  # malformed slugs before they reach a query.
+  resources :organizations, only: %i[index new create]
+  scope "o/:org_slug", module: :org, as: :org, constraints: { org_slug: /[a-z0-9-]+/ } do
+    root "home#show", as: :root
+  end
+
   # Temporary root until marketing-site-seo delivers a landing page.
   root "health#full"
 end

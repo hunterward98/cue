@@ -19,7 +19,7 @@ RSpec.describe "Authentication flows", type: :system do
       expect(page).to have_css("h1", text: "Check your inbox")
       fill_in "Verification code", with: latest_code
       click_button "Verify"
-      expect(page).to have_css("h1", text: "Cue system health") # verified users land on root
+      expect(page).to have_css("h1", text: "Your organizations") # verified users land on the switcher
 
       visit user_sessions_path
       expect(page).to have_css("h1", text: "Your sessions")
@@ -31,7 +31,7 @@ RSpec.describe "Authentication flows", type: :system do
       fill_in "Email", with: email
       fill_in "Password", with: "a-long-enough-password"
       click_button "Sign in"
-      expect(page).to have_css("h1", text: "Cue system health") # login landed
+      expect(page).to have_css("h1", text: "Your organizations") # login landed
 
       visit user_sessions_path
       expect(page).to have_css("h1", text: "Your sessions")
@@ -68,7 +68,7 @@ RSpec.describe "Authentication flows", type: :system do
       expect(page).to have_css("h1", text: "Enter your sign-in code")
       fill_in "Sign-in code", with: latest_code
       click_button "Sign in"
-      expect(page).to have_css("h1", text: "Cue system health") # login landed
+      expect(page).to have_css("h1", text: "Your organizations") # login landed
 
       visit user_sessions_path
       expect(page).to have_css("h1", text: "Your sessions")

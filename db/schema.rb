@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_10_155453) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_11_160002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -42,6 +42,31 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_10_155453) do
     t.check_constraint "purpose::text = ANY (ARRAY['email_verification'::character varying, 'password_reset'::character varying, 'login_code'::character varying, 'second_factor'::character varying, 'unlock'::character varying]::text[])", name: "auth_tokens_purpose_check"
   end
 
+  create_table "memberships", id: :uuid, default: -> { "uuidv7()" }, force: :cascade do |t|
+    t.boolean "board_owner", default: false, null: false
+    t.datetime "created_at", null: false
+    t.uuid "organization_id", null: false
+    t.boolean "owner", default: false, null: false
+    t.string "state", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "user_id", null: false
+    t.index ["organization_id", "user_id"], name: "index_memberships_on_organization_id_and_user_id", unique: true
+    t.index ["organization_id"], name: "index_memberships_on_organization_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+    t.check_constraint "state::text = ANY (ARRAY['pending_approval'::character varying, 'active'::character varying, 'deactivated'::character varying]::text[])", name: "memberships_state_check"
+  end
+
+  create_table "organizations", id: :uuid, default: -> { "uuidv7()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "discarded_at"
+    t.string "name", null: false
+    t.jsonb "settings", default: {}, null: false
+    t.citext "slug", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_organizations_on_slug", unique: true
+    t.check_constraint "slug ~ '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'::citext AND length(slug::text) >= 2 AND length(slug::text) <= 40", name: "organizations_slug_format_check"
+  end
+
   create_table "sessions", id: :uuid, default: -> { "uuidv7()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "ip_address"
@@ -68,5 +93,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_10_155453) do
 
   add_foreign_key "auth_events", "users"
   add_foreign_key "auth_tokens", "users"
+  add_foreign_key "memberships", "organizations"
+  add_foreign_key "memberships", "users"
   add_foreign_key "sessions", "users"
 end

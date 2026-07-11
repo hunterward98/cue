@@ -28,7 +28,8 @@ its lifecycle, fields, permissions, comments, linking, hooks, and audit log.
 - **Linking:** cues link to other cues with easy back-and-forth navigation
   (premium/enterprise only — billing gate).
 - **Custom ticket fields** for board owners (premium/enterprise only).
-- Basic tier limits enforced here: 2MB/upload, 50 active cues org-wide.
+- Basic tier limits enforced here: 2MB/upload, 100 active cues org-wide.
+(Cue limit changed by user upon review)
 
 ## Key decisions
 

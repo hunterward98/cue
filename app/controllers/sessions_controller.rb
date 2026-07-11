@@ -11,7 +11,7 @@ class SessionsController < InertiaController
   INVALID_LOGIN = "That email and proof didn't line up. Check both and try again."
 
   def new
-    return redirect_to root_path if authenticated?
+    return redirect_to organizations_path if authenticated?
 
     render inertia: "auth/login", props: { code_sent: session[:pending_login_email] }
   end

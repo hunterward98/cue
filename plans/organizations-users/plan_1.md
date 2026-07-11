@@ -38,8 +38,9 @@ of **requesters**. Every feature downstream keys off this model.
    separate role). The support role is a global staff flag on `User`, owned
    by the support-admin plan — it must never be expressible as a membership
    role (negative test here).
+   Feedback: good callouts.
 3. **Joining flows:** (a) email invitation from an admin — auto-approved on
-   acceptance; (b) request-to-join by org slug/link — requires admin
+   acceptance; (b) request-to-join by org slug/link — requires owner
    approval. Both end in `Membership.state = active`.
 4. **Org settings owned by this plan:** name, slug, logo, default ticket-field
    toggles (cues plan consumes), theme selection (theming plan consumes).
@@ -85,7 +86,9 @@ of **requesters**. Every feature downstream keys off this model.
    boards they're granted? Master plan says org members are "approved access
    to that organization" — recommendation: members see all org boards
    (simple), with a post-MVP option for restricted requesters.
+   Answer: Make it a setting org owners can configure. By default, members see all org boards and cues.
 3. Do board owners count toward the user limit? (Recommendation: yes.)
+Answer: yes, need this sort of simplicity in our app.
 
 ## Critique
 
@@ -109,3 +112,6 @@ of **requesters**. Every feature downstream keys off this model.
 - Role model (owner / board_owner / requester + global support):
   validated; see plan_2 critique for a representation improvement.
 - Otherwise no critique.
+
+## Critique feedback:
+I like the confidential idea, but do not think it will be used the way we think. Someone requesting a password reset because they forgot it, probably isn't going to know to use it. So, we may need "template requests" that board owners can create for common requests. They will be able to take in any cue and make it a template for other requesters to "request" and have them fill out certain fields specific to their case. We need a plan for this - make one and prioritize it within the relevant plans.

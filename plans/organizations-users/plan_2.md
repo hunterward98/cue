@@ -1,8 +1,8 @@
 # organizations-users — Child Plan 2: Models & Tenancy Wiring
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-11)
 - **Depends on:** auth-security plan_2, database-architecture plan_2
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-11
 
 ## Goal
 
@@ -41,15 +41,24 @@ are enforceable from the first line.
 
 ## Implementation steps
 
-- [ ] Migrations (reviewed against database plan_3 checklist).
-- [ ] Models + validations + state transitions (invited→active,
-      pending→active/removed, active→deactivated→active).
-- [ ] Route scoping `/o/:org_slug` + Current resolution + 404 behavior.
-- [ ] Entitlements stub module + test helpers (`with_tier :basic`).
-- [ ] Membership mutation service objects enforcing limits at the seam.
-- [ ] Factories: org-with-owner, full-org (owner + 2 board owners + N
+- [x] Migrations (reviewed against database plan_3 checklist).
+- [x] Models + validations + state transitions (pending→active,
+      active→deactivated→active; `invited` moved to plan_3's Invitation —
+      see ADR 0012: an invitee without an account can't have a
+      membership row).
+- [x] Route scoping `/o/:org_slug` + Current resolution + 404 behavior
+      (acts_as_tenant wired with `require_tenant = true`; post-login home
+      is now the org switcher at /organizations).
+- [x] Entitlements stub module + test helpers (`with_tier :basic`) +
+      loud boot log if the stub ever resolves in production (critique).
+- [x] Membership mutation service objects enforcing limits at the seam
+      (Enroll / Activate / Deactivate / Deny / ChangeRoles; roles are two
+      booleans per critique — ADR 0012).
+- [x] Factories: org-with-owner, full-org (owner + 2 board owners + N
       requesters) — the personas every later spec will use.
-- [ ] Seeds: demo org for development.
+- [x] Seeds: demo org for development.
+- Note: the role-parameter-tampering negative test lands with plan_3's
+  member-management endpoints — plan_2 ships no role-mutation route.
 
 ## Tests
 
@@ -67,12 +76,14 @@ are enforceable from the first line.
    delete immediately **3/10**: support nightmare; (c) soft-delete forever
    **4/10**: conflicts with privacy expectations. (Purge job details in Q1
    follow-up when built.)
+   Answer: Soft-delete forever. The privacy expectation is a little overstated.
 2. *(restating parent Q2)* **Requester visibility** — (a) members see all
    org boards/cues **7/10**: simple, matches small-office trust reality;
    (b) requesters see only their own requests + completed section **5/10**:
    more private but breaks "look what Charlie's working on" transparency
    that makes small teams like these tools; (c) per-board visibility
    config **4/10** now / good later: post-MVP option if a customer asks.
+   Answer: This should be answered already.
 
 ## Critique
 
@@ -100,3 +111,5 @@ are enforceable from the first line.
   plan_2 if it ever fires.
 - Otherwise no critique — membership state machine, 404-not-403, and
   seat checks at the seam are right.
+## Critique feedback:
+Great callout, we need to make sure we do that. I think multiple org owners is acceptable, probably preferable for larger customers.

@@ -63,9 +63,11 @@ existing-user vs new-user fork.
    about limits, no surprise at accept time; (b) no, check at accept
    **5/10**: nicer sending UX, ugly "org is full" rejection for the
    invitee — the worse first impression.
+   Answer: yes, but need a way to revoke the reservation.
 2. **Default role on join-link approvals** — (a) requester always,
    owner upgrades after **9/10**; (b) owner picks at approval time
    **6/10**: one more decision in the queue UI; fine to add later.
+   Answer: yes, a
 
 ## Critique
 
@@ -84,3 +86,6 @@ existing-user vs new-user fork.
 - Deny emails ("neutral email" on join denial): keep it genuinely
   neutral — no org name in the denial? No: the requester asked to join,
   they know the org. Fine as designed.
+
+## Critique feedback
+Great insights - these are features we need.

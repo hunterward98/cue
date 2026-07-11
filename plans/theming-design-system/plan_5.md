@@ -65,9 +65,11 @@ cue?".
    (b) react-i18next now **5/10**: runtime + keys without a second
    language to justify them; (c) inline strings **2/10**: voice review
    becomes archaeology.
+   Answer: Yeah don't think I will ever add multi-language.
 2. **Tour library** — (a) own Popover-based coach marks **8/10**: tokens,
    voice, and viewport behavior fully ours, small scope; (b) driver.js or
    similar **5/10**: fast start, styling fights and bundle weight after.
+   Answer: A
 
 ## Critique
 
@@ -89,3 +91,6 @@ cue?".
   critique — the ≤4-step tutorial rule ("more steps means the UI
   failed") is the best line in the plan; put it in the design standards
   doc too.
+
+## Critique feedback
+Great insights.

@@ -70,6 +70,7 @@ consume; they do not invent.
    maximum control, we will get focus traps subtly wrong; (c) full
    component framework (MUI/Mantine) **2/10**: fights the design language
    and the no-hardcoded-color law.
+   Answer: a
 
 ## Critique
 
@@ -98,3 +99,6 @@ consume; they do not invent.
   unenforceable by lint as stated — make it concrete: allow only
   spacing/flex/grid utility classes via an allowlist pattern, error on
   anything color/typography-shaped. Now it's a lint, not a review vibe.
+
+## Critique feedback
+Great insights. Modify this plan if you think we should, based on the callouts.

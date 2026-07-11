@@ -10,7 +10,7 @@ class EmailVerificationsController < InertiaController
 
   def show
     return redirect_to new_session_path if pending_email.blank?
-    return redirect_to root_path if Current.user&.verified?
+    return redirect_to organizations_path if Current.user&.verified?
 
     render inertia: "auth/check_inbox", props: { email: pending_email }
   end
@@ -61,6 +61,6 @@ class EmailVerificationsController < InertiaController
     AuthEvent.record!("email_verified", user:, request:)
     session.delete(:pending_verification_email)
     start_new_session_for(user) unless Current.user == user
-    redirect_to root_path, notice: "You're verified. Welcome to Cue."
+    redirect_to organizations_path, notice: "You're verified. Welcome to Cue."
   end
 end

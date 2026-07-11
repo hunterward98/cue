@@ -63,10 +63,12 @@ org theme break contrast, cohesion, or the token law.
    (b) + SVG with strict sanitization **5/10**: crisper, but sanitizers
    miss things and this is a paid-tier feature touching every page;
    (c) SVG unsanitized **0/10**.
+   Answer: A for simplicity.
 2. *(parent Q3)* **Preset count at launch** — (a) 6 **8/10**: enough
    choice, all hand-validated; (b) 10+ **5/10**: validation and taste
    burden grows linearly; (c) 3 **5/10**: feels stingy for a paid
    feature.
+   Ansewr: I think I said 8.
 
 ## Critique
 
@@ -87,3 +89,6 @@ org theme break contrast, cohesion, or the token law.
   record, re-upgrade restores it for free; say so in the upsell copy
   ("your theme is waiting").
 - No other critique.
+
+## Critique feedback
+Great insights.

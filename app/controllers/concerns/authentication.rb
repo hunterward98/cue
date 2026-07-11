@@ -46,7 +46,9 @@ module Authentication
   end
 
   def find_session_by_cookie
-    session_record = Session.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
+    # includes(:user): Current.user rides this record everywhere, and
+    # development's strict_loading_by_default forbids the lazy load.
+    session_record = Session.includes(:user).find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
     return nil unless session_record
 
     if session_record.expired?
@@ -65,7 +67,9 @@ module Authentication
   end
 
   def after_authentication_url
-    session.delete(:return_to_after_authenticating) || root_url
+    # Post-login home is the org switcher (organizations-users plan_2) —
+    # the shortest path to "login → see a cue" the master plan asks for.
+    session.delete(:return_to_after_authenticating) || organizations_url
   end
 
   def start_new_session_for(user)

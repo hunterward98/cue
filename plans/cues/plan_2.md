@@ -72,6 +72,7 @@ Everything else in the product decorates this.
    classes fit this exactly; (b) ActionPolicy **7/10**: more features
    (caching, failure reasons) we may not need yet; (c) hand-rolled **5/10**:
    policies are exactly where conventions pay.
+   Answer: Pundit
 2. *(parent Q1 restated)* **Requester status rights** — (a) requester
    edits content + may cancel (resolve-closed) only while `cued`; board
    owner owns all transitions after work starts **8/10**: matches "may

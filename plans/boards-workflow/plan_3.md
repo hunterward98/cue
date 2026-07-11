@@ -66,6 +66,7 @@ board has left.
    drowns the triaged order; (c) separate "untriaged" strip above the
    ordered list **6/10**: honest inbox model, +1 concept — good later if
    triage volume grows.
+   Answer: A
 
 ## Critique
 
@@ -86,3 +87,6 @@ board has left.
   product's whole reason to exist.
 - Basic-tier 80% limit meter: good restraint on the upsell. No further
   critique.
+
+## Critique feedback:
+Great insight, do those.

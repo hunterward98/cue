@@ -27,6 +27,10 @@ class User < ApplicationRecord
 
   has_many :sessions, dependent: :destroy
   has_many :auth_tokens, dependent: :destroy
+  # No dependent option: the last-owner guard must arbitrate whether a
+  # membership can go, and a real account-deletion feature (with org
+  # handoff) doesn't exist yet — until it does, the FK restricts deletion.
+  has_many :memberships
   # auth_events intentionally carries no dependent option: the log is
   # append-only and the FK restricts user deletion until a real
   # account-deletion feature decides what happens to history.

@@ -40,7 +40,7 @@ RSpec.describe "Email verification", type: :request do
     it "sends already-verified visitors home", :negative do
       sign_in create(:user)
       get email_verification_path
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(organizations_path)
     end
   end
 
@@ -52,7 +52,7 @@ RSpec.describe "Email verification", type: :request do
       patch email_verification_path, params: { code: issued.code }
 
       expect(user.reload).to be_verified
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(organizations_path)
       expect(user.sessions.count).to eq(1)
       expect(AuthEvent.where(action: "email_verified", user:)).to exist
     end
@@ -124,7 +124,7 @@ RSpec.describe "Email verification", type: :request do
       get confirm_email_verification_path(token: issued.link_token)
 
       expect(user.reload).to be_verified
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(organizations_path)
     end
 
     it "rejects a replayed link", :negative do

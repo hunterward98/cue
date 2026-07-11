@@ -63,10 +63,12 @@ capped, focused, and pointedly not Jira.
    sensors for touch/keyboard, active maintenance; (b) Atlassian
    pragmatic-drag-and-drop **7/10**: excellent perf, newer API, heavier
    docs lift; (c) native HTML5 DnD **3/10**: no touch, a11y pain.
+   Answer: A
 2. **Mobile board layout** — (a) segmented control, one status at a time
    **8/10**: full-width readable cards, zero horizontal scroll;
    (b) horizontal column swipe **6/10**: spatial continuity with desktop
    but cramped cards; decide with a gallery prototype of both.
+   Answer: A
 
 ## Critique
 
@@ -86,3 +88,6 @@ capped, focused, and pointedly not Jira.
   reading.
 - Mobile tap-to-move as primary with drag as desktop sugar: correct
   and honest (W5 prototype decision pending). No further critique.
+
+## Critique feedback
+Good calls. I like drag between too.

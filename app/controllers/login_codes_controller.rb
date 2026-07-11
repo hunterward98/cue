@@ -31,7 +31,7 @@ class LoginCodesController < InertiaController
       token.user.verify!
       AuthEvent.record!("login_succeeded", user: token.user, request:, metadata: { mode: "magic_link" })
       start_new_session_for(token.user)
-      redirect_to root_path, notice: "Signed in. No password, no fuss."
+      redirect_to organizations_path, notice: "Signed in. No password, no fuss."
     else
       redirect_to new_session_path, alert: "That sign-in link is invalid or has expired. Request a fresh one."
     end

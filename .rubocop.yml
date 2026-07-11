@@ -38,3 +38,8 @@ RSpec/ExampleLength:
 RSpec/DescribeClass:
   Exclude:
     - 'spec/db/**/*'
+
+# Seat-limit specs must fill a basic-tier org, and basic seats 15 — the
+# tier definition, not test extravagance.
+FactoryBot/ExcessiveCreateList:
+  MaxAmount: 15
