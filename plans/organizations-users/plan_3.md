@@ -1,6 +1,9 @@
 # organizations-users — Child Plan 3: Invitations & Approvals
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-11)
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-11) for
+  single-invite send/accept/join/manage; bulk invitation (auth-security
+  plan_2 Q2's "mailing lists" ask) is a known, flagged gap — see
+  Implementation steps
 - **Depends on:** plan_2; notifications plan_2 (invitation emails) — landed
   on the same letter_opener stopgap auth plan_2 already ships with, not
   blocked on notifications plan_2 actually starting
@@ -69,6 +72,15 @@ existing-user vs new-user fork.
 - [x] Emails (2026-07-11) — `InvitationMailer`, letter_opener, same
       stopgap as auth plan_2; real provider is notifications plan_2's job
       whenever that plan starts.
+- [ ] **Known gap, not built:** bulk invitation. auth-security plan_2's
+      Q2 answer asked for a board-owner tool to invite "in bulk with
+      mailing lists," and this plan's own Design says "owner enters
+      email(s)" (plural) — what shipped is one invite per request
+      (`Invitations::Send` takes a single `email:`). `Org::MembersController#create`
+      is the natural extension point (loop `Invitations::Send` calls,
+      one per line of a pasted/uploaded list, partial-success reporting
+      since one bad email shouldn't block the other 49) — flagging here
+      rather than silently shipping less than what was asked for.
 
 ## Tests
 

@@ -77,6 +77,11 @@ accounts can do nothing but re-request verification.
    **8/10**; (b) straight to org creation **5/10**: wrong for invited
    users. (Invitation links skip the chooser either way.)
    Answer: Users MUST be invited via email. Board owners will need a tool to do this in bulk with mailing lists.
+   *Tracked 2026-07-11: single-invite send/accept shipped in
+   organizations-users plan_3; the bulk/mailing-list tool is a flagged,
+   not-yet-built gap there (see that plan's Implementation steps) —
+   noting the cross-reference here so this answer's second half doesn't
+   look forgotten.*
 
 ## Critique
 
