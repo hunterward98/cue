@@ -1,10 +1,11 @@
 # Parent Plan: Theming & Design System
 
-- **Status:** NOT_STARTED
+- **Status:** IN_PROGRESS (plan_2 DONE, plan_3 DONE; plan_4 NOT_STARTED,
+  needs billing gating; plan_5 NOT_STARTED)
 - **Phase:** 1
 - **Depends on:** foundation
 - **Blocks:** every UI surface (cues, boards, initiatives, marketing site)
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-11
 
 ## Objective
 
@@ -69,8 +70,8 @@ built, or cohesion is lost forever.
 
 ## Implementation order
 
-1. [ ] plan_2 tokens/themes/enforcement (blocks all UI work).
-2. [ ] plan_3 component library (blocks product screens).
+1. [x] plan_2 tokens/themes/enforcement (blocks all UI work) — DONE 2026-07-11.
+2. [x] plan_3 component library (blocks product screens) — DONE 2026-07-11.
 3. [ ] plan_5 voice guide (cheap, do early — copy is everywhere).
 4. [ ] plan_4 org themes (needs billing gating; can land with Phase 3).
 
@@ -83,8 +84,9 @@ built, or cohesion is lost forever.
 ## Progress
 
 - [x] Child plans authored (2026-07-08)
-- [ ] Tokens + light/dark shipped with enforcement
-- [ ] Component library v1 shipped
+- [x] Tokens + light/dark shipped with enforcement (2026-07-11)
+- [x] Component library v1 shipped (2026-07-11) — Markdown component
+      deferred to initiatives plan_3
 - [ ] Voice guide adopted
 - [ ] Org themes shipped (billing-gated)
 

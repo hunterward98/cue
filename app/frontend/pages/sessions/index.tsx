@@ -38,7 +38,7 @@ export default function SessionsIndex({ sessions }: Props) {
               </p>
             </div>
             <Button
-              variant="quiet"
+              variant="ghost"
               onClick={() => {
                 router.delete(`/sessions/${session.id}`)
               }}

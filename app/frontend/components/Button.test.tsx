@@ -9,8 +9,8 @@ describe('Button', () => {
     expect(screen.getByRole('button', { name: 'Go' })).toHaveClass('bg-accent')
   })
 
-  it('renders the quiet variant', () => {
-    render(<Button variant="quiet">Never mind</Button>)
+  it('renders the ghost variant', () => {
+    render(<Button variant="ghost">Never mind</Button>)
     expect(screen.getByRole('button', { name: 'Never mind' })).not.toHaveClass(
       'bg-accent',
     )

@@ -1,10 +1,10 @@
 # Parent Plan: Organizations & Users
 
-- **Status:** NOT_STARTED
+- **Status:** IN_PROGRESS (plan_2 DONE; plan_3–4 NOT_STARTED)
 - **Phase:** 1
 - **Depends on:** auth-security, database-architecture
 - **Blocks:** cues, boards-workflow, billing
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-11
 
 ## Objective
 
@@ -58,7 +58,7 @@ of **requesters**. Every feature downstream keys off this model.
 
 ## Implementation order
 
-1. [ ] plan_2 models (blocking for cues).
+1. [x] plan_2 models (blocking for cues) — DONE 2026-07-11.
 2. [ ] plan_3 invitations/approvals.
 3. [ ] plan_4 settings surface.
 
@@ -72,7 +72,7 @@ of **requesters**. Every feature downstream keys off this model.
 ## Progress
 
 - [x] Child plans authored (2026-07-08)
-- [ ] Models merged
+- [x] Models merged (2026-07-11)
 - [ ] Invitation/approval flows shipped
 - [ ] Settings surface shipped
 - [ ] Privacy policy updated for membership data

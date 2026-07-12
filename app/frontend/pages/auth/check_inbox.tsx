@@ -41,7 +41,7 @@ export default function CheckInbox({ email }: Props) {
         <Button type="submit" disabled={form.processing}>
           Verify
         </Button>
-        <Button variant="quiet" onClick={resend} disabled={form.processing}>
+        <Button variant="ghost" onClick={resend} disabled={form.processing}>
           Send a fresh code
         </Button>
       </form>

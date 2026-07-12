@@ -32,6 +32,10 @@ Rails.application.routes.draw do
 
   resource :theme_preference, only: :update
 
+  # Component gallery: dev/staging only. A lambda, not an `unless` around
+  # draw — per-request evaluation keeps the production 404 testable.
+  get "gallery" => "gallery#show", constraints: ->(_request) { !Rails.env.production? }
+
   # The org switcher/front door, and everything org-scoped under
   # /o/:org_slug (organizations-users plan_2). The slug constraint 404s
   # malformed slugs before they reach a query.

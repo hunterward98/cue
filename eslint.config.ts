@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import { defineConfig } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 
+import layoutOnlyClassname from './eslint-rules/layout-only-classname'
 import noStyleLiterals from './eslint-rules/no-style-literals'
 
 export default defineConfig(
@@ -70,10 +71,19 @@ export default defineConfig(
   {
     files: ['app/frontend/**/*.{ts,tsx}'],
     plugins: {
-      cue: { rules: { 'no-style-literals': noStyleLiterals } },
+      cue: {
+        rules: {
+          'no-style-literals': noStyleLiterals,
+          'layout-only-classname': layoutOnlyClassname,
+        },
+      },
     },
     rules: {
       'cue/no-style-literals': 'error',
+      // Components whose className prop is a documented layout-only
+      // escape hatch (theming plan_3 Design; docs/design/components.md)
+      // — extend this list when a new component adds the prop.
+      'cue/layout-only-classname': ['error', ['Card', 'Skeleton']],
     },
   },
 )

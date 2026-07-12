@@ -1,36 +1,35 @@
 import { Link, usePage } from '@inertiajs/react'
 import type { ReactNode } from 'react'
 
+import PageHeader from '@/components/PageHeader'
 import ThemeToggle from '@/components/ThemeToggle'
+import Wordmark from '@/components/Wordmark'
 
 interface Props {
   title: string
-  subtitle?: string
+  subtitle?: string | undefined
+  actions?: ReactNode
   children: ReactNode
 }
 
-// Shell for signed-in screens: wordmark, title, flash banners. The real
-// chrome (nav, org switcher menu) arrives with theming plan_3.
-export default function AppShell({ title, subtitle, children }: Props) {
+// Shell for signed-in screens: wordmark, page header, flash banners.
+export default function AppShell({
+  title,
+  subtitle,
+  actions,
+  children,
+}: Props) {
   const { flash } = usePage()
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col gap-6 px-4 py-8">
       <div className="flex items-center justify-between">
-        <Link
-          href="/organizations"
-          className="font-display text-lg font-semibold italic tracking-tight text-ink"
-        >
-          Cue
+        <Link href="/organizations" aria-label="Cue home">
+          <Wordmark />
         </Link>
         <ThemeToggle />
       </div>
-      <header className="flex flex-col gap-1">
-        <h1 className="font-display text-3xl font-semibold tracking-tight text-ink">
-          {title}
-        </h1>
-        {subtitle ? <p className="text-sm text-ink-muted">{subtitle}</p> : null}
-      </header>
+      <PageHeader title={title} subtitle={subtitle} actions={actions} />
       {flash.notice ? (
         <p
           role="status"

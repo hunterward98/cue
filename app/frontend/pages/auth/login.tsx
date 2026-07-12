@@ -90,7 +90,7 @@ export default function Login({ code_sent }: Props) {
       </form>
       <form onSubmit={requestCode} className="mt-4 border-t border-border pt-4">
         <Button
-          variant="quiet"
+          variant="ghost"
           type="submit"
           disabled={codeRequestForm.processing}
         >

@@ -76,3 +76,7 @@ gem "letter_opener", "~> 1.10", group: :development
 gem "rack-attack", "~> 6.8"
 
 gem "webmock", "~> 3.26", group: :test
+
+gem "chunky_png", "~> 1.4", group: :test
+
+gem "axe-core-api", "~> 4.12", group: :test

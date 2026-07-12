@@ -39,8 +39,8 @@ child plans define implementation detail.
 | # | Plan | Status | Depends on |
 |---|------|--------|-----------|
 | 3 | [auth-security](auth-security/plan_1.md) | IN_PROGRESS (2–3 DONE, 4 partial, 5 recurring) | foundation, database-architecture |
-| 4 | [organizations-users](organizations-users/plan_1.md) | NOT_STARTED | auth-security |
-| 5 | [theming-design-system](theming-design-system/plan_1.md) | NOT_STARTED | foundation |
+| 4 | [organizations-users](organizations-users/plan_1.md) | IN_PROGRESS (2 DONE, 3–4 NOT_STARTED) | auth-security |
+| 5 | [theming-design-system](theming-design-system/plan_1.md) | IN_PROGRESS (2–3 DONE, 4–5 NOT_STARTED) | foundation |
 
 **Phase 2 — Product core (MVP)**
 
