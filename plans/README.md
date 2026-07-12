@@ -69,7 +69,7 @@ child plans define implementation detail.
 
 | # | Plan | Status | Depends on |
 |---|------|--------|-----------|
-| 14 | [self-improvement](self-improvement/plan_1.md) | IN_PROGRESS (plan_2 DONE) | — (starts with foundation) |
+| 14 | [self-improvement](self-improvement/plan_1.md) | IN_PROGRESS (plan_2 DONE, plan_3 partial) | — (starts with foundation) |
 | 15 | [support-admin](support-admin/plan_1.md) | NOT_STARTED | auth-security (console skeleton lands Phase 1–2) |
 
 ## MVP definition

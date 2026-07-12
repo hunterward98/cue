@@ -48,3 +48,15 @@ description: Drive the Cue app end-to-end in a real browser to verify a change a
   bugs only appear here, never in the test suite. A
   StrictLoadingViolationError page in dev is a real bug; eager-load in
   the code path that owns the record.
+
+## Trigger tests
+
+Recorded per self-improvement plan_3's trigger-test convention (applied
+retroactively, 2026-07-11) — these three prompts must load this skill:
+
+1. "Can you run the app and check that this works?"
+2. "Take a screenshot of the login page."
+3. "Verify this change actually works, not just that the tests pass."
+
+**Last verified:** 2026-07-11 (retrofitted with the trigger-test
+convention; not yet run against a live miss).

@@ -3,7 +3,8 @@
 Cue: a snarky-but-classy Jira replacement for single-person departments.
 Roadmap and status: [plans/README.md](plans/README.md) ·
 Why things are the way they are: [docs/decisions/](docs/decisions/) ·
-Current phase: 0→1 (foundation done, auth/orgs/theming next).
+Current phase: 1→2 (foundation/auth/orgs/theming core done; cues next,
+pending review).
 
 ## Commands
 
@@ -29,8 +30,8 @@ Current phase: 0→1 (foundation done, auth/orgs/theming next).
 - UUIDv7 pks come from Postgres defaults; never add id-generation
   callbacks (ADR 0003).
 - Every architectural choice → ADR (template in docs/decisions/);
-  user-facing copy follows the voice guide (docs/design/, once theming
-  lands): a little snarky, never mean.
+  user-facing copy follows [docs/design/voice.md](docs/design/voice.md):
+  a little snarky, never mean.
 - The lint IS the rule: don't restate lint-enforced rules here.
 
 ## Rituals
@@ -39,7 +40,7 @@ Current phase: 0→1 (foundation done, auth/orgs/theming next).
   sync the plans/README.md table, refresh `manual_steps_*.md`, and call
   out new manual steps in the closing message.
 - **Gotchas:** second occurrence of any problem → docs/gotchas.md entry
-  - a mechanism (rule/cop/test/skill). Skill misfire → rewrite its
-    trigger the same day.
+  - a mechanism (rule/cop/test/skill). Skill misfire → same-day entry in
+    [docs/skill-misses.md](docs/skill-misses.md) + rewrite its trigger.
 - Commits: plain, well-summarized messages (no conventional-commit
   ceremony). Pre-commit hooks are lefthook; CI is the wall.

@@ -1,9 +1,11 @@
 # self-improvement — Child Plan 3: Project Skills
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
-  (mid-Phase 2, once rituals actually repeat)
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** IN_PROGRESS (mostly
+  NOT_STARTED — mid-Phase 2, once rituals actually repeat — but the
+  candidacy rule's own exception, see Critique feedback, let the
+  `dont-reinvent-it` skill and its infrastructure ship early, 2026-07-11)
 - **Depends on:** plan_2 (the loop), real repetition to codify
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-11
 
 ## Goal
 
@@ -42,10 +44,19 @@ when they don't.
 
 ## Implementation steps
 
-- [ ] Candidacy rule + miss-log added to CLAUDE.md when this plan
-      starts.
-- [ ] `release` skill (first — it has the most steps and the most
-      plans depending on its checklist).
+- [x] Miss-log ([docs/skill-misses.md](../../docs/skill-misses.md)) +
+      CLAUDE.md pointer (2026-07-11) — done early, ahead of the trio
+      below, because `dont-reinvent-it` needed it to exist.
+- [x] `dont-reinvent-it` skill (2026-07-11,
+      [.claude/skills/dont-reinvent-it/](../../.claude/skills/dont-reinvent-it/SKILL.md))
+      — not one of the original three, shipped on the candidacy rule's
+      own compliance-guarding exception (see plan_3's Critique: "ship on
+      need, not on repetition count" — the same reasoning applies to a
+      direct ask, not just a compliance guard). `docs:lint` now enforces
+      every skill file (this one and the pre-existing `verify`, backfit
+      to comply) carries 3 trigger-test prompts + a last-verified date.
+- [ ] `release` skill (first of the original three — it has the most
+      steps and the most plans depending on its checklist).
 - [ ] `new-component` skill (with theming plan_3 live).
 - [ ] `legal-check` skill (before billing goes live — it guards the
       lawyer-reviewed docs from drift).
@@ -83,3 +94,8 @@ watchlist tracks the queue.
 
 ## Critique feedback:
 I think we may also need a skill that helps improve ourselves - are we solving a problem that has been solved via gem or pnpm package? May we should just install it!
+
+*Shipped 2026-07-11: [.claude/skills/dont-reinvent-it/](../../.claude/skills/dont-reinvent-it/SKILL.md).
+Treated as a standalone, need-driven skill rather than waiting for the
+plan's mid-Phase-2 candidacy gate — the same "ship on need" exception
+the critique already carved out for `legal-check` above.*

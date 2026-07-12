@@ -1,10 +1,12 @@
 # Parent Plan: Self-Improvement & Documentation Loop
 
-- **Status:** IN_PROGRESS (plan_2 DONE; plan_3/4 gated on later phases)
+- **Status:** IN_PROGRESS (plan_2 DONE; plan_3 partial — one skill
+  shipped early on its own need-driven exception, the rest still gated;
+  plan_4 gated on later phases)
 - **Phase:** cross-cutting — starts with foundation, never ends
 - **Depends on:** — (installs alongside foundation)
 - **Blocks:** — (but every plan feeds it)
-- **Last updated:** 2026-07-10
+- **Last updated:** 2026-07-11
 
 ## Objective
 
@@ -67,7 +69,8 @@ readable, and legitimately helpful.
 ## Implementation order
 
 1. [x] plan_2 with foundation (the loop must exist before code does). (2026-07-10)
-2. [ ] plan_3 once rituals repeat (Phase 2).
+2. [ ] plan_3 once rituals repeat (Phase 2) — partially started 2026-07-11
+   (one need-driven skill; the repetition-triggered trio still waits).
 3. [ ] plan_4 first retro at end of Phase 1, then every phase.
 
 ## Test strategy
@@ -80,8 +83,11 @@ documentation-by-convention. The rest is checklist-enforced (PR template:
 
 - [x] Child plans authored (2026-07-08)
 - [x] Docs skeleton + CLAUDE.md live (2026-07-10)
-- [x] ADRs exist for all ratified Phase-0 decisions — 0001–0009 (2026-07-10)
-- [ ] First three skills authored and trigger-tested
+- [x] ADRs exist for all ratified Phase-0 decisions — 0001–0016, growing
+      (2026-07-11)
+- [x] Skill trigger-test convention + miss-log live, `docs:lint`-enforced
+      (2026-07-11); one skill (`dont-reinvent-it`) shipped under it
+- [ ] First three (ritual-triggered) skills authored and trigger-tested
 - [ ] Phase retro ritual running
 
 ## Open questions
