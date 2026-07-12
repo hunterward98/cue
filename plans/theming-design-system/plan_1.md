@@ -1,8 +1,8 @@
 # Parent Plan: Theming & Design System
 
-- **Status:** IN_PROGRESS (plan_2–3 DONE; plan_4 NOT_STARTED, needs
-  billing gating; plan_5 partial — voice guide + string mechanism done,
-  tutorials blocked on cues/boards-workflow)
+- **Status:** IN_PROGRESS (plan_2–3 DONE; plan_4 design-refined but
+  NOT_STARTED, needs billing gating; plan_5 partial — voice guide +
+  string mechanism done, tutorials blocked on cues/boards-workflow)
 - **Phase:** 1
 - **Depends on:** foundation
 - **Blocks:** every UI surface (cues, boards, initiatives, marketing site)

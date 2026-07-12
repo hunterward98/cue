@@ -3,7 +3,7 @@
 - **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
 - **Depends on:** plan_2, plan_3; billing plan_2 (entitlements gate);
   organizations-users plan_4 (settings frame)
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-11
 
 ## Goal
 
@@ -17,30 +17,46 @@ org theme break contrast, cohesion, or the token law.
   colors"):** each preset defines the accent token group
   (`--color-accent`, `--color-accent-ink`, hover/active states) for BOTH
   light and dark themes, pre-validated for AA contrast at build time by
-  plan_2's harness. Launch set: 6 presets (parent Q3) in the deep-vibrant
-  family — scarlet (default), forest, indigo, bronze, plum, slate.
-- **Application:** org's preset stored on Organization; a small inline
-  style block on `<html>` (nonce'd, CSP-safe) overrides only the accent
-  group. Base surfaces/ink never change — org themes recolor the accent,
-  not the app, which is how cohesion survives customization.
+  plan_2's harness. Launch set: **8 presets** (parent Q3 and this plan's
+  Q2 both answered 8, overriding the 6-preset recommendation — Design
+  updated to match) in the deep-vibrant family — scarlet (default),
+  forest, indigo, bronze, plum, slate, plus two more in the same family
+  to reach 8: **amber** and **cobalt**. Exact hex values are a taste
+  pass at implementation time (build-time AA validation gates all 8 ×
+  both themes before any ships); the names here are placeholders for
+  "which 8," not final color decisions.
+- **Application** (critique, adopted — simplification): each preset is
+  static CSS keyed on `html[data-accent="scarlet"]` etc. (an attribute
+  set alongside `data-theme`), living in the same file plan_2's contrast
+  checker already reads — **no inline style injection, no CSP nonce
+  surface for this feature.** Inline injection is only needed for
+  *arbitrary* org colors, which the master plan explicitly rejected
+  ("selecting a preset of colors") — a finite, known preset set doesn't
+  need it. Base surfaces/ink never change — org themes recolor the
+  accent, not the app, which is how cohesion survives customization.
 - **Logo:** replaces the wordmark in org-scoped chrome. Formats: see Q1.
   Constraints: max 1MB, min/max dimensions, rendered in a fixed-height
   slot on both themes (preview shows both).
 - **Settings UI (docks in org settings):** preset swatches with live
   preview (gallery components rendered in-place with the candidate
   accent), logo upload with both-theme preview, reset-to-default. Basic
-  tier: section visible but locked with an on-voice upsell line
-  (tasteful — no dark patterns), gated by `Entitlements#allows?(:custom_theme)`.
+  tier: section visible but locked with an on-voice upsell line —
+  **"your theme is waiting"** (critique, adopted: the preset choice is
+  retained through a downgrade, so re-upgrading restores it for free —
+  the copy should say so) — gated by
+  `Entitlements#allows?(:custom_theme)`.
 - Downgrade behavior: org theme reverts to default automatically when
   entitlement lapses (billing plan_2's read-only/downgrade hooks call a
-  revert).
+  revert); the preset choice itself is retained on the org record, not
+  cleared, so re-upgrading is a free restore.
 
 ## Implementation steps
 
-- [ ] Preset definitions + build-time AA validation for all presets ×
-      both themes.
-- [ ] Accent override injection (CSP-verified) + membership-scoped
-      application.
+- [ ] Preset definitions (`html[data-accent]` static CSS, critique) +
+      build-time AA validation for all 8 presets × both themes.
+- [ ] `data-accent` attribute set alongside `data-theme` (no-flash
+      script + client theme.ts, same pattern plan_2 already established)
+      + membership-scoped application.
 - [ ] Logo upload (Active Storage, validation, variants for chrome + 
       email header usage by notifications plan_2).
 - [ ] Settings panel + live preview + gate + upsell state.
@@ -69,6 +85,9 @@ org theme break contrast, cohesion, or the token law.
    burden grows linearly; (c) 3 **5/10**: feels stingy for a paid
    feature.
    Ansewr: I think I said 8.
+   *Confirmed 2026-07-11: matches plan_1's Q3 ("Make it 8" — the same
+   answer, not a new one), which overrides this question's own (a) 6
+   recommendation. Design above updated to 8 named presets.*
 
 ## Critique
 
@@ -82,12 +101,17 @@ org theme break contrast, cohesion, or the token law.
   contrast checker already reads. The inline-injection design is only
   needed for *arbitrary* org colors — which the master plan explicitly
   rejected ("selecting a preset"). Adopt the attribute approach.
+  *Resolved 2026-07-11 (Critique feedback: "Great insights"): adopted —
+  Design and Implementation steps above now specify `data-accent`
+  static CSS, no inline injection, no nonce.*
 - Raster-only logos (T-logo Q1a): stands; SVG sanitization is a losing
   game for a paid-tier feature rendered on every page.
 - Downgrade auto-revert: right, and consistent with the never-vandalize
   rule elsewhere — since the org's preset choice is retained on the org
   record, re-upgrade restores it for free; say so in the upsell copy
   ("your theme is waiting").
+  *Resolved 2026-07-11: adopted — "your theme is waiting" is the
+  specified upsell line for the Settings UI's locked/basic-tier state.*
 - No other critique.
 
 ## Critique feedback
