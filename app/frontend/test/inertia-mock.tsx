@@ -26,6 +26,20 @@ export function resetInertiaMock() {
   delete pageFlash.alert
 }
 
+// Real Inertia fires visit-option lifecycle callbacks; this mock does
+// too, so a component's onSuccess handler (e.g. resetting a form) is
+// exercised the same way a real visit would trigger it.
+function callOnSuccessIfPresent(payload: unknown) {
+  if (
+    payload !== null &&
+    typeof payload === 'object' &&
+    'onSuccess' in payload &&
+    typeof (payload as { onSuccess?: unknown }).onSuccess === 'function'
+  ) {
+    ;(payload as { onSuccess: () => void }).onSuccess()
+  }
+}
+
 interface MiniForm {
   data: Record<string, unknown>
   errors: Record<string, string | string[]>
@@ -36,16 +50,32 @@ interface MiniForm {
   ) => void
   post: (url: string, options?: unknown) => void
   patch: (url: string, options?: unknown) => void
+  reset: () => void
 }
 
 export function mockInertia() {
   vi.mock('@inertiajs/react', () => ({
     router: {
+      post: (url: string, data?: unknown, options?: unknown) => {
+        const payload = data ?? options
+        if (payload === undefined) {
+          submitSpy('post', url)
+        } else {
+          submitSpy('post', url, payload)
+        }
+        callOnSuccessIfPresent(payload)
+      },
       delete: (url: string) => {
         submitSpy('delete', url)
       },
       patch: (url: string, data?: unknown, options?: unknown) => {
-        submitSpy('patch', url, data ?? options)
+        const payload = data ?? options
+        if (payload === undefined) {
+          submitSpy('patch', url)
+        } else {
+          submitSpy('patch', url, payload)
+        }
+        callOnSuccessIfPresent(payload)
       },
     },
     Link: ({
@@ -76,9 +106,14 @@ export function mockInertia() {
         },
         post: (url, options) => {
           submitSpy('post', url, options ?? transformed)
+          if (options) callOnSuccessIfPresent(options)
         },
         patch: (url, options) => {
           submitSpy('patch', url, options ?? transformed)
+          if (options) callOnSuccessIfPresent(options)
+        },
+        reset: () => {
+          setDataState(initial)
         },
       }
     },

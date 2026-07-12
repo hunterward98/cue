@@ -8,9 +8,14 @@
 # its Postgres write cost.
 class Rack::Attack
   AUTH_PATHS = %w[/session /registration /login_code /passwords /email_verification /unlock].freeze
+  INVITE_PATH = %r{\A/o/[^/]+/invitations\z}
 
   def self.auth_request?(request)
     (request.post? || request.patch?) && AUTH_PATHS.any? { |path| request.path.start_with?(path) }
+  end
+
+  def self.invite_request?(request)
+    request.post? && request.path.match?(INVITE_PATH)
   end
 
   self.cache.store = ActiveSupport::Cache::MemoryStore.new
@@ -25,6 +30,15 @@ class Rack::Attack
     if auth_request?(request)
       request.params["email_address"].to_s.strip.downcase.presence
     end
+  end
+
+  # org plan_3 critique: the org-level seat math doesn't catch a
+  # compromised member account bulk-inviting — that's a per-sender
+  # limit, keyed on the (signed, opaque here — no need to decode it)
+  # session cookie, not IP (owners legitimately invite in bursts from a
+  # shared office network).
+  throttle("invitations/inviter", limit: 20, period: 1.hour) do |request|
+    request.cookies["session_id"] if invite_request?(request)
   end
 
   self.throttled_responder = lambda do |_request|

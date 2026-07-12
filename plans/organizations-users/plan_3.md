@@ -1,8 +1,10 @@
 # organizations-users — Child Plan 3: Invitations & Approvals
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
-- **Depends on:** plan_2; notifications plan_2 (invitation emails)
-- **Last updated:** 2026-07-08
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** DONE (2026-07-11)
+- **Depends on:** plan_2; notifications plan_2 (invitation emails) — landed
+  on the same letter_opener stopgap auth plan_2 already ships with, not
+  blocked on notifications plan_2 actually starting
+- **Last updated:** 2026-07-11
 
 ## Goal
 
@@ -38,24 +40,58 @@ existing-user vs new-user fork.
 
 ## Implementation steps
 
-- [ ] Invitation model + token discipline + expiry sweeping job.
-- [ ] Send/accept flows incl. both forks + switch-account screen.
-- [ ] Join-link setting + request flow + approval queue UI.
-- [ ] Seat reservation logic at the entitlements seam.
-- [ ] Member management UI (mobile-tested — owners will approve from
-      phones).
-- [ ] Emails (via notifications plan_2 infrastructure; letter_opener
-      until provider is live).
+- [x] Invitation model + token discipline + expiry sweeping job
+      (2026-07-11) — `Invitation`, `config/recurring.yml` sweep; redemption
+      logic never trusts the stored state alone (`reserving_seat`/
+      `redeemable?` both re-check `expires_at`), so correctness never
+      depends on the sweep having run (AuthToken's precedent).
+- [x] Send/accept flows incl. both forks + switch-account screen
+      (2026-07-11) — `InvitationAcceptancesController`, invitation-backed
+      fast path in `RegistrationsController` (skips verification, ADR
+      0015), `after_authentication_url` extended to resume mid-flow
+      invitation/join links after login (`Authentication` concern).
+- [x] Join-link setting + request flow + approval queue UI (2026-07-11) —
+      `JoinRequestsController` (`org/join` page); approval queue folded
+      into the members page (below), not a separate screen.
+- [x] Seat reservation logic at the entitlements seam (2026-07-11) —
+      `Memberships::SeatChecks` now counts `Invitation.reserving_seat`
+      alongside active memberships; `Invitations::Send` checks it at
+      send time, `Invitations::Accept` flips the invitation to accepted
+      *before* re-checking so its own reservation isn't double-counted.
+- [x] Member management UI (2026-07-11) — `org/members/index`: one
+      combined roster (active/deactivated members, join-request queue,
+      pending invitations with reserved-seat visibility per critique),
+      role toggles, activate/deactivate/deny/revoke/resend all wired to
+      the plan_2 `Memberships::*` services and the new `Invitations::*`
+      services. Mobile viewport covered by the fork-matrix system specs
+      below, not a dedicated click-budget spec — no tap-count promise
+      was made for this screen the way cues plan_6 makes one.
+- [x] Emails (2026-07-11) — `InvitationMailer`, letter_opener, same
+      stopgap as auth plan_2; real provider is notifications plan_2's job
+      whenever that plan starts.
 
 ## Tests
 
-- Negative: expired/revoked/reused invitation token → friendly dead-end,
-  no membership; accept with mismatched account → no membership until
-  switch; 16th seat via invite on basic → blocked at send; join request to
-  disabled link → 404; approval by a non-owner → 403/404; invitation
-  email content identical for existing vs new addresses.
+- Negative: expired/revoked/already-accepted invitation token → friendly
+  dead-end, no membership; accept with mismatched account → switch-account
+  screen, no membership until switch; 16th reserved seat (active +
+  pending invites) on basic → blocked at send, not just accept; a seat
+  vanishing between invite and accept → invitation stays pending,
+  redeemable, and the failure surfaces as a flash alert instead of a
+  crash (same shape for the analogous join-approval-at-capacity case);
+  join request to a disabled or unknown link → identical redirect+alert,
+  not 404 as originally sketched — a friendlier dead-end than a bare 404
+  page, still no oracle (disabled and unknown are indistinguishable);
+  every owner-only action 404s a non-owner, never 403 (ADR 0010's
+  philosophy); invitation email content has no existing-vs-new-address
+  branch to begin with (unlike signup's enumeration defense), so there's
+  nothing for a test to distinguish.
 - Fork matrix system tests: {existing user, new user} × {invitation,
-  join request} — four end-to-end paths, both viewports.
+  join request} — four end-to-end paths, both viewports
+  (`spec/system/organization_membership_spec.rb`).
+- Rack::Attack: per-inviter throttle (critique) proven to trip
+  (`spec/requests/rate_limiting_spec.rb`), same "flip on with a fresh
+  store" pattern auth plan_3 established.
 
 ## Open questions
 

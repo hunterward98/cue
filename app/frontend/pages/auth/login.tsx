@@ -6,11 +6,17 @@ import TextField from '@/components/TextField'
 
 interface Props {
   code_sent?: string | null
+  // Prefilled from an invitation link (org plan_3) so the invitee
+  // doesn't retype it.
+  email_address?: string
 }
 
 // One screen, two proofs: password, or an emailed code (ratified A1).
-export default function Login({ code_sent }: Props) {
-  const passwordForm = useForm({ email_address: '', password: '' })
+export default function Login({ code_sent, email_address }: Props) {
+  const passwordForm = useForm({
+    email_address: email_address ?? '',
+    password: '',
+  })
   const codeRequestForm = useForm({ email_address: '' })
   // The server pairs the code with its session-stored pending email.
   const codeForm = useForm({ code: '' })

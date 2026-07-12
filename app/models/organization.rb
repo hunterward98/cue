@@ -41,6 +41,7 @@ class Organization < ApplicationRecord
   # operation anyway — the product soft-deletes forever.
   has_many :memberships, dependent: :delete_all
   has_many :users, through: :memberships
+  has_many :invitations, dependent: :delete_all
 
   validates :name, presence: true, length: { maximum: 80 }
   validates :slug, presence: true, uniqueness: true,

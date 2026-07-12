@@ -13,7 +13,10 @@ class SessionsController < InertiaController
   def new
     return redirect_to organizations_path if authenticated?
 
-    render inertia: "auth/login", props: { code_sent: session[:pending_login_email] }
+    render inertia: "auth/login", props: {
+      code_sent: session[:pending_login_email],
+      email_address: params[:email_address]
+    }
   end
 
   def create

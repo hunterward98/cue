@@ -43,4 +43,19 @@ RSpec.describe "Rate limiting", type: :request do
     get full_health_check_path
     expect(response).to have_http_status(:ok)
   end
+
+  it "throttles the 21st invitation send from one sender within an hour", :negative do
+    organization = create(:organization)
+    owner = create(:membership, :owner, organization:).user
+    sign_in owner
+
+    20.times do |n|
+      post org_invitations_path(org_slug: organization.slug), params: { email: "invitee-#{n}@example.com" }
+      expect(response).to have_http_status(:redirect)
+    end
+
+    post org_invitations_path(org_slug: organization.slug), params: { email: "invitee-20@example.com" }
+
+    expect(response).to have_http_status(:too_many_requests)
+  end
 end

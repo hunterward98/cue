@@ -64,4 +64,9 @@ describe('auth/login', () => {
       screen.getByRole('link', { name: 'Create an account' }),
     ).toHaveAttribute('href', '/registration/new')
   })
+
+  it('prefills the email from an invitation or join link', () => {
+    render(<Login email_address="invitee@example.com" />)
+    expect(screen.getByLabelText('Email')).toHaveValue('invitee@example.com')
+  })
 })

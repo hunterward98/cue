@@ -61,4 +61,9 @@ describe('auth/register', () => {
       'has already been taken',
     )
   })
+
+  it('prefills the email from an invitation link', () => {
+    render(<Register email_address="invitee@example.com" />)
+    expect(screen.getByLabelText('Email')).toHaveValue('invitee@example.com')
+  })
 })

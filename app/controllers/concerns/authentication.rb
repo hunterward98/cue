@@ -67,6 +67,16 @@ module Authentication
   end
 
   def after_authentication_url
+    # Org plan_3: a mid-flow invitation click always wins over the
+    # generic return_to — login lands back on the invitation URL, which
+    # finishes the accept now that Current.user is set.
+    if (token = session.delete(:pending_invitation_token))
+      return accept_invitation_url(token:)
+    end
+    if (slug = session.delete(:pending_join_slug))
+      return join_organization_url(org_slug: slug)
+    end
+
     # Post-login home is the org switcher (organizations-users plan_2) —
     # the shortest path to "login → see a cue" the master plan asks for.
     session.delete(:return_to_after_authenticating) || organizations_url
@@ -74,10 +84,16 @@ module Authentication
 
   def start_new_session_for(user)
     # Rotate the Rails session on privilege change (fixation defense);
-    # keep only the post-login destination.
+    # keep only the post-login destination(s) — return_to and org
+    # plan_3's mid-flow invitation/join bookkeeping, both read by
+    # after_authentication_url.
     return_to = session[:return_to_after_authenticating]
+    invitation_token = session[:pending_invitation_token]
+    join_slug = session[:pending_join_slug]
     reset_session
     session[:return_to_after_authenticating] = return_to if return_to
+    session[:pending_invitation_token] = invitation_token if invitation_token
+    session[:pending_join_slug] = join_slug if join_slug
 
     user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |user_session|
       Current.session = user_session

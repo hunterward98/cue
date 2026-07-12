@@ -7,6 +7,17 @@ RSpec.describe "Session management", type: :request do
     let(:perform_request) { get user_sessions_path }
   end
 
+  it "returns to the originally-requested protected page after signing in" do
+    user = create(:user, password: "a-long-enough-password")
+
+    get user_sessions_path # unauthenticated: stashes return_to, redirects to login
+    expect(response).to redirect_to(new_session_path)
+
+    post session_path, params: { email_address: user.email_address, password: "a-long-enough-password" }
+
+    expect(response).to redirect_to(user_sessions_path)
+  end
+
   it "lists active sessions with the current one flagged" do
     user = create(:user)
     stale = create(:session, user:, created_at: 8.days.ago, last_active_at: 8.days.ago)

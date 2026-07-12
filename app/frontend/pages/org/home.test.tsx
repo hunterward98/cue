@@ -19,6 +19,17 @@ describe('org/home', () => {
     render(<OrgHome {...props(false, false)} />)
     expect(screen.getByRole('heading', { name: 'Acme' })).toBeInTheDocument()
     expect(screen.getByText(/Nothing to see yet/)).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: 'Members' }),
+    ).not.toBeInTheDocument()
+  })
+
+  it('links owners to member management', () => {
+    render(<OrgHome {...props(true, false)} />)
+    expect(screen.getByRole('link', { name: 'Members' })).toHaveAttribute(
+      'href',
+      '/o/acme/members',
+    )
   })
 
   it('describes every role combination', () => {

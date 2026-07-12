@@ -11,9 +11,16 @@ interface RegisterForm {
   [key: string]: string
 }
 
-export default function Register() {
+interface Props {
+  // Prefilled from an invitation link (org plan_3) so the invitee
+  // doesn't retype — and doesn't typo their way out of the fast
+  // verification-skip path (ADR 0015).
+  email_address?: string
+}
+
+export default function Register({ email_address }: Props) {
   const form = useForm<RegisterForm>({
-    email_address: '',
+    email_address: email_address ?? '',
     login_mode: 'password',
     password: '',
   })

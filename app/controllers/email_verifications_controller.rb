@@ -61,6 +61,9 @@ class EmailVerificationsController < InertiaController
     AuthEvent.record!("email_verified", user:, request:)
     session.delete(:pending_verification_email)
     start_new_session_for(user) unless Current.user == user
-    redirect_to organizations_path, notice: "You're verified. Welcome to Cue."
+    # after_authentication_url: a join request mid-signup (org plan_3)
+    # lands back on its approval-queue confirmation instead of the
+    # generic org switcher.
+    redirect_to after_authentication_url, notice: "You're verified. Welcome to Cue."
   end
 end

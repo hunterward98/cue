@@ -40,8 +40,37 @@ Rails.application.routes.draw do
   # /o/:org_slug (organizations-users plan_2). The slug constraint 404s
   # malformed slugs before they reach a query.
   resources :organizations, only: %i[index new create]
+
+  # Invitation acceptance (org plan_3): a tap from an email, no org
+  # context yet — same shape as the other magic-link confirms above.
+  # GET does the accepting (existing precedent: confirm_email_verification
+  # etc. are all state-changing GETs — the token itself is the one-time
+  # secret, there's nothing to CSRF).
+  get "invitations/:token" => "invitation_acceptances#show", as: :accept_invitation
+  delete "invitations/:token/session" => "invitation_acceptances#switch_account",
+         as: :switch_account_for_invitation
+
+  # Request-to-join door (org plan_3): signed-in or fresh signup lands in
+  # the org's approval queue. Disabled per-org via the join_link_enabled
+  # setting (checked in the controller, not the route — a disabled link
+  # 404s, it doesn't 404 before Organization.kept even runs).
+  get "join/:org_slug" => "join_requests#show", as: :join_organization,
+      constraints: { org_slug: /[a-z0-9-]+/ }
+  post "join/:org_slug" => "join_requests#create",
+       constraints: { org_slug: /[a-z0-9-]+/ }
+
   scope "o/:org_slug", module: :org, as: :org, constraints: { org_slug: /[a-z0-9-]+/ } do
     root "home#show", as: :root
+
+    # No :index — pending invitations render as part of the members page
+    # (one combined roster, per the plan's design), not a separate screen.
+    resources :invitations, only: %i[create destroy] do
+      post :resend, on: :member
+    end
+    resources :members, only: %i[index update destroy] do
+      patch :activate, on: :member
+      patch :deactivate, on: :member
+    end
   end
 
   # Temporary root until marketing-site-seo delivers a landing page.
