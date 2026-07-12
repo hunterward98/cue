@@ -72,16 +72,22 @@ its lifecycle, fields, permissions, comments, linking, hooks, and audit log.
 - `plan_7.md` — Linking + custom fields (premium features, land with billing
   gates available).
 - `plan_8.md` — Hooks v1 + completed section with full-text search.
+- `plan_9.md` — Request templates: board owners templatize a cue,
+  requesters fill in only the blanks (added 2026-07-11, from the O8
+  critique thread on organizations-users plan_1 — a template is the
+  actual fix for "requesters won't know to use `confidential`").
 
 ## Implementation order
 
 1. [ ] plan_2 model/state machine/audit (blocking).
 2. [ ] plan_6 create/view UI early — enables end-to-end demo with boards.
 3. [ ] plan_3 field configuration.
-4. [ ] plan_4 comments/tagging.
-5. [ ] plan_5 uploads.
-6. [ ] plan_8 hooks + completed search.
-7. [ ] plan_7 linking + custom fields (with billing).
+4. [ ] plan_9 request templates (Hunter-prioritized — do this soon after
+   plan_6, don't let it drift to the end).
+5. [ ] plan_4 comments/tagging.
+6. [ ] plan_5 uploads.
+7. [ ] plan_8 hooks + completed search.
+8. [ ] plan_7 linking + custom fields (with billing).
 
 ## Test strategy
 
@@ -121,6 +127,13 @@ its lifecycle, fields, permissions, comments, linking, hooks, and audit log.
   names IT password resets as a use case — those cues cannot be
   org-readable under the recommended transparency default. One boolean +
   policy branch resolves it; plan_3 (fields) is its natural home.
+- **Request templates added as plan_9** (organizations-users plan_1
+  critique feedback, 2026-07-11): the `confidential` flag alone doesn't
+  help a requester who doesn't know it exists. A board owner-authored
+  template — fixed fields (including `confidential`) stamped
+  automatically, requester only fills in the blanks — is the actual
+  fix. Prioritized explicitly by Hunter; sequenced right after plan_6 in
+  the implementation order above, not left to drift to the end.
 - **The encryption/search conflict lives under this plan** (detailed in
   database-architecture plan_1 critique, question **D5**): encrypted
   descriptions (plan_2) and the tsvector over descriptions (plan_8)

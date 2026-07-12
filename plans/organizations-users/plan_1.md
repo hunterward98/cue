@@ -115,3 +115,7 @@ Answer: yes, need this sort of simplicity in our app.
 
 ## Critique feedback:
 I like the confidential idea, but do not think it will be used the way we think. Someone requesting a password reset because they forgot it, probably isn't going to know to use it. So, we may need "template requests" that board owners can create for common requests. They will be able to take in any cue and make it a template for other requesters to "request" and have them fill out certain fields specific to their case. We need a plan for this - make one and prioritize it within the relevant plans.
+
+*Plan created 2026-07-11: [cues/plan_9 — Request Templates](../cues/plan_9.md),
+sequenced into cues' implementation order right after plan_6 (create UI).
+Awaiting review — has open questions, no critique feedback yet.*
