@@ -4,7 +4,7 @@
 - **Depends on:** plan_2 (token machinery), notifications plan_2 (sending)
 - **Sequencing:** mechanism + staff enforcement land with the support
   console (Phase 1–2); general user rollout is post-MVP.
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-11
 
 ## Goal
 
@@ -28,9 +28,12 @@ enterprise appeal. Built once, enforced in layers.
   without a second factor, ever; (2) user opt-in in account settings;
   (3) org policy `require_2fa` — members without 2FA get a grace-period
   nag then a hard wall (org owners see compliance status).
-- **Trusted devices:** signed cookie remembering the second factor for 30
-  days per device, revoked with sessions ("sign out everywhere" clears
-  trust). Never for staff — staff verify each new session.
+- **Trusted devices:** signed cookie remembering the second factor for
+  **14 days** per device (plan_1's ratified A1 answer — this Design
+  bullet had drifted to a stale "30 days," fixed 2026-07-11 to match the
+  status line above, which already had it right), revoked with sessions
+  ("sign out everywhere" clears trust). Never for staff — staff verify
+  each new session.
 - **Recovery:** email-based factors self-recover via account email; if
   TOTP enters (Q1-dependent), 10 single-use recovery codes generated at
   enrollment.
@@ -74,11 +77,23 @@ enterprise appeal. Built once, enforced in layers.
   distinct second factor ships. Staff flow (password + email code) is
   legitimately two factors today — scoping the claim to staff is
   accurate and fine.
+  *Resolved 2026-07-11: doesn't apply — A1 landed on password + email
+  2FA (with 14-day device trust to bring passwordless users along), not
+  passwordless-default. Email codes are a genuinely distinct second
+  factor for the password-primary flow this plan actually builds, so
+  "2FA" is accurate as designed. No TOTP-instead-of-email-OTP pivot
+  needed; this whole conditional is moot, not silently dropped.*
 - If A1 = passwordless, consider jumping straight to TOTP for the
   user-facing "2FA" milestone and skipping user-facing email-OTP
   entirely — it would otherwise be code + code, security theater.
   (Staff keep password + email code either way.)
+  *Resolved 2026-07-11: same as above — doesn't apply, A1 didn't land
+  passwordless-default. The Q1-dependent TOTP decision point in
+  Implementation steps stays as documented (harmless either way, and
+  cheap to remove once this is fully shipped).*
 - Trusted-device 30d cookie, never for staff: right call, no critique.
+  *Note 2026-07-11: the "30d" here already reflects A1's actual answer
+  of 14 days incorrectly — see Design, now fixed to 14 days.*
 
 ## Critique feedback:
 Good critiques, maybe we should improve then. Do what you feel is appropriate.
