@@ -61,6 +61,14 @@ new token without adding its pair to the spec and review should bounce it.
   never on large surfaces; texture bypasses the contrast checker, so it
   gets no benefit of the doubt.
 
+## Copy & tutorials
+
+Voice, tone, and string-centralization rules live in
+[voice.md](voice.md), not here — this doc is styling, that one is
+words. One rule worth stating in both places: **a guided tutorial that
+needs more than 4 steps means the UI failed, not the tutorial** (plan_5
+critique). Fix the feature before writing a longer tour.
+
 ## Adding a token
 
 1. Add the value to BOTH themes in `tokens.css`.

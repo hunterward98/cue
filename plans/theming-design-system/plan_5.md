@@ -1,8 +1,10 @@
 # theming-design-system — Child Plan 5: Voice Guide & Guided Tutorials
 
-- **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
+- **Parent:** [plan_1.md](plan_1.md) · **Status:** IN_PROGRESS (2026-07-11)
+  — voice guide + string-centralization decision shipped; tutorials
+  blocked (see Implementation steps)
 - **Depends on:** plan_3 (components for coach marks)
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-11
 
 ## Goal
 
@@ -39,14 +41,32 @@ cue?".
 
 ## Implementation steps
 
-- [ ] Voice guide v1 + PR-review line item ("copy matches voice.md?").
-- [ ] String centralization mechanism (Q1) + retrofit the strings that
-      exist by then + literal-string lint/convention.
+- [x] Voice guide v1 (2026-07-11, [docs/design/voice.md](../../docs/design/voice.md))
+      — principles, do/don't table pulled from real shipped copy, the
+      validation-copy seam rule, the mentions/mute caveat. PR-review
+      line item is a process change, not code — call it out in the PR
+      template when support-admin/PR-template work touches that file.
+- [x] String centralization **mechanism decided and ADR'd**
+      (2026-07-11, [ADR 0016](../../docs/decisions/0016-string-centralization.md)):
+      typed `strings.ts` per feature, no i18n runtime, validation copy
+      stays server-side. **Retrofit and the literal-string lint are
+      deliberately deferred** — see ADR's Revisit when. Doing the
+      mechanical move now, before cues/boards-workflow exist, means
+      doing it twice.
 - [ ] Coach-mark component (Popover-based) + progress persistence + help
-      menu replay.
-- [ ] The three v1 tutorials (each: RTL spec + system test + both
-      viewports — coach marks on mobile especially).
-- [ ] EmptyState copy pass across shipped screens against voice.md.
+      menu replay. **Blocked**: needs a Base UI Popover wrapper (ADR
+      0014 named this as future scope, not yet built) and a real anchor
+      target to demo against.
+- [ ] The three v1 tutorials. **Blocked on the features they teach**:
+      "what's a cue?" needs the create-cue button (cues plan_6, not yet
+      reviewed); "your board" needs a board (boards-workflow, not yet
+      reviewed); org owner first-run (invite members, set defaults) is
+      the only one buildable today — organizations-users plan_3
+      (invitations) and plan_4 (settings) are its prerequisites, and
+      plan_4 is still NOT_STARTED. Revisit once cues plan_6 lands.
+- [ ] EmptyState copy pass across shipped screens against voice.md —
+      cheap, do this alongside the retrofit above rather than as its own
+      pass.
 
 ## Tests
 

@@ -1,7 +1,8 @@
 # Parent Plan: Theming & Design System
 
-- **Status:** IN_PROGRESS (plan_2 DONE, plan_3 DONE; plan_4 NOT_STARTED,
-  needs billing gating; plan_5 NOT_STARTED)
+- **Status:** IN_PROGRESS (plan_2–3 DONE; plan_4 NOT_STARTED, needs
+  billing gating; plan_5 partial — voice guide + string mechanism done,
+  tutorials blocked on cues/boards-workflow)
 - **Phase:** 1
 - **Depends on:** foundation
 - **Blocks:** every UI surface (cues, boards, initiatives, marketing site)
@@ -72,7 +73,9 @@ built, or cohesion is lost forever.
 
 1. [x] plan_2 tokens/themes/enforcement (blocks all UI work) — DONE 2026-07-11.
 2. [x] plan_3 component library (blocks product screens) — DONE 2026-07-11.
-3. [ ] plan_5 voice guide (cheap, do early — copy is everywhere).
+3. [x] plan_5 voice guide (cheap, do early — copy is everywhere) — voice
+   guide + string-centralization ADR done 2026-07-11; tutorials blocked
+   on cues/boards-workflow, revisit once those land.
 4. [ ] plan_4 org themes (needs billing gating; can land with Phase 3).
 
 ## Test strategy
@@ -87,7 +90,8 @@ built, or cohesion is lost forever.
 - [x] Tokens + light/dark shipped with enforcement (2026-07-11)
 - [x] Component library v1 shipped (2026-07-11) — Markdown component
       deferred to initiatives plan_3
-- [ ] Voice guide adopted
+- [x] Voice guide adopted (2026-07-11) — tutorial framework blocked, see
+      plan_5
 - [ ] Org themes shipped (billing-gated)
 
 ## Open questions
