@@ -1,10 +1,10 @@
 # Parent Plan: Auth & Security
 
-- **Status:** IN_PROGRESS (plans 2–3 DONE; plan_4 mechanism partial, gated on support-admin/notifications; plan_5 installed, recurring)
+- **Status:** IN_PROGRESS (plans 2–3 DONE; plan_4 mechanism partial, gated on support-admin/notifications; plan_5 installed, recurring; plan_6 authored, awaiting review)
 - **Phase:** 1
 - **Depends on:** foundation, database-architecture
 - **Blocks:** organizations-users, everything user-facing
-- **Last updated:** 2026-07-10
+- **Last updated:** 2026-07-11
 
 ## Objective
 
@@ -55,6 +55,10 @@ users may store extremely sensitive information; security is the one area we
   first, then extend to users.
 - `plan_5.md` — Recurring security review checklist (feeds self-improvement
   loop; runs `/security-review` on auth-touching changes).
+- `plan_6.md` — OAuth (Google, likely Microsoft) (added 2026-07-11, from
+  Hunter's critique feedback: "We should plan for Google OAuth but that
+  will be quick; might need Microsoft though" — overrides the critique's
+  own "no OAuth at MVP" validation).
 
 ## Implementation order
 
@@ -62,6 +66,8 @@ users may store extremely sensitive information; security is the one area we
 2. [x] plan_3 hardening (MVP-blocking). (2026-07-10)
 3. [ ] plan_4 2FA (first post-MVP security improvement).
 4. [x] plan_5 recurring review process established (weekly scan CI, threat model v1, phase checklist). (2026-07-10)
+5. [ ] plan_6 OAuth — not MVP-blocking, but Hunter-prioritized; awaiting
+   review (open questions unanswered).
 
 ## Test strategy
 
@@ -108,3 +114,6 @@ happy path on mobile viewport.
 ## Critique feedback:
 Yes, passwords should honestly be at the forefront.
 Valid critiques. Rails is the way. We should plan for Google OAuth but that will be quick; might need Microsoft though.
+
+*Plan created 2026-07-11: [plan_6 — OAuth](plan_6.md). Awaiting review —
+has open questions, no critique feedback yet.*
