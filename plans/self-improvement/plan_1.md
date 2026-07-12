@@ -2,7 +2,7 @@
 
 - **Status:** IN_PROGRESS (plan_2 DONE; plan_3 partial — one skill
   shipped early on its own need-driven exception, the rest still gated;
-  plan_4 gated on later phases)
+  plan_4 template design-refined, still gated on end-of-Phase-1)
 - **Phase:** cross-cutting — starts with foundation, never ends
 - **Depends on:** — (installs alongside foundation)
 - **Blocks:** — (but every plan feeds it)
