@@ -1,10 +1,12 @@
 # Parent Plan: Boards & Workflow
 
-- **Status:** NOT_STARTED
+- **Status:** NOT_STARTED (blocked on cues, which is unreviewed; all
+  four plans' critique feedback incorporated into their designs
+  2026-07-11 so implementation can start the moment cues unblocks)
 - **Phase:** 2
 - **Depends on:** cues, organizations-users
 - **Blocks:** metrics-insights (consumes board events)
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-11
 
 ## Objective
 
@@ -109,10 +111,23 @@ prioritization. No sprints, no agile ceremony.
   but it's an interpretation; flagging per the ⚠ convention rather than
   silently assuming. (No question ID — confirm with a word if our
   reading matches your intent.)
+  *Resolved 2026-07-11 (Critique feedback: "do what you feel is
+  appropriate"): going with the recommended residents-only reading —
+  the critique's own reasoning ("punishes finishing work") is decisive,
+  and it matches Q1's "board progress saved" framing (a resolved cue has
+  already left active board state). If real usage says otherwise, this
+  is a one-line change to the cap query's status filter, not a schema
+  change — cheap to revisit.*
 - W6 (org-owner read-only all-boards overview) is the one add-on here
   that risks Jira-creep — it's justified as *visibility*, but hold the
   line: read-only, no cross-board dragging, or the per-owner focus
   model erodes.
+  *Resolved 2026-07-11: Q2's answer already narrows this further than
+  the critique anticipated — visibility between board owners is
+  opt-in per owner (a privacy setting each board owner controls, not an
+  org-admin override), and requesters only ever see counts, never
+  board contents. Both are still strictly read-only with no
+  cross-board dragging, so the critique's guardrail holds either way.*
 
 ## Critique feedback:
 Good critiques, maybe we should improve then. Do what you feel is appropriate.

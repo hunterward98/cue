@@ -2,7 +2,7 @@
 
 - **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
 - **Depends on:** cues plan_2, organizations-users plan_2
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-11
 
 ## Goal
 
@@ -20,10 +20,13 @@ cues cross the line — owner-only, own-board-only.
   Board row can represent a backlog).
 - **Pull (backlog → own board):** single service:
   policy check (owner + own board) → per-board advisory lock →
-  cap check (`cues_count` of non-resolved < max_items… note: parent says
-  cap counts items "regardless of status" — i.e., all cues residing on
-  the board; resolved cues leave the board via completed, so residency IS
-  the count) → pull-gating hooks (cues plan_8: require_category/deadline)
+  cap check (real row count of resident cues < max_items, counted
+  **inside the lock from the cues table itself — never from
+  `cues_count`**, per critique: a counter cache is display-only, the
+  authoritative count is a real query the same transaction that holds
+  the lock can trust; residency = cued/in_progress/in_review, resolved
+  cues leave the board — plan_1 critique's reading, ratified there) →
+  pull-gating hooks (cues plan_8: require_category/deadline)
   → set board_id + position → CueEvent(pulled). Advisory lock keyed on
   board id makes the concurrent-pull race deterministic (parent's
   concurrency test).
@@ -35,8 +38,12 @@ cues cross the line — owner-only, own-board-only.
   allowed — blocks pulls until under (no eviction, parent decision).
 - **Owner offboarding:** membership deactivation → bulk-return all board
   cues to backlog (single transaction, one CueEvent each + one summary
-  event), board archived (kept for history/metrics), org owners notified.
-  (Parent Q1 recommendation, implemented here; see Q1 for edge.)
+  event), board archived (kept for history/metrics), org owners notified
+  **and each affected requester notified individually** (critique: reuse
+  the existing per-cue `cue_returned` notification rather than inventing
+  a bulk-specific one — a requester watching "on Charlie's board"
+  shouldn't have to guess why it moved). (Parent Q1 recommendation,
+  implemented here; see Q1 for edge.)
 - **Resolution:** resolved cues drop board residency (board_id →
   a `resolved_from_board_id` retained for metrics/completed filters) —
   freeing a slot is the reward loop for finishing.
@@ -56,9 +63,13 @@ cues cross the line — owner-only, own-board-only.
   denied; pull at cap → blocked with structured reason; pull skipping
   required hook → blocked; second Board for one owner → DB rejects;
   direct board_id mass-assignment on cue update → rejected (pull service
-  is the only path — cop/test enforced).
+  is the only path — cop/test enforced); **counter-cache drift doesn't
+  affect the cap decision** (critique: corrupt `cues_count` directly,
+  assert the pull's admit/reject outcome is unchanged — the real-row
+  count inside the lock is what actually decided it).
 - Offboarding: N cues → N+1 events, all in backlog, board archived,
-  metrics history intact.
+  metrics history intact, **each affected requester's notification
+  fired** (critique).
 
 ## Open questions
 
@@ -82,10 +93,16 @@ cues cross the line — owner-only, own-board-only.
   drifted cache deciding cap admission is a silent limit bug. One
   sentence in the implementation, one drift negative test (corrupt the
   cache, cap decision still correct).
+  *Resolved 2026-07-11 (Critique feedback: "do what you feel is
+  appropriate"): Design and Tests above now say this explicitly — real
+  row count inside the lock decides admission, `cues_count` is
+  display-only, and the drift negative test is named in Tests.*
 - Offboarding bulk-return: consider notifying affected *requesters*
   ("your cue is back in the backlog") — the plan notifies org owners
   only; requesters watching "on Charlie's board" will wonder. Cheap:
   it's the existing cue_returned notification fired per cue, rolled up.
+  *Resolved 2026-07-11: adopted as designed — Design's Owner offboarding
+  bullet and Tests both updated.*
 - Return-to-backlog of in_review cues with confirm + requester
   notification (W2a): stands. No further critique — the advisory-lock
   pull design and `resolved_from_board_id` residency handoff are right.

@@ -2,7 +2,7 @@
 
 - **Parent:** [plan_1.md](plan_1.md) · **Status:** NOT_STARTED
 - **Depends on:** plan_2, cues plan_6/8
-- **Last updated:** 2026-07-08
+- **Last updated:** 2026-07-11
 
 ## Goal
 
@@ -22,7 +22,14 @@ capped, focused, and pointedly not Jira.
   inline prompt (e.g. required done-comment via the resolve dialog).
   Within-column drag = position. Library: Q1. Mobile primary mechanism =
   tap card → status action sheet (drag is desktop sugar; parity of
-  capability, not of gesture).
+  capability, not of gesture). **Two distinct snap-back treatments**
+  (critique, adopted): a hook-blocked drop (fixable — the inline prompt
+  tells you what's missing) gets a different animation/toast than an
+  illegal-edge drop (not allowed — the transition doesn't exist), so the
+  card teaches "fix this" vs. "that's not a thing" without the user
+  reading anything. Both already carry a structured reason from the
+  state machine; this is a rendering split on that reason's type, not a
+  new data model.
 - **Resolve flow:** moving to resolved always via a small dialog
   (substatus pick: done/closed/infeasible + comment field appearing when
   the hook demands) — one dialog, hook-aware, keyboard-quick.
@@ -54,6 +61,9 @@ capped, focused, and pointedly not Jira.
   violating state machine (cue'd → review… actually adjacent-only? no —
   matrix from cues plan_2 governs; illegal edges snap back); resolve
   without substatus → blocked; search leaking other boards' cues → fail.
+- Hook-blocked and illegal-edge snap-backs render visually distinct
+  states (critique) — an RTL/system assertion per case, not just "it
+  snapped back."
 - DnD accessibility: keyboard move path (grab/arrow/drop) fully works —
   axe + interaction specs.
 
@@ -86,6 +96,8 @@ capped, focused, and pointedly not Jira.
   not-allowed) — the structured reason already carries this; make the
   two animations/toasts distinct so users learn the difference without
   reading.
+  *Resolved 2026-07-11 (Critique feedback: "Good calls. I like drag
+  between too"): adopted into Design and Tests above.*
 - Mobile tap-to-move as primary with drag as desktop sugar: correct
   and honest (W5 prototype decision pending). No further critique.
 
