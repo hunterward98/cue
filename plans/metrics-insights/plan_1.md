@@ -80,9 +80,11 @@ the `cue_events` audit log — no separate analytics infrastructure.
 1. Are insights available on the basic tier? Master plan doesn't gate them.
    (Recommendation: yes on all tiers — insights drive the habit that
    justifies upgrades.)
+  answer: yes but need to have good core ones on the basic tier. can have some super advanced or niche metrics on another tier.
 2. Business-hours-aware durations (8h workday) vs wall-clock?
    (Recommendation: wall-clock v1, clearly labeled; business-hours is a
    documented deferral.)
+answer: wall clock
 
 ## Critique
 
