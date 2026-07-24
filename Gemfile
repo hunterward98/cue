@@ -69,7 +69,7 @@ gem "acts_as_tenant", "~> 1.0"
 gem "strong_migrations", "~> 2.8"
 
 gem "bullet", "~> 8.1", groups: [ :development, :test ]
-gem "annotaterb", "~> 4.23", groups: [ :development, :test ]
+gem "annotaterb", "~> 4.24", groups: [ :development, :test ]
 
 gem "letter_opener", "~> 1.10", group: :development
 
