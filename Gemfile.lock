@@ -83,7 +83,7 @@ GEM
       activerecord (>= 6.0.0)
       activesupport (>= 6.0.0)
     ast (2.4.3)
-    axe-core-api (4.12.0)
+    axe-core-api (4.13.0)
       dumb_delegator
     base64 (0.3.0)
     bcrypt (3.1.22)
@@ -452,7 +452,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_tenant (~> 1.0)
   annotaterb (~> 4.23)
-  axe-core-api (~> 4.12)
+  axe-core-api (~> 4.13)
   bcrypt (~> 3.1.7)
   bootsnap
   brakeman
