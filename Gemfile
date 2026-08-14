@@ -79,4 +79,4 @@ gem "webmock", "~> 3.26", group: :test
 
 gem "chunky_png", "~> 1.4", group: :test
 
-gem "axe-core-api", "~> 4.12", group: :test
+gem "axe-core-api", "~> 4.13", group: :test
