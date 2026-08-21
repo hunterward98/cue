@@ -59,7 +59,7 @@ gem "capybara", "~> 3.40", groups: [ :development, :test ]
 gem "cuprite", "~> 0.17", groups: [ :development, :test ]
 gem "parallel_tests", "~> 5.7", groups: [ :development, :test ]
 
-gem "simplecov", "~> 0.22.0", group: :test, require: false
+gem "simplecov", "~> 1.1.1", group: :test, require: false
 
 gem "rubocop-rspec", "~> 3.10", groups: [ :development, :test ]
 gem "rubocop-factory_bot", "~> 2.28", groups: [ :development, :test ]
